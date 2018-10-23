@@ -19,7 +19,7 @@ Organisation continue to struggle with implementing a robust, scalable, effectiv
  </blockquote>
 
 
-| <img src="/archerysec-blog/assets/images/archeryblog/vuln_cycle.png">| 
+| <img src="/assets/images/archeryblog/vuln_cycle.png">| 
 |:--:| 
 | *Vulnerability Assessment and Management Cycle.* |
 
@@ -43,34 +43,34 @@ Let’s explore those challenges which we commonly face while doing vulnerabilit
 
 **1. Vulnerability Assessment and Management Tool**: Archery is an open source tool that helps you to plug vulnerability scanners like ZAP Scanner, Burp Scanner, OpenVAS etc. Once you configure your scanners Archery triggers scan into multiple scanners and correlates, collaborate all raw scans data, show them in a consolidated manner. Its also automate your scanners and do web dynamic scanning.
 
-| <img src="/archerysec-blog/assets/images/archeryblog/how_arc_work.png">| 
+| <img src="/assets/images/archeryblog/how_arc_work.png">| 
 |:--:| 
 | *High-level Archery Architecture..* |
 
 <br>
 **2. Web Dynamic Authenticated Scanning**: Archery help you to perform web application dynamic authentication using inbuilt selenium integrated solution. Archery storing application authenticated cookies value into cookies_db and using ZAP Replacer its replace cookies value from headers. It’s also using selenium based authentication and grab cookies value runtime.
 
-| <img src="/archerysec-blog/assets/images/archeryblog/arcyery_dynacmi.png">| 
+| <img src="/assets/images/archeryblog/arcyery_dynacmi.png">| 
 |:--:| 
 | *Web application Dynamic Authentication Solution by Archery.* |
 
 <br>
 **3. Manage False Positives Vulnerabilities:** Archery help you on removing false positive vulnerabilities after scan completion. Its very important to remove false positives vulnerabilities and work on new discovered vulnerabilities from all future scans.
 
-| <img src="/archerysec-blog/assets/images/archeryblog/false_positive.png">| 
+| <img src="/assets/images/archeryblog/false_positive.png">| 
 |:--:| 
 | *False Positive marked vulnerability.* |
 
 <br>
 **4. JIRA Ticketing:** Archery has JIRA Ticketing system plugin that you can plug with Archery tool and raise tickets. 
 
-| <img src="/archerysec-blog/assets/images/archeryblog/jiraticket.png">| 
+| <img src="/assets/images/archeryblog/jiraticket.png">| 
 |:--:| 
 | *JIRA Ticket Integrated and raise vulnerability ticket..* |
 
 <br>
 
-| <img src="/archerysec-blog/assets/images/archeryblog/jira2.png">| 
+| <img src="/assets/images/archeryblog/jira2.png">| 
 |:--:| 
 | *After JIRA Ticket raised issue tracking..* |
 
@@ -102,7 +102,7 @@ Currently we supports below Network scanners —
 
 - SSLScan
 
-| <img src="/archerysec-blog/assets/images/archeryblog/archery_ssl.png">| 
+| <img src="/assets/images/archeryblog/archery_ssl.png">| 
 |:--:| 
 | *SSLScan tool integrated into Archery tool.* |
 
@@ -110,7 +110,7 @@ Currently we supports below Network scanners —
 
 - Nikto
 
-| <img src="/archerysec-blog/assets/images/archeryblog/nikto.png">| 
+| <img src="/assets/images/archeryblog/nikto.png">| 
 |:--:| 
 | *Nikto tool Integrated into Archery Tool.* |
 
@@ -118,7 +118,7 @@ Currently we supports below Network scanners —
 
 - Nmap + Vulners
 
-| <img src="/archerysec-blog/assets/images/archeryblog/nmap_vulns.png">| 
+| <img src="/assets/images/archeryblog/nmap_vulns.png">| 
 |:--:| 
 | *Nmap and Vulners Integrated into Archery tool.* |
 
@@ -126,7 +126,7 @@ Currently we supports below Network scanners —
 
 **8. Integrated OSINT:** Archery has integrated some OSINT tool like Sublist3r to extract sub-domains which is useful to have run vulnerability assessment. Currently we are experimenting with various OSINT tools and trying to integrate with Archery tool.
 
-| <img src="/archerysec-blog/assets/images/archeryblog/domainlist.png">| 
+| <img src="/assets/images/archeryblog/domainlist.png">| 
 |:--:| 
 | *OSINT way subdomain Sublist3r integrated.* |
 
@@ -136,13 +136,13 @@ Currently we supports below Network scanners —
 
 <br>
 
-| <img src="/archerysec-blog/assets/images/archeryblog/overall_dashboard.png">| 
+| <img src="/assets/images/archeryblog/overall_dashboard.png">| 
 |:--:| 
 | *Archery Dashboard.* |
 
 <br>
 
-| <img src="/archerysec-blog/assets/images/archeryblog/pie&bar.png">| 
+| <img src="/assets/images/archeryblog/pie&bar.png">| 
 |:--:| 
 | *Archery Dashboard..* |
 

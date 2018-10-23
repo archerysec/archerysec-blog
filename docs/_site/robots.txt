@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/archerysec-blog/sitemap.xml
+Sitemap: /archerysec-blog/sitemap.xml

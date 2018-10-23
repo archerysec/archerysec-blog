@@ -3,10 +3,10 @@
   <channel>
     <title></title>
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
-    <link>http://localhost:4000/archerysec-blog/</link>
-    <atom:link href="http://localhost:4000/archerysec-blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 23 Oct 2018 21:47:55 +0530</pubDate>
-    <lastBuildDate>Tue, 23 Oct 2018 21:47:55 +0530</lastBuildDate>
+    <link>/archerysec-blog/</link>
+    <atom:link href="/archerysec-blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 23 Oct 2018 21:54:46 +0530</pubDate>
+    <lastBuildDate>Tue, 23 Oct 2018 21:54:46 +0530</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
     
       <item>
@@ -14,8 +14,8 @@
         <description>
 </description>
         <pubDate>Mon, 13 Aug 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/archerysec-blog/conference/2018/08/13/defcon-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/2018/08/13/defcon-2018.html</guid>
+        <link>/archerysec-blog/conference/2018/08/13/defcon-2018.html</link>
+        <guid isPermaLink="true">/archerysec-blog/conference/2018/08/13/defcon-2018.html</guid>
         
         
         <category>conference</category>
@@ -35,8 +35,8 @@
 &lt;p&gt;We have try to solve the dynamic scanning challenge that we demonstrated in BlackHat USA in our new release.&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Aug 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</guid>
+        <link>/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</link>
+        <guid isPermaLink="true">/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</guid>
         
         
         <category>conference</category>
@@ -97,8 +97,8 @@ We were very excited to be presenting Archery tool at one of the top information
 
 </description>
         <pubDate>Fri, 23 Mar 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</guid>
+        <link>/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</link>
+        <guid isPermaLink="true">/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</guid>
         
         
         <category>conference</category>
@@ -380,8 +380,8 @@ We were very excited to be presenting Archery tool at one of the top information
 
 </description>
         <pubDate>Thu, 11 Jan 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</link>
-        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</guid>
+        <link>/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</link>
+        <guid isPermaLink="true">/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</guid>
         
         
         <category>tutorial</category>

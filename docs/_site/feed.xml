@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title></title>
+    <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
+    <link>http://localhost:4000/archerysec-blog/</link>
+    <atom:link href="http://localhost:4000/archerysec-blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 23 Oct 2018 21:47:55 +0530</pubDate>
+    <lastBuildDate>Tue, 23 Oct 2018 21:47:55 +0530</lastBuildDate>
+    <generator>Jekyll v3.8.3</generator>
+    
+      <item>
+        <title>Defcon Tool Demo 2018</title>
+        <description>
+</description>
+        <pubDate>Mon, 13 Aug 2018 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/archerysec-blog/conference/2018/08/13/defcon-2018.html</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/2018/08/13/defcon-2018.html</guid>
+        
+        
+        <category>conference</category>
+        
+      </item>
+    
+      <item>
+        <title>Black Hat Arsenal USA 2018</title>
+        <description>&lt;p&gt;We got chance to present Archery tool in world largest conference BlackHat USA 2018 Arsenal at Las Vegas. It was great experience in front of huge audience.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/archerysec-blog/assets/images/bh-usa/bh-usa-2.png&quot; width=&quot;640&quot; height=&quot;434&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have try to solve the dynamic scanning challenge that we demonstrated in BlackHat USA in our new release.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Aug 2018 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/introduction/2018/08/11/blackhat-usa-2018.html</guid>
+        
+        
+        <category>conference</category>
+        
+        <category>introduction</category>
+        
+      </item>
+    
+      <item>
+        <title>Black Hat Arsenal Asia 2018</title>
+        <description>&lt;p&gt;&lt;br /&gt;
+&lt;br /&gt;
+We were very excited to be presenting Archery tool at one of the top information security conferences &lt;a href=&quot;https://www.blackhat.com/asia-18/arsenal/schedule/index.html#archery---open-source-vulnerability-assessment-and-management-9837&quot;&gt;BlackHat Aisa 2018 Arsenal&lt;/a&gt; in Singapore. It also has been great opportunity to catch up with other folks who have been working on Open Source security tool that helps security professionals.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/archerysec-blog/assets/images/bh-asia/blackhat-asia2.png&quot; width=&quot;640&quot; height=&quot;434&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have live demonstrated Archery in BlackHat Arsenal and talk about challenges facing while doing vulnerability Assessment and Management. Also were talk about how Archery solve those challenges. Below you can find the presentation slides.&lt;/p&gt;
+
+&lt;iframe src=&quot;//www.slideshare.net/slideshow/embed_code/key/jkXtN1bJ7tpG2N&quot; width=&quot;795&quot; height=&quot;485&quot; frameborder=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; scrolling=&quot;no&quot; style=&quot;border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;&quot; allowfullscreen=&quot;&quot;&gt; &lt;/iframe&gt;
+&lt;div style=&quot;margin-bottom:5px&quot;&gt; &lt;strong&gt; &lt;a href=&quot;//www.slideshare.net/anandtiwarics1/archery-blackhat-asia-2018&quot; title=&quot;Archery - BlackHat Asia 2018 &quot; target=&quot;_blank&quot;&gt;Archery - BlackHat Asia 2018 &lt;/a&gt; &lt;/strong&gt; from &lt;strong&gt;&lt;a href=&quot;https://www.slideshare.net/anandtiwarics1&quot; target=&quot;_blank&quot;&gt;Anand Tiwari&lt;/a&gt;&lt;/strong&gt; &lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for &lt;a href=&quot;http://www.toolswatch.org/2018/01/black-hat-arsenal-asia-2018-great-lineup/&quot;&gt;Toolswatch&lt;/a&gt; &amp;amp; &lt;a href=&quot;https://www.blackhat.com/asia-18/index.html&quot;&gt;BlackHat&lt;/a&gt; given us platform to introduce Archery to everyone.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/archerysec-blog/assets/images/bh-asia/blackhat-asia3.png&quot; width=&quot;600&quot; height=&quot;450&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Also we meet Arsenal presenters and discussed about the Open Source projects.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/archerysec-blog/assets/images/bh-asia/blackhat-asia4.png&quot; width=&quot;640&quot; height=&quot;434&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We have released beta version of Archery with below features.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dashboard&lt;/li&gt;
+  &lt;li&gt;Web Dashboard&lt;/li&gt;
+  &lt;li&gt;Network Dashboard&lt;/li&gt;
+  &lt;li&gt;Project Dashboard&lt;/li&gt;
+  &lt;li&gt;OWASP ZAP Scanner integration.&lt;/li&gt;
+  &lt;li&gt;Burp Scanner integration.&lt;/li&gt;
+  &lt;li&gt;Arachni Scanner report parser.&lt;/li&gt;
+  &lt;li&gt;OpenVAS plugin and parser.&lt;/li&gt;
+  &lt;li&gt;Authentication&lt;/li&gt;
+  &lt;li&gt;Project view and create.&lt;/li&gt;
+  &lt;li&gt;Webscan View and Launch.&lt;/li&gt;
+  &lt;li&gt;Network Scans view and Launch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can download from &lt;a href=&quot;https://github.com/archerysec/archerysec/releases&quot;&gt;ArcherySec GitHub&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 23 Mar 2018 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/conference/introduction/2018/03/23/blackhat-asia-2018.html</guid>
+        
+        
+        <category>conference</category>
+        
+        <category>introduction</category>
+        
+      </item>
+    
+      <item>
+        <title>Archery - Vulnerability Assessment and Management Tool</title>
+        <description>&lt;p&gt;&lt;em&gt; “Archery is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment.”
+&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Organisation continue to struggle with implementing a robust, scalable, effective and user-friendly Vulnerability Assessment and Management program that is capable of showing a quantifiable reduction in risk to the business despite the existence and need for these programs for the last decade or more. In the blog we’ll look how Archery will help you to organize your scanners and manage vulnerabilities in a automated way. Also we’ll get to know the features of Archery and how to use &amp;amp; utilize them.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;em&gt;A vulnerability assessment is the process of identifying, quantifying, and prioritizing the vulnerabilities in a system. — &lt;/em&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Vulnerability_assessment&quot; data-href=&quot;https://en.wikipedia.org/wiki/Vulnerability_assessment&quot; target=&quot;_blank&quot;&gt;Wikipedia&lt;/a&gt;
+ &lt;/blockquote&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/vuln_cycle.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Vulnerability Assessment and Management Cycle.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;Vulnerability management is the “cyclical practice of identifying, classifying, remediating, and mitigating vulnerabilities”, particularly in software. Vulnerability management is integral to computer security and network security, and must not be confused with Vulnerability assessment. &lt;a href=&quot;https://en.wikipedia.org/wiki/Vulnerability_management&quot; data-href=&quot;https://en.wikipedia.org/wiki/Vulnerability_management&quot; class=&quot;markup--anchor markup--pullquote-anchor&quot; rel=&quot;nofollow noopener&quot; target=&quot;_blank&quot;&gt;Wikipedia&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;challenges-in-vulnerability-assessment-and-management&quot;&gt;Challenges in Vulnerability Assessment and Management&lt;/h4&gt;
+
+&lt;p&gt;Let’s explore those challenges which we commonly face while doing vulnerability assessment and management.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Multiple Scanners&lt;/strong&gt;: We have multiple open source and commercial tools in our organization to perform vulnerability scanning. It is pain full task to manage multiple scanners.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;False Positive Removal&lt;/strong&gt;: Most profound challenge is to remove multiple false positive vulnerabilities from scanners and remove from future periodic scans.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Vulnerability Prioritization&lt;/strong&gt;: Today, many organizations prioritize based on CVSS score and perform some level of asset importance classification within the process. However, this is still generating too much data for remediation teams to take targeted and informed action. In a larger organization, this process can result in tens of thousands — or even millions — of vulnerabilities detected.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Remediation and Tracking&lt;/strong&gt;: Vulnerability remediation and tracking is the one of the most challenging part of vulnerability assessment and management. There is no technology that can easily and economically solve the problem, there are ways to enable better management through automation that can improve the process and influence user behavior. In other words, synchronizing communication between internal teams through workflow automation can help accelerate the remediation process. From simple ticket and task management to notifications and patch deployment, the ability to track the remediation process within a single unified view can eliminate the need to navigate and update multiple systems and potentially result in significant time savings.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;how-archery-try-to-solve-these-challenges&quot;&gt;How Archery try to solve these challenges.&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Vulnerability Assessment and Management Tool&lt;/strong&gt;: Archery is an open source tool that helps you to plug vulnerability scanners like ZAP Scanner, Burp Scanner, OpenVAS etc. Once you configure your scanners Archery triggers scan into multiple scanners and correlates, collaborate all raw scans data, show them in a consolidated manner. Its also automate your scanners and do web dynamic scanning.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/how_arc_work.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;High-level Archery Architecture..&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;2. Web Dynamic Authenticated Scanning&lt;/strong&gt;: Archery help you to perform web application dynamic authentication using inbuilt selenium integrated solution. Archery storing application authenticated cookies value into cookies_db and using ZAP Replacer its replace cookies value from headers. It’s also using selenium based authentication and grab cookies value runtime.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/arcyery_dynacmi.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Web application Dynamic Authentication Solution by Archery.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;3. Manage False Positives Vulnerabilities:&lt;/strong&gt; Archery help you on removing false positive vulnerabilities after scan completion. Its very important to remove false positives vulnerabilities and work on new discovered vulnerabilities from all future scans.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/false_positive.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;False Positive marked vulnerability.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;
+&lt;strong&gt;4. JIRA Ticketing:&lt;/strong&gt; Archery has JIRA Ticketing system plugin that you can plug with Archery tool and raise tickets.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/jiraticket.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;JIRA Ticket Integrated and raise vulnerability ticket..&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/jira2.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;After JIRA Ticket raised issue tracking..&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5. Web Scanners Plugin &amp;amp; Parser:&lt;/strong&gt; We are working on to writing plugins and parsers for open source and commercial scanners.&lt;/p&gt;
+
+&lt;p&gt;Currently Archery supports below Web Scanners plugin and parser —&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ZAP Scanner (Plugin and XML Parser) Open Source.&lt;/li&gt;
+  &lt;li&gt;Burp Scanner (Plugin and XML Parser) Commercial or Pro Version.&lt;/li&gt;
+  &lt;li&gt;arachni scanner (XML Parser) Open Source.&lt;/li&gt;
+  &lt;li&gt;Netsparker (XML Parser) Commercial Scanner.&lt;/li&gt;
+  &lt;li&gt;Webinspect (XML Parser) Commercial Scanner.&lt;/li&gt;
+  &lt;li&gt;Acunetix (XML Parser) Commercial Scanner.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6. Network Scanners Plugin &amp;amp; Parser:&lt;/strong&gt; There are multiple open source and commercial tools &amp;amp; scanners are available to perform network vulnerability assessment. We also working on to integrate those scanners plugin with Archery.&lt;/p&gt;
+
+&lt;p&gt;Currently we supports below Network scanners —&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OpenVAS (Plugin and XML Parser) Open Source.&lt;/li&gt;
+  &lt;li&gt;Nessus Scanner (nessus file Parser) Commercial Scanner.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;7. Tools integrated:&lt;/strong&gt; We are doing multiple experiment with multiple available open source security tool to integrate with Archery. We have integrated some of popular tool which helps on doing Vulnerability Assessment.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SSLScan&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/archery_ssl.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;SSLScan tool integrated into Archery tool.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nikto&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/nikto.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Nikto tool Integrated into Archery Tool.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nmap + Vulners&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/nmap_vulns.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Nmap and Vulners Integrated into Archery tool.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;8. Integrated OSINT:&lt;/strong&gt; Archery has integrated some OSINT tool like Sublist3r to extract sub-domains which is useful to have run vulnerability assessment. Currently we are experimenting with various OSINT tools and trying to integrate with Archery tool.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/domainlist.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;OSINT way subdomain Sublist3r integrated.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;9. Dashboards:&lt;/strong&gt; The dashboard provides a summarised view of vulnerability assessment results. Vulnerability analytics has monthly trends of High, Medium and Low findings. Also it has web and network pie &amp;amp; bar charts which gives overall summary of findings.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/overall_dashboard.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Archery Dashboard.&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;&lt;img src=&quot;/archerysec-blog/assets/images/archeryblog/pie&amp;amp;bar.png&quot; /&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;em&gt;Archery Dashboard..&lt;/em&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://archerysec.info/&quot;&gt;https://archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.computerworld.ph/print-article/86303/&quot;&gt;https://www.computerworld.ph/print-article/86303/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html&quot;&gt;https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 11 Jan 2018 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-blog/tutorial/introduction/2018/01/11/quick-start-guide.html</guid>
+        
+        
+        <category>tutorial</category>
+        
+        <category>introduction</category>
+        
+      </item>
+    
+  </channel>
+</rss>

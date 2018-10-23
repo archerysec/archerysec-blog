@@ -1,0 +1,42 @@
+# Site
+name: "Archery"
+description: "OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL"
+meta_description: "Archery Project Blog"
+logo: 'assets/images/archery-520x133.png'
+favicon: 'assets/images/logo.png'
+baseurl: /archerysec-blog
+#google_analytics: 'UA-46278016-1'
+disqus: 'demowebsite'
+#mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+
+# Authors
+authors:
+  anand:
+    name: Anand Tiwari
+    display_name: Anand Tiwari
+    gravatar: d456f7972a30e67bbb05b393dcd4e996
+    email:
+    web: https://archerysec.info
+    twitter: https://twitter.com/anandtiwarics
+    description: "InfoSecurity Enthusiast, Author of ArcherySec tool."
+
+# Plugins
+plugins: 
+  - jekyll-paginate
+  - jekyll-archives
+    
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+    
+# Pagination 
+paginate: 6
+paginate_path: /page:num/
+    
+# Other
+markdown: kramdown
+highlighter: rouge

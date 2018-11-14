@@ -5,8 +5,8 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 14 Nov 2018 18:13:15 +0530</pubDate>
-    <lastBuildDate>Wed, 14 Nov 2018 18:13:15 +0530</lastBuildDate>
+    <pubDate>Wed, 14 Nov 2018 23:14:34 +0530</pubDate>
+    <lastBuildDate>Wed, 14 Nov 2018 23:14:34 +0530</lastBuildDate>
     <generator>Jekyll v3.8.3</generator>
     
       <item>
@@ -155,8 +155,29 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
       </item>
     
       <item>
-        <title>Defcon Tool Demo 2018</title>
-        <description>
+        <title>DEF CON Demo Labs 2018</title>
+        <description>&lt;p&gt;At DEF CON this year, we got opportunity to present Archery tool. For those who don’t know, DEF CON is one of the most widely attended security/hacker competitions in the world, hosted annually in Las Vegas. The DEF CON Demo Lab is a dedicated area for hackers to show off what they have been working on, to answer questions, and even coax attendees into giving feedback on their projects.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/defcon/defcon.JPG&quot; width=&quot;600&quot; height=&quot;450&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We have presented Archery tool in front of huge crowd and discussed with other professionals. It is a great honor for us to participate most important and relevant information security event series in the world.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/images/defcon/defcon_present.png&quot; width=&quot;600&quot; height=&quot;750&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;In case you don’t know about us yet, &lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;ArcherySec&lt;/a&gt; is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment.&lt;/p&gt;
+
+&lt;h4 id=&quot;learn-more&quot;&gt;Learn More&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.info/&quot;&gt;http://www.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.info/&quot;&gt;https://docs.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.info/&quot;&gt;https://developers.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 13 Aug 2018 00:00:00 +0530</pubDate>
         <link>http://localhost:4000/conference/2018/08/13/defcon-2018.html</link>

@@ -6,7 +6,7 @@
     
 <link rel="icon" href="/assets/images/logo.png">
     
-<title>Black Hat Arsenal USA 2018 | Archery</title>
+<title>Announcing the First Release of Archery Tool CLI | Archery</title>
 
  
     
@@ -130,19 +130,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=Black Hat Arsenal USA 2018&url=http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Announcing the First Release of Archery Tool CLI&url=http://localhost:4000/introduction/2018/11/05/archerysec-cli.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/introduction/2018/11/05/archerysec-cli.html" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/introduction/2018/11/05/archerysec-cli.html" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
         <i class="fab fa-google"></i>
         </a>
         </li>
@@ -173,131 +173,156 @@
                 
 
                 <!-- Post Title -->
-				<!--<h1 class="posttitle">Black Hat Arsenal USA 2018</h1>-->
+				<!--<h1 class="posttitle">Announcing the First Release of Archery Tool CLI</h1>-->
 
 			</div>
 
 			<!-- Post Featured Image -->
-			<img class="featured-image img-fluid" src="/assets/images/bh-usa/bh-usa-1.png" alt="Black Hat Arsenal USA 2018">
+			<img class="featured-image img-fluid" src="/assets/images/archerysec_cli.png" alt="Announcing the First Release of Archery Tool CLI">
 			<!-- End Featured Image -->
 
 			<!-- Post Content -->
 			<div class="article-post">
-				<p>We got chance to present Archery tool in world largest conference BlackHat USA 2018 Arsenal at Las Vegas. It was great experience in front of huge audience.</p>
+				<p><br />
+We’re happy to announce the first release of archerysec-cli (Command Line Interface). We started on this as a way to automate some of the instructions available on archerysec tool, but quickly realized there was a lot more potential to make lives of developers even better. Archerysec cli will help you to interact with archery tool.</p>
 
-<p align="center">
-<img src="/assets/images/bh-usa/bh-usa-2.png" width="640" height="434" />
-</p>
+<p><a href="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l" target="_blank"><img src="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l.svg" /></a></p>
 
-<p><br /></p>
+<h2 id="installation">Installation</h2>
 
-<p>We released new and stable version of Archery tool <a href="https://github.com/archerysec/archerysec/releases">Archery-v1.0</a>. We’re working to solve the challenges in VA/VM and make a great tool for Vulnerability Assessment and Management tool that help info sec professionals and Developers.</p>
+<p>To install the latest release from PyPI, you can run the following command:</p>
 
-<p>It has been a great chance to interact with multiple security professionals at BlackHat USA this year and discussed with them about challenges facing while doing Vulnerability Assessment and Management.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install archerysec-cli
+</code></pre></div></div>
+<p>To install the latest development version of Archerysec CLI, you can run the following:</p>
 
-<p>Here is the key features released in Archery v1.0:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec-cli.git
+$ cd archerysec-cli
+$ pip install -r requirements.txt
 
-<h4 id="dynamic-authenticated-scanning">Dynamic Authenticated Scanning:</h4>
+</code></pre></div></div>
+<h2 id="usage">Usage</h2>
 
-<p>Web Dynamic Authenticated Scanning: Archery help you to perform web application dynamic authentication using inbuilt selenium integrated solution. Archery storing application authenticated cookies value into cookies_db and using ZAP Replacer its replace cookies value from headers. It’s also using selenium based authentication and grab cookies value runtime.</p>
+<p>To use Archery CLI, you need to set the port Archery runs on (defaults to 8000) and the path to the folder in which Archery is installed. 
+You can Use Archery installation instruction from <a href="https://docs.archerysec.info/getting-started/Docker-install/">Archery DOC</a></p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/images/archeryblog/arcyery_dynacmi.png" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>Web application Dynamic Authentication Solution by Archery.</em></td>
-    </tr>
-  </tbody>
-</table>
+<p>Archery CLI can then be used with the following commands:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(env) Anand:archerysec-cli anand$ archerysec-cli
 
-<p><br /></p>
 
-<h4 id="jira-ticketing">JIRA Ticketing</h4>
+                   _
+    /\            | |
+   /  \   _ __ ___| |__   ___ _ __ _   _
+  / /\ \ | '__/ __| '_ \ / _ \ '__| | | |
+ / ____ \| | | (__| | | |  __/ |  | |_| |
+/_/    \_\_|  \___|_| |_|\___|_|   \__, |
+                                    __/ |
+                                   |___/
+ Copyright (C) 2018 ArcherySec
+ Open Source Vulnerability Assessment and Management.
 
-<p>Archery has JIRA Ticketing system plugin that you can plug with Archery tool and raise tickets.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/images/archeryblog/jiraticket.png" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>JIRA Ticket Integrated and raise vulnerability ticket..</em></td>
-    </tr>
-  </tbody>
-</table>
+Usage: archerysec-cli [options]
 
-<p><br /></p>
+Options:
+  -h, --help            show this help message and exit
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/images/archeryblog/jira2.png" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>After JIRA Ticket raised issue tracking..</em></td>
-    </tr>
-  </tbody>
-</table>
+  Archery Authentication:
+    Authenticate into Archery REST API
 
-<p><br /></p>
+    -s SERVER, --server=SERVER
+                        Archery API server host address
+    -u USERNAME, --username=USERNAME
+                        Archery authentication username
+    -p PASSWORD, --password=PASSWORD
+                        Archery authentication password
+    --target_url=TARGET_URL
+                        Target URL's
+    --scan_id=SCAN_ID   Target URL's
+    --target_ip=TARGET_IP
+                        Target IP's
+    --project_id=PROJECT_ID
+                        Project ID
 
-<h4 id="false-positive-vulnerability-tracking">False Positive Vulnerability Tracking</h4>
+  Get the Archery REST API token:
+    -t, --token         Print archery REST API Auth token
 
-<p>Archery help you on removing false positive vulnerabilities after scan completion. Its very important to remove false positives vulnerabilities and work on new discovered vulnerabilities from all future scans.</p>
+  Archery Projects:
+    Perform action on Projects modules
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: center"><img src="/assets/images/archeryblog/false_positive.png" /></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: center"><em>False Positive marked vulnerability.</em></td>
-    </tr>
-  </tbody>
-</table>
+    --projectlist       Print project list
+    --createproject     Create new project with project name
+    --project_name=PROJECT_NAME
+                        Project Name
+    --project_disc=PROJECT_DISC
+                        Project Description
+    --project_start=PROJECT_START
+                        Project start date Ex. 2018-01-11
+    --project_end=PROJECT_END
+                        Project End date Ex. 2018-01-11
+    --project_owner=PROJECT_OWNER
+                        Project Owner name
 
-<p><br /></p>
+  ZAP Scans:
+    ZAP Scans module to perform ZAP Scans
 
-<h4 id="below-are-the-change-logs">Below are the change logs:</h4>
+    --zapscanlist       List all ZAP Scans
+    --zapscan           Launch ZAP Scan
+    --zapscanresult     Get ZAP Scan result (Ex. python archery_cli.py -s
+                        http://127.0.0.1:8000 -u admin -p admin@123A
+                        --zapscanresult --scan_id=4ea6852b-
+                        bbf2-4171-9e98-4d798731e87a)
+
+  OpenVAS Scanner:
+    OpenVAS Scans module to perform OpenVAS Scan
+
+    --openvaslist       List all OpenVAS Scans
+    --openvasscan       Launch OpenVAS Scans
+    --openvas_result    Get OpenVAS Scan result (Ex. python archery_cli.py -s
+                        http://127.0.0.1:8000 -u admin -p admin@123A
+                        --openvas_result --scan_id=4ea6852b-
+                        bbf2-4171-9e98-4d798731e87a)
+
+  Upload Scanner Reports:
+    Upload multiple scanners reports
+
+    --upload            Upload scans report
+    --file=FILE         Input JSON or XML file
+    --TARGET=TARGET     Scan URL or IP
+    --scanner=SCANNER   Select scanners [ zap_scan, burp_scan, arachni,
+                        netsparker, webinspect, banditscan]
+
+Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123A -t
+</code></pre></div></div>
+
+<p>Create Project:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \
+    --createproject --project_name=test_project --project_disc="test project" \
+    --project_start=2018-01-11 --project_end=2018-01-11 --project_owner=anand
+</code></pre></div></div>
+
+<p>Launch ZAP Scan:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \ 
+    --zapscan --target_url=http://demo.testfire.net \
+    --project_id=aa6730d4-d3c8-40ab-9ac1-27592afbdcb3
+</code></pre></div></div>
+
+<h2 id="learn-more">Learn More</h2>
 
 <ul>
-  <li>Nmap Vulners.</li>
-  <li>JIRA Ticketing.</li>
-  <li>Concurrent Scans.</li>
-  <li>SSL Tool integration.</li>
-  <li>Nikto Tool integration.</li>
-  <li>Sub Domain Scanning.</li>
-  <li>ZAP scan report parser.</li>
-  <li>Burp scan report parser.</li>
-  <li>Nessus scan report parser.</li>
-  <li>Arachni scan report parser.</li>
-  <li>Acunetix scan report parser.</li>
-  <li>Duplicate vulnerability mark.</li>
-  <li>Netsparker scan report parser.</li>
-  <li>Webinspect scan report parser.</li>
-  <li>False Positive vulnerability mark.</li>
-  <li>False Positive Tracking Dashboard.</li>
+  <li><a href="https://archerysec.info/">Archerysec https://archerysec.info/</a></li>
+  <li><a href="https://github.com/archerysec/archerysec-cli">Archerysec-cli https://github.com/archerysec/archerysec-cli</a></li>
 </ul>
 
-<p>If you want to contribute, please visit our <a href="https://github.com/archerysec/archerysec">Github</a> and follow instructions.</p>
 
 			</div>
 
             <!-- Post Date -->
             <p>
             <small>
-                <span class="post-date"><time class="post-date" datetime="2018-08-11">11 Aug 2018</time></span>           
+                <span class="post-date"><time class="post-date" datetime="2018-11-05">05 Nov 2018</time></span>           
                 
                 </small>
             </p>
@@ -306,10 +331,6 @@
 			<div class="after-post-tags">
 				<ul class="tags">
                     
-                    
-                    <li>
-                     <a href="/category/conference/">conference</a>
-                    </li>
                     
                     <li>
                      <a href="/category/introduction/">introduction</a>
@@ -322,10 +343,8 @@
             <!-- Prev/Next -->
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
             
-            <a class="prev d-block col-md-6" href="http://localhost:4000/conference/introduction/2018/03/23/blackhat-asia-2018.html"> &laquo; Black Hat Arsenal Asia 2018</a>
+            <a class="prev d-block col-md-6" href="http://localhost:4000/conference/2018/08/13/defcon-2018.html"> &laquo; Defcon Tool Demo 2018</a>
             
-            
-            <a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/conference/2018/08/13/defcon-2018.html">Defcon Tool Demo 2018 &raquo; </a>
             
             <div class="clearfix"></div>
             </div>

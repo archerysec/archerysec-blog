@@ -6,7 +6,7 @@ categories: [ introduction ]
 image: assets/images/archerysec_cli.png
 featured: true
 hidden: false
-comments: false
+comments: true
 ---
 <br>
 We're happy to announce the first release of archerysec-cli (Command Line Interface). We started on this as a way to automate some of the instructions available on archerysec tool, but quickly realized there was a lot more potential to make lives of developers even better. Archerysec cli will help you to interact with archery tool.

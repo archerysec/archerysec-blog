@@ -6,7 +6,7 @@ logo: 'assets/images/archery-520x133.png'
 favicon: 'assets/images/logo.png'
 baseurl:
 google_analytics: 'UA-129306935-1'
-disqus: 'demowebsite'
+disqus: 'archerysec'
 #mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 
 # Authors
@@ -24,6 +24,7 @@ authors:
 plugins: 
   - jekyll-paginate
   - jekyll-archives
+  - jekyll-twitter-plugin
     
 # Archives
 jekyll-archives:

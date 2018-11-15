@@ -4,7 +4,7 @@ title:  "Archery - Vulnerability Assessment and Management Tool"
 author: anand
 categories: [ tutorial, introduction ]
 image: assets/images/archeryblog/how_arc_work.png
-featured: true
+featured: false
 hidden: false
 comments: false
 ---

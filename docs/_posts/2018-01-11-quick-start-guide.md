@@ -2,7 +2,7 @@
 layout: post
 title:  "Archery - Vulnerability Assessment and Management Tool"
 author: anand
-categories: [ tutorial, introduction ]
+categories: [ Tutorial, Introduction ]
 image: assets/images/archeryblog/how_arc_work.png
 featured: false
 hidden: false

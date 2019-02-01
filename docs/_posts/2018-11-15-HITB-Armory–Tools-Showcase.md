@@ -2,7 +2,7 @@
 layout: post
 title:  "HITB Armory – Tools Showcase 2018"
 author: anand
-categories: [ conference, introduction ]
+categories: [ Conference, Introduction ]
 image: assets/images/HITBSecConf2018.png
 featured: true
 hidden: false

@@ -6,7 +6,7 @@
     
 <link rel="icon" href="/assets/images/logo.png">
     
-<title>DEF CON Demo Labs 2018 | Archery</title>
+<title>Announcing the First Release of Archery Tool CLI | Archery</title>
 
  
     
@@ -129,19 +129,19 @@
     </p>
     <ul>
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://twitter.com/intent/tweet?text=DEF CON Demo Labs 2018&url=http://localhost:4000/conference/2018/08/13/defcon-2018.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Announcing the First Release of Archery Tool CLI&url=http://localhost:4000/archerysec-cli/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
         <i class="fab fa-twitter"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/conference/2018/08/13/defcon-2018.html" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/archerysec-cli/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
         <i class="fab fa-facebook-f"></i>
         </a>
         </li>
         
         <li class="ml-1 mr-1">
-        <a target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/conference/2018/08/13/defcon-2018.html" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
+        <a target="_blank" href="https://plus.google.com/share?url=http://localhost:4000/archerysec-cli/" onclick="window.open(this.href, 'facebook-google', 'width=550,height=435');return false;">
         <i class="fab fa-google"></i>
         </a>
         </li>
@@ -180,45 +180,156 @@
                 
 
                 <!-- Post Title -->
-				<!--<h1 class="posttitle">DEF CON Demo Labs 2018</h1>-->
+				<!--<h1 class="posttitle">Announcing the First Release of Archery Tool CLI</h1>-->
 
 			</div>
 
 			<!-- Post Featured Image -->
-			<img class="featured-image img-fluid" src="/assets/images/defcon/defcon.png" alt="DEF CON Demo Labs 2018">
+			<img class="featured-image img-fluid" src="/assets/images/archerysec_cli.png" alt="Announcing the First Release of Archery Tool CLI">
 			<!-- End Featured Image -->
 
 			<!-- Post Content -->
 			<div class="article-post">
-				<p>At DEF CON this year, we got opportunity to present Archery tool. For those who don’t know, DEF CON is one of the most widely attended security/hacker competitions in the world, hosted annually in Las Vegas. The DEF CON Demo Lab is a dedicated area for hackers to show off what they have been working on, to answer questions, and even coax attendees into giving feedback on their projects.</p>
+				<p><br />
+We’re happy to announce the first release of archerysec-cli (Command Line Interface). We started on this as a way to automate some of the instructions available on archerysec tool, but quickly realized there was a lot more potential to make lives of developers even better. Archerysec cli will help you to interact with archery tool.</p>
 
-<p align="center">
-<img src="/assets/images/defcon/defcon.JPG" width="600" height="450" />
-</p>
+<p><a href="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l" target="_blank"><img src="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l.svg" /></a></p>
 
-<p>We have presented Archery tool in front of huge crowd and discussed with other professionals. It is a great honor for us to participate most important and relevant information security event series in the world.</p>
+<h2 id="installation">Installation</h2>
 
-<p align="center">
-<img src="/assets/images/defcon/defcon_present.png" width="600" height="750" />
-</p>
+<p>To install the latest release from PyPI, you can run the following command:</p>
 
-<p>In case you don’t know about us yet, <a href="https://github.com/archerysec/archerysec">ArcherySec</a> is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install archerysec-cli
+</code></pre></div></div>
+<p>To install the latest development version of Archerysec CLI, you can run the following:</p>
 
-<h4 id="learn-more">Learn More</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec-cli.git
+$ cd archerysec-cli
+$ pip install -r requirements.txt
+
+</code></pre></div></div>
+<h2 id="usage">Usage</h2>
+
+<p>To use Archery CLI, you need to set the port Archery runs on (defaults to 8000) and the path to the folder in which Archery is installed. 
+You can Use Archery installation instruction from <a href="https://docs.archerysec.info/getting-started/Docker-install/">Archery DOC</a></p>
+
+<p>Archery CLI can then be used with the following commands:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(env) Anand:archerysec-cli anand$ archerysec-cli
+
+
+                   _
+    /\            | |
+   /  \   _ __ ___| |__   ___ _ __ _   _
+  / /\ \ | '__/ __| '_ \ / _ \ '__| | | |
+ / ____ \| | | (__| | | |  __/ |  | |_| |
+/_/    \_\_|  \___|_| |_|\___|_|   \__, |
+                                    __/ |
+                                   |___/
+ Copyright (C) 2018 ArcherySec
+ Open Source Vulnerability Assessment and Management.
+
+
+Usage: archerysec-cli [options]
+
+Options:
+  -h, --help            show this help message and exit
+
+  Archery Authentication:
+    Authenticate into Archery REST API
+
+    -s SERVER, --server=SERVER
+                        Archery API server host address
+    -u USERNAME, --username=USERNAME
+                        Archery authentication username
+    -p PASSWORD, --password=PASSWORD
+                        Archery authentication password
+    --target_url=TARGET_URL
+                        Target URL's
+    --scan_id=SCAN_ID   Target URL's
+    --target_ip=TARGET_IP
+                        Target IP's
+    --project_id=PROJECT_ID
+                        Project ID
+
+  Get the Archery REST API token:
+    -t, --token         Print archery REST API Auth token
+
+  Archery Projects:
+    Perform action on Projects modules
+
+    --projectlist       Print project list
+    --createproject     Create new project with project name
+    --project_name=PROJECT_NAME
+                        Project Name
+    --project_disc=PROJECT_DISC
+                        Project Description
+    --project_start=PROJECT_START
+                        Project start date Ex. 2018-01-11
+    --project_end=PROJECT_END
+                        Project End date Ex. 2018-01-11
+    --project_owner=PROJECT_OWNER
+                        Project Owner name
+
+  ZAP Scans:
+    ZAP Scans module to perform ZAP Scans
+
+    --zapscanlist       List all ZAP Scans
+    --zapscan           Launch ZAP Scan
+    --zapscanresult     Get ZAP Scan result (Ex. python archery_cli.py -s
+                        http://127.0.0.1:8000 -u admin -p admin@123A
+                        --zapscanresult --scan_id=4ea6852b-
+                        bbf2-4171-9e98-4d798731e87a)
+
+  OpenVAS Scanner:
+    OpenVAS Scans module to perform OpenVAS Scan
+
+    --openvaslist       List all OpenVAS Scans
+    --openvasscan       Launch OpenVAS Scans
+    --openvas_result    Get OpenVAS Scan result (Ex. python archery_cli.py -s
+                        http://127.0.0.1:8000 -u admin -p admin@123A
+                        --openvas_result --scan_id=4ea6852b-
+                        bbf2-4171-9e98-4d798731e87a)
+
+  Upload Scanner Reports:
+    Upload multiple scanners reports
+
+    --upload            Upload scans report
+    --file=FILE         Input JSON or XML file
+    --TARGET=TARGET     Scan URL or IP
+    --scanner=SCANNER   Select scanners [ zap_scan, burp_scan, arachni,
+                        netsparker, webinspect, banditscan]
+
+Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123A -t
+</code></pre></div></div>
+
+<p>Create Project:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \
+    --createproject --project_name=test_project --project_disc="test project" \
+    --project_start=2018-01-11 --project_end=2018-01-11 --project_owner=anand
+</code></pre></div></div>
+
+<p>Launch ZAP Scan:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \ 
+    --zapscan --target_url=http://demo.testfire.net \
+    --project_id=aa6730d4-d3c8-40ab-9ac1-27592afbdcb3
+</code></pre></div></div>
+
+<h2 id="learn-more">Learn More</h2>
 
 <ul>
-  <li><a href="http://www.archerysec.info/">http://www.archerysec.info/</a></li>
-  <li><a href="https://github.com/archerysec/archerysec">https://github.com/archerysec/archerysec</a></li>
-  <li><a href="https://docs.archerysec.info/">https://docs.archerysec.info/</a></li>
-  <li><a href="https://developers.archerysec.info/">https://developers.archerysec.info/</a></li>
+  <li><a href="https://archerysec.info/">Archerysec https://archerysec.info/</a></li>
+  <li><a href="https://github.com/archerysec/archerysec-cli">Archerysec-cli https://github.com/archerysec/archerysec-cli</a></li>
 </ul>
+
 
 			</div>
 
             <!-- Post Date -->
             <p>
             <small>
-                <span class="post-date"><time class="post-date" datetime="2018-08-13">13 Aug 2018</time></span>           
+                <span class="post-date"><time class="post-date" datetime="2018-11-05">05 Nov 2018</time></span>           
                 
                 </small>
             </p>
@@ -229,7 +340,7 @@
                     
                     
                     <li>
-                     <a href="/category/conference/">conference</a>
+                     <a href="/category/introduction/">Introduction</a>
                     </li>
                     
 				</ul>
@@ -239,10 +350,10 @@
             <!-- Prev/Next -->
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
             
-            <a class="prev d-block col-md-6" href="http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html"> &laquo; Black Hat Arsenal USA 2018</a>
+            <a class="prev d-block col-md-6" href="http://localhost:4000/defcon-2018/"> &laquo; DEF CON Demo Labs 2018</a>
             
             
-            <a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/introduction/2018/11/05/archerysec-cli.html">Announcing the First Release of Archery Tool CLI &raquo; </a>
+            <a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/HITB-Armory-Tools-Showcase/">HITB Armory – Tools Showcase 2018 &raquo; </a>
             
             <div class="clearfix"></div>
             </div>
@@ -316,11 +427,11 @@
           
           
             
-              <a href="/category/tutorial">Tutorial (1)</a>
+              <a href="/category/Tutorial">Tutorial (1)</a>
             
-              <a href="/category/introduction">Introduction (5)</a>
+              <a href="/category/Introduction">Introduction (5)</a>
             
-              <a href="/category/conference">Conference (4)</a>
+              <a href="/category/Conference">Conference (4)</a>
             
           
         
@@ -337,7 +448,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 text-center text-lg-left">
-                 Copyright © 2018 Archery 
+                 Copyright © 2019 Archery 
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">    
                 <a target="_blank" href="https://archerysec.info">ArcherySec</a> by Archerysec

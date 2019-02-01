@@ -2,7 +2,7 @@
 layout: post
 title:  "Announcing the First Release of Archery Tool CLI"
 author: anand
-categories: [ introduction ]
+categories: [ Introduction ]
 image: assets/images/archerysec_cli.png
 featured: true
 hidden: false

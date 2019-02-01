@@ -5,9 +5,9 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 15 Nov 2018 16:54:04 +0530</pubDate>
-    <lastBuildDate>Thu, 15 Nov 2018 16:54:04 +0530</lastBuildDate>
-    <generator>Jekyll v3.8.3</generator>
+    <pubDate>Sat, 02 Feb 2019 02:12:01 +0530</pubDate>
+    <lastBuildDate>Sat, 02 Feb 2019 02:12:01 +0530</lastBuildDate>
+    <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>HITB Armory – Tools Showcase 2018</title>
@@ -36,13 +36,13 @@
 
 </description>
         <pubDate>Thu, 15 Nov 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/conference/introduction/2018/11/15/HITB-Armory-Tools-Showcase.html</link>
-        <guid isPermaLink="true">http://localhost:4000/conference/introduction/2018/11/15/HITB-Armory-Tools-Showcase.html</guid>
+        <link>http://localhost:4000/HITB-Armory-Tools-Showcase/</link>
+        <guid isPermaLink="true">http://localhost:4000/HITB-Armory-Tools-Showcase/</guid>
         
         
-        <category>conference</category>
+        <category>Conference</category>
         
-        <category>introduction</category>
+        <category>Introduction</category>
         
       </item>
     
@@ -183,11 +183,11 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
 
 </description>
         <pubDate>Mon, 05 Nov 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/introduction/2018/11/05/archerysec-cli.html</link>
-        <guid isPermaLink="true">http://localhost:4000/introduction/2018/11/05/archerysec-cli.html</guid>
+        <link>http://localhost:4000/archerysec-cli/</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-cli/</guid>
         
         
-        <category>introduction</category>
+        <category>Introduction</category>
         
       </item>
     
@@ -217,11 +217,11 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 13 Aug 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/conference/2018/08/13/defcon-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/conference/2018/08/13/defcon-2018.html</guid>
+        <link>http://localhost:4000/defcon-2018/</link>
+        <guid isPermaLink="true">http://localhost:4000/defcon-2018/</guid>
         
         
-        <category>conference</category>
+        <category>Conference</category>
         
       </item>
     
@@ -337,13 +337,13 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
 &lt;p&gt;If you want to contribute, please visit our &lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;Github&lt;/a&gt; and follow instructions.&lt;/p&gt;
 </description>
         <pubDate>Sat, 11 Aug 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/conference/introduction/2018/08/11/blackhat-usa-2018.html</guid>
+        <link>http://localhost:4000/blackhat-usa-2018/</link>
+        <guid isPermaLink="true">http://localhost:4000/blackhat-usa-2018/</guid>
         
         
-        <category>conference</category>
+        <category>Conference</category>
         
-        <category>introduction</category>
+        <category>Introduction</category>
         
       </item>
     
@@ -399,13 +399,13 @@ We were very excited to be presenting Archery tool at one of the top information
 
 </description>
         <pubDate>Fri, 23 Mar 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/conference/introduction/2018/03/23/blackhat-asia-2018.html</link>
-        <guid isPermaLink="true">http://localhost:4000/conference/introduction/2018/03/23/blackhat-asia-2018.html</guid>
+        <link>http://localhost:4000/blackhat-asia-2018/</link>
+        <guid isPermaLink="true">http://localhost:4000/blackhat-asia-2018/</guid>
         
         
-        <category>conference</category>
+        <category>Conference</category>
         
-        <category>introduction</category>
+        <category>Introduction</category>
         
       </item>
     
@@ -682,13 +682,13 @@ We were very excited to be presenting Archery tool at one of the top information
 
 </description>
         <pubDate>Thu, 11 Jan 2018 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/tutorial/introduction/2018/01/11/quick-start-guide.html</link>
-        <guid isPermaLink="true">http://localhost:4000/tutorial/introduction/2018/01/11/quick-start-guide.html</guid>
+        <link>http://localhost:4000/quick-start-guide/</link>
+        <guid isPermaLink="true">http://localhost:4000/quick-start-guide/</guid>
         
         
-        <category>tutorial</category>
+        <category>Tutorial</category>
         
-        <category>introduction</category>
+        <category>Introduction</category>
         
       </item>
     

@@ -873,6 +873,12 @@ License: https://www.wowthemes.net/freebies-license/
 	margin-bottom: 0px;
 }
 
+.sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 1.125rem;
+}
+
 .layout-masonry .hentry,
 .layout-grid .hentry {
 	display: -webkit-box;

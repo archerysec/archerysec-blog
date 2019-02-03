@@ -112,51 +112,10 @@
         <!-- Content
         ================================================== -->
         <div class="row">
-            <div class="col-9">
+            <div class="col">
                 {{ content }}
             </div>
-            <div class="col-3 d-none d-md-block d-sm-none">
-                <div class="widget social-profiles-item">
-                    <div class="widget-title">Categories</div>
-                    <ul class="social-profiles-item">
-                        {% include menu-categories.html %}
-                    </ul>
-                    <!--/.well -->
-                </div>
-                <div class="widget widget-social">
-                    <h3 class="widget-title">Subscribe &amp; Follow</h3>
-                    <ul class="social-profiles list-reset">
-                        <li class="social-profiles-item">
-                            <a href="https://www.facebook.com/archerysec" class="social-profiles-link"><i
-                                    class="fab fa-facebook"></i></a>
-                        </li>
 
-                        <li class="social-profiles-item">
-                            <a href="https://twitter.com/archerysec" class="social-profiles-link"><i
-                                    class="fab fa-twitter-square"></i></a>
-                        </li>
-                        <li class="social-profiles-item">
-                            <a href="#" class="social-profiles-link"><i
-                                    class="fab fa-instagram"></i></a>
-                        </li>
-
-                    </ul>
-                </div>
-                <div class="widget widget-newsletter">
-                    <h3 class="widget-title">Newsletter</h3>
-                    <div class="newsletter-subtitle">Get Interesting News</div>
-                    <form style="border:1px solid #ccc;padding:3px;text-align:center;"
-                          action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow"
-                          onsubmit="window.open('https://feedburner.google.com/fb/a/mailverify?uri=archerysec/iZkw', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
-                        <p>Enter your email address:</p>
-                        <p><input type="text" style="width:140px" name="email"/></p><input type="hidden"
-                                                                                           value="archerysec/iZkw"
-                                                                                           name="uri"/><input
-                            type="hidden" name="loc" value="en_US"/><input type="submit" value="Subscribe"/>
-                        <p>Delivered by <a href="https://feedburner.google.com" target="_blank">FeedBurner</a></p>
-                    </form>
-                </div>
-            </div>
         </div>
     </div>
 </div>

@@ -5,8 +5,8 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 02 Feb 2019 02:12:01 +0530</pubDate>
-    <lastBuildDate>Sat, 02 Feb 2019 02:12:01 +0530</lastBuildDate>
+    <pubDate>Sun, 03 Feb 2019 19:30:14 +0530</pubDate>
+    <lastBuildDate>Sun, 03 Feb 2019 19:30:14 +0530</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -50,8 +50,6 @@
         <title>Announcing the First Release of Archery Tool CLI</title>
         <description>&lt;p&gt;&lt;br /&gt;
 We’re happy to announce the first release of archerysec-cli (Command Line Interface). We started on this as a way to automate some of the instructions available on archerysec tool, but quickly realized there was a lot more potential to make lives of developers even better. Archerysec cli will help you to interact with archery tool.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l.svg&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
 

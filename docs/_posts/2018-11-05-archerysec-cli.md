@@ -11,8 +11,6 @@ comments: true
 <br>
 We're happy to announce the first release of archerysec-cli (Command Line Interface). We started on this as a way to automate some of the instructions available on archerysec tool, but quickly realized there was a lot more potential to make lives of developers even better. Archerysec cli will help you to interact with archery tool.
 
-<a href="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l" target="_blank"><img src="https://asciinema.org/a/nrMUAcH2LKb7zXt5QDtkW5z0l.svg" /></a>
-
 ## Installation
 
 To install the latest release from PyPI, you can run the following command:

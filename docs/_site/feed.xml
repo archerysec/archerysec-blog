@@ -5,14 +5,15 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Feb 2019 02:47:37 +0530</pubDate>
-    <lastBuildDate>Mon, 04 Feb 2019 02:47:37 +0530</lastBuildDate>
+    <pubDate>Mon, 04 Feb 2019 10:43:34 +0530</pubDate>
+    <lastBuildDate>Mon, 04 Feb 2019 10:43:34 +0530</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>How To Integrate Archery Tool in Jenkins CI/CD Pipeline</title>
         <description>&lt;p&gt;Continuous Integration / Continues Deployment (CI/CD) processes allow software developers to detect problems early in the development lifecycle and improve productivity with automation. &lt;a href=&quot;http://jenkins.io&quot;&gt;Jenkins&lt;/a&gt; is a popular open-source continuous integration solution that helps teams manage the automation of software builds, as well as monitor the execution of external jobs that support the software build.&lt;/p&gt;
 
+&lt;p&gt;Archery allow us to perform scan and manage vulnerabilities. It’s a very important task to&lt;/p&gt;
 </description>
         <pubDate>Sun, 03 Feb 2019 00:00:00 +0530</pubDate>
         <link>http://localhost:4000/integrate-archery-into-jenkins-pipline/</link>

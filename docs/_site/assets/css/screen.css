@@ -958,3 +958,7 @@ License: https://www.wowthemes.net/freebies-license/
 	max-width: 66.666667%;
 }
 
+.blogpost {
+    width: 650px;
+    float: left;
+}

@@ -17,7 +17,7 @@ Among the many special events within the HITB conference is the [HITB Armory Too
 <img src="/assets/images/HITB_Armory.png" >
 </p>
 
-After already having presented [Archery](https://archerysec.info/) at the Arsenals in Black Hat USA and Black Hat Singapore this will be first time showing Archery at HITB Conference. For those of you who are not so familiar with the software, Archery is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment. 
+After already having presented [Archery](https://archerysec.com/) at the Arsenals in Black Hat USA and Black Hat Singapore this will be first time showing Archery at HITB Conference. For those of you who are not so familiar with the software, Archery is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment. 
 
 We'll be presenting on 28th November on *Booth 2B from 10:00 – 10:30*.
 
@@ -25,9 +25,9 @@ If you are coming to the event, we definitely want to see you! We are happy to s
 
 #### Learn More
 
-- [http://www.archerysec.info/](http://www.archerysec.info/)
+- [http://www.archerysec.com/](http://www.archerysec.com/)
 - [https://github.com/archerysec/archerysec](https://github.com/archerysec/archerysec)
-- [https://docs.archerysec.info/](https://docs.archerysec.info/)
-- [https://developers.archerysec.info/](https://developers.archerysec.info/)
+- [https://docs.archerysec.com/](https://docs.archerysec.com/)
+- [https://developers.archerysec.com/](https://developers.archerysec.com/)
 
 

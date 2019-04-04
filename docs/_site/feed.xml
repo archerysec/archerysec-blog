@@ -5,24 +5,9 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 04 Feb 2019 10:43:34 +0530</pubDate>
-    <lastBuildDate>Mon, 04 Feb 2019 10:43:34 +0530</lastBuildDate>
+    <pubDate>Thu, 04 Apr 2019 17:47:07 +0530</pubDate>
+    <lastBuildDate>Thu, 04 Apr 2019 17:47:07 +0530</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
-    
-      <item>
-        <title>How To Integrate Archery Tool in Jenkins CI/CD Pipeline</title>
-        <description>&lt;p&gt;Continuous Integration / Continues Deployment (CI/CD) processes allow software developers to detect problems early in the development lifecycle and improve productivity with automation. &lt;a href=&quot;http://jenkins.io&quot;&gt;Jenkins&lt;/a&gt; is a popular open-source continuous integration solution that helps teams manage the automation of software builds, as well as monitor the execution of external jobs that support the software build.&lt;/p&gt;
-
-&lt;p&gt;Archery allow us to perform scan and manage vulnerabilities. It’s a very important task to&lt;/p&gt;
-</description>
-        <pubDate>Sun, 03 Feb 2019 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/integrate-archery-into-jenkins-pipline/</link>
-        <guid isPermaLink="true">http://localhost:4000/integrate-archery-into-jenkins-pipline/</guid>
-        
-        
-        <category>Tutorial</category>
-        
-      </item>
     
       <item>
         <title>HITB Armory – Tools Showcase 2018</title>
@@ -34,7 +19,7 @@
 &lt;img src=&quot;/assets/images/HITB_Armory.png&quot; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;After already having presented &lt;a href=&quot;https://archerysec.info/&quot;&gt;Archery&lt;/a&gt; at the Arsenals in Black Hat USA and Black Hat Singapore this will be first time showing Archery at HITB Conference. For those of you who are not so familiar with the software, Archery is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment.&lt;/p&gt;
+&lt;p&gt;After already having presented &lt;a href=&quot;https://archerysec.com/&quot;&gt;Archery&lt;/a&gt; at the Arsenals in Black Hat USA and Black Hat Singapore this will be first time showing Archery at HITB Conference. For those of you who are not so familiar with the software, Archery is an opensource vulnerability assessment and management tool which helps developers and pentesters to perform scans and manage vulnerabilities. Archery uses popular opensource tools to perform comprehensive scanning for web application and network. It also performs web application dynamic authenticated scanning and covers the whole applications by using selenium. The developers can also utilize the tool for implementation of their DevOps CI/CD environment.&lt;/p&gt;
 
 &lt;p&gt;We’ll be presenting on 28th November on &lt;em&gt;Booth 2B from 10:00 – 10:30&lt;/em&gt;.&lt;/p&gt;
 
@@ -43,10 +28,10 @@
 &lt;h4 id=&quot;learn-more&quot;&gt;Learn More&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.info/&quot;&gt;http://www.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.com/&quot;&gt;http://www.archerysec.com/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.info/&quot;&gt;https://docs.archerysec.info/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.info/&quot;&gt;https://developers.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.com/&quot;&gt;https://docs.archerysec.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.com/&quot;&gt;https://developers.archerysec.com/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 </description>
@@ -82,7 +67,7 @@ $ pip install -r requirements.txt
 &lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
 
 &lt;p&gt;To use Archery CLI, you need to set the port Archery runs on (defaults to 8000) and the path to the folder in which Archery is installed. 
-You can Use Archery installation instruction from &lt;a href=&quot;https://docs.archerysec.info/getting-started/Docker-install/&quot;&gt;Archery DOC&lt;/a&gt;&lt;/p&gt;
+You can Use Archery installation instruction from &lt;a href=&quot;https://docs.archerysec.com/getting-started/Docker-install/&quot;&gt;Archery DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Archery CLI can then be used with the following commands:&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(env) Anand:archerysec-cli anand$ archerysec-cli
@@ -190,7 +175,7 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
 &lt;h2 id=&quot;learn-more&quot;&gt;Learn More&lt;/h2&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://archerysec.info/&quot;&gt;Archerysec https://archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://archerysec.com/&quot;&gt;Archerysec https://archerysec.com/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec-cli&quot;&gt;Archerysec-cli https://github.com/archerysec/archerysec-cli&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -223,10 +208,10 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
 &lt;h4 id=&quot;learn-more&quot;&gt;Learn More&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.info/&quot;&gt;http://www.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.com/&quot;&gt;http://www.archerysec.com/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.info/&quot;&gt;https://docs.archerysec.info/&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.info/&quot;&gt;https://developers.archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.com/&quot;&gt;https://docs.archerysec.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.com/&quot;&gt;https://developers.archerysec.com/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Mon, 13 Aug 2018 00:00:00 +0530</pubDate>
@@ -688,7 +673,7 @@ We were very excited to be presenting Archery tool at one of the top information
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://archerysec.info/&quot;&gt;https://archerysec.info/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://archerysec.com/&quot;&gt;https://archerysec.com/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.computerworld.ph/print-article/86303/&quot;&gt;https://www.computerworld.ph/print-article/86303/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html&quot;&gt;https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;

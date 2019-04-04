@@ -149,7 +149,7 @@ Currently we supports below Network scanners —
 ## References
 
 - [https://github.com/archerysec/archerysec](https://github.com/archerysec/archerysec)
-- [https://archerysec.info/](https://archerysec.info/)
+- [https://archerysec.com/](https://archerysec.com/)
 - [https://www.computerworld.ph/print-article/86303/](https://www.computerworld.ph/print-article/86303/)
 - [https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html](https://www.networkworld.com/article/2980303/security/three-key-challenges-in-vulnerability-risk-management.html)
 

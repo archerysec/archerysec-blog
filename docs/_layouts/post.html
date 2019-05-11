@@ -11,8 +11,10 @@ post_class: post-template
 	<div class="row">
 
 		<!-- Post Share -->
-		<div class="col-md-2 pl-0">            
+		<div class="col-md-2 pl-0">  
+        <div class="share sticky-top sticky-top-offset">          
            {% include share.html %}  
+       </div>
 		</div>
 		
 
@@ -30,18 +32,19 @@ post_class: post-template
 					</div>
 					<div class="col-md-10">
 						<a target="_blank" class="link-dark" href="{{ author.web }}">{{ author.display_name }}</a><a target="_blank" href="{{ author.twitter }}" class="btn follow">Follow</a>
+                        <br>
 						<span class="author-description">{{ author.description }}</span>
 					</div>
 				</div>
                 {% endif %}
 
-                <!-- Post Title -->
-				<!--<h1 class="posttitle">{{ page.title }}</h1>-->
-
 			</div>
+            <!-- Post Title -->
+                <h3 class="posttitle">{{ page.title }}</h1>
+                <br>
 
 			<!-- Post Featured Image -->
-			{% if page.image %}<img class="featured-image img-fluid" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">{% endif %}
+			<!-- {% if page.image %}<img class="featured-image img-fluid" src="{{ site.baseurl }}/{{ page.image }}" alt="{{ page.title }}">{% endif %} -->
 			<!-- End Featured Image -->
 
 			<!-- Post Content -->

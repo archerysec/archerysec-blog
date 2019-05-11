@@ -48,67 +48,17 @@
 
 <!-- Begin Menu Navigation
 ================================================== -->
-<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+{% include header.html %}
 
-    <div class="container pr-0">
-
-        <!-- Begin Logo -->
-        <a class="navbar-brand" href="{{ site.baseurl }}/">
-            <img src="{{ site.baseurl }}/{{ site.logo }}" alt="{{ site.name }}">
-        </a>
-        <!-- End Logo -->
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-
-        <div class="collapse navbar-collapse" id="navbarMediumish">
-
-            <!-- Begin Menu -->
-
-            <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="https://archerysec.com/">Home</a>
-                </li>
-
-                {% if page.url == "/" %}
-                <li class="nav-item active">
-                    {% else %}
-                <li class="nav-item">
-                    {% endif %}
-                    <a class="nav-link" href="{{ site.baseurl }}/index.html">Blog</a>
-                </li>
-
-                <li class="nav-item">
-                    <a target="_blank" class="nav-link" href="https://www.facebook.com/archerysec/"><i
-                            class="fab fa-facebook-f"></i></a>
-                </li>
-
-                <li class="nav-item">
-                    <a target="_blank" class="nav-link" href="https://twitter.com/archerysec"><i
-                            class="fab fa-twitter"></i></a>
-                </li>
-
-            </ul>
-
-            <!-- End Menu -->
-
-        </div>
-
-    </div>
-</nav>
 <!-- End Navigation
 ================================================== -->
 <div class="site-content">
     <div class="container">
         <!-- Site Title
         ================================================== -->
-        <div class="mainheading">
-            <h1 class="display-5" align="center">Blog</h1>
-        </div>
+        <!-- <div class="mainheading">
+            <h1 class="display-5" align="center" style="color: #d14;">Blog</h1>
+        </div> -->
         <!-- Content
         ================================================== -->
         <div class="row">

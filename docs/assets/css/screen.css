@@ -208,7 +208,7 @@ License: https://www.wowthemes.net/freebies-license/
      margin:.5rem 0 0;
 }
  .mediumnavigation .nav-item,.dropdown-menu {
-     font-size:0.9rem;
+     font-size:1.0rem;
 }
  .mediumnavigation .search-icon {
      margin-left:-40px;
@@ -217,8 +217,8 @@ License: https://www.wowthemes.net/freebies-license/
      cursor:pointer;
 }
  .mediumnavigation .navbar-brand img {
-     max-height:30px;
-     margin-right:5px;
+     max-height:60px;
+     margin-right:0px;
 }
  .mainheading h1.sitetitle {
      font-family:Righteous;
@@ -226,6 +226,10 @@ License: https://www.wowthemes.net/freebies-license/
  .mainheading h1.posttitle {
      font-weight:700;
      margin-bottom:1rem;
+}
+.display-7 {
+    font-family: 'Rubik', sans-serif;
+    font-size: 2rem;
 }
  .footer {
      border-top:1px solid rgba(0,0,0,.05)!important;
@@ -278,7 +282,7 @@ License: https://www.wowthemes.net/freebies-license/
  .share ul li i.fa {
     border:1px solid #ddd;
      width:30px;
-     height:30px;
+     height:0px;
      line-height:30px;
     text-align:center;
     border-radius:50%;
@@ -286,9 +290,21 @@ License: https://www.wowthemes.net/freebies-license/
  .svgIcon {
      vertical-align:middle;
 }
+
+.sticky-top-offset {
+    top: 100px;
+}
+
+.sticky-top-80 {
+    top: 100px;
+}
+.img-border{
+    border: 3px solid #d14
+}
+
  @media (min-width:1024px) {
      .share {
-         position:fixed;
+         
          display:block;
     }
      .share ul li {

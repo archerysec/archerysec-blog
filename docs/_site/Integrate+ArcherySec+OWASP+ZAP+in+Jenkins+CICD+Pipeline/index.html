@@ -222,9 +222,11 @@
 
 <p><em> “<a href="http://jenkins.io">Jenkins</a> is a popular open-source continuous integration solution that helps teams manage the automation of software build, as well as monitor the execution of external jobs that supports the software build.”</em></p>
 
-<p>When you run security testing in you CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.</p>
+<p>When you run security testing in your CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.</p>
 
-<blockquote><em>"ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities. In this article we'll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline."</em></blockquote>
+<p>In this article we’ll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline.</p>
+
+<blockquote><em>"ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities."</em></blockquote>
 
 <p>Archery has <a href="https://developers.archerysec.com/">API</a> that interact with Archery tool and automate vulnerability assessment process.</p>
 
@@ -289,8 +291,6 @@ services:
       - <span class="nv">DJANGO_SETTINGS_MODULE</span><span class="o">=</span>archerysecurity.settings.development
       - <span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="k">${</span><span class="nv">DJANGO_SECRET_KEY</span><span class="k">:-</span><span class="s2">"SETME"</span><span class="k">}</span>
       - <span class="nv">DJANGO_DEBUG</span><span class="o">=</span>1
-      - <span class="nv">EMAIL_HOST</span><span class="o">=</span>mailhog
-      - <span class="nv">EMAIL_PORT</span><span class="o">=</span>1025
     container_name: archerysec
    
   zaproxy:
@@ -527,7 +527,7 @@ python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><spa
 
 <ul>
   <li>Login into Jenkins server.</li>
-  <li>Create new create new job.</li>
+  <li>Create new job.</li>
   <li>Give the name of the job and select as pipeline.</li>
   <li>Go to pipeline section and copy paste  below code.</li>
 </ul>

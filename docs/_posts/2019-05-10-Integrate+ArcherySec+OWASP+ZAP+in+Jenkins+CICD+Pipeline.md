@@ -13,9 +13,11 @@ Continuous Integration / Continuous Deployment (CI/CD) processes allow software 
 
 <em> "[Jenkins](http://jenkins.io) is a popular open-source continuous integration solution that helps teams manage the automation of software build, as well as monitor the execution of external jobs that supports the software build."</em>
 
-When you run security testing in you CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.
+When you run security testing in your CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.
 
-<blockquote ><em>"ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities. In this article we'll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline."</em></blockquote>
+In this article we'll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline.
+
+<blockquote ><em>"ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities."</em></blockquote>
 
 Archery has [API](https://developers.archerysec.com/) that interact with Archery tool and automate vulnerability assessment process. 
 
@@ -81,8 +83,6 @@ services:
       - DJANGO_SETTINGS_MODULE=archerysecurity.settings.development
       - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-"SETME"}
       - DJANGO_DEBUG=1
-      - EMAIL_HOST=mailhog
-      - EMAIL_PORT=1025
     container_name: archerysec
    
   zaproxy:
@@ -327,7 +327,7 @@ fi
 Now run all these script on Jenkins CI pipeline.
 
 - Login into Jenkins server.
-- Create new create new job.
+- Create new job.
 - Give the name of the job and select as pipeline.
 - Go to pipeline section and copy paste  below code.
 

@@ -5,8 +5,8 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 11 May 2019 16:29:48 +0530</pubDate>
-    <lastBuildDate>Sat, 11 May 2019 16:29:48 +0530</lastBuildDate>
+    <pubDate>Sat, 11 May 2019 20:15:55 +0530</pubDate>
+    <lastBuildDate>Sat, 11 May 2019 20:15:55 +0530</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -15,9 +15,11 @@
 
 &lt;p&gt;&lt;em&gt; “&lt;a href=&quot;http://jenkins.io&quot;&gt;Jenkins&lt;/a&gt; is a popular open-source continuous integration solution that helps teams manage the automation of software build, as well as monitor the execution of external jobs that supports the software build.”&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;When you run security testing in you CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.&lt;/p&gt;
+&lt;p&gt;When you run security testing in your CI/CD pipeline, you want to store vulnerability data in centralize way and manage them easily for your every single pipeline. DevOps teams are facing challenges to have a central place where they can visualize vulnerabilities transparently. Vulnerability Management is one of the challenging part for every organization.&lt;/p&gt;
 
-&lt;blockquote&gt;&lt;em&gt;&quot;ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities. In this article we'll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline.&quot;&lt;/em&gt;&lt;/blockquote&gt;
+&lt;p&gt;In this article we’ll be going learn how to integrate Archery tool in your jenkins CI/CD pipeline.&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;em&gt;&quot;ArcherySec is an open source vulnerability assessment and management tool that helps developer and pentester to perform vulnerability assessment and manage vulnerabilities.&quot;&lt;/em&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;Archery has &lt;a href=&quot;https://developers.archerysec.com/&quot;&gt;API&lt;/a&gt; that interact with Archery tool and automate vulnerability assessment process.&lt;/p&gt;
 
@@ -82,8 +84,6 @@ services:
       - &lt;span class=&quot;nv&quot;&gt;DJANGO_SETTINGS_MODULE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;archerysecurity.settings.development
       - &lt;span class=&quot;nv&quot;&gt;DJANGO_SECRET_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DJANGO_SECRET_KEY&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;SETME&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
       - &lt;span class=&quot;nv&quot;&gt;DJANGO_DEBUG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
-      - &lt;span class=&quot;nv&quot;&gt;EMAIL_HOST&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;mailhog
-      - &lt;span class=&quot;nv&quot;&gt;EMAIL_PORT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1025
     container_name: archerysec
    
   zaproxy:
@@ -320,7 +320,7 @@ python /var/jenkins_home/archery_script.py &lt;span class=&quot;nt&quot;&gt;--sc
 
 &lt;ul&gt;
   &lt;li&gt;Login into Jenkins server.&lt;/li&gt;
-  &lt;li&gt;Create new create new job.&lt;/li&gt;
+  &lt;li&gt;Create new job.&lt;/li&gt;
   &lt;li&gt;Give the name of the job and select as pipeline.&lt;/li&gt;
   &lt;li&gt;Go to pipeline section and copy paste  below code.&lt;/li&gt;
 &lt;/ul&gt;

@@ -298,6 +298,10 @@
     </div>
     <div class="col-3 d-none d-md-block d-sm-none">
     <div class="widget social-profiles-item">
+        <input class="form-control ds-input" type="text" id="search-input" placeholder="Search blog posts..">
+        <ul id="results-container"></ul>
+    </div>
+    <div class="widget social-profiles-item">
         <div class="widget-title">Categories</div>
         <ul class="social-profiles-item">
             <!-- Don't edit anything here, categories are dynamically generated -->
@@ -425,6 +429,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
 
 <script src="/assets/js/jquery.min.js"></script>
 
@@ -441,6 +446,13 @@
 <script src="/assets/js/mediumish.js"></script>
 
 <script id="dsq-count-scr" src="//archerysec.disqus.com/count.js"></script>
+<script>
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '/search.json'
+})
+</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129306935-1"></script>

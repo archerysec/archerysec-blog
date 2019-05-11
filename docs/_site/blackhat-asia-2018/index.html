@@ -396,6 +396,7 @@ We were very excited to be presenting Archery tool at one of the top information
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
 
 <script src="/assets/js/jquery.min.js"></script>
 
@@ -412,6 +413,13 @@ We were very excited to be presenting Archery tool at one of the top information
 <script src="/assets/js/mediumish.js"></script>
 
 <script id="dsq-count-scr" src="//archerysec.disqus.com/count.js"></script>
+<script>
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '/search.json'
+})
+</script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129306935-1"></script>

@@ -116,6 +116,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
 
 <script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
 
@@ -132,6 +133,13 @@
 <script src="{{ site.baseurl }}/assets/js/mediumish.js"></script>
 
 <script id="dsq-count-scr" src="//{{site.disqus}}.disqus.com/count.js"></script>
+<script>
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '/search.json'
+})
+</script>
 
 {% include analytics.html %}
 

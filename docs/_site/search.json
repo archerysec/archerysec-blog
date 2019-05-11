@@ -1,0 +1,59 @@
+[
+  
+    {
+      "title"    : "Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/",
+      "date"     : "2019-05-10 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "HITB Armory – Tools Showcase 2018",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/HITB-Armory-Tools-Showcase/",
+      "date"     : "2018-11-15 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Announcing the First Release of Archery Tool CLI",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/archerysec-cli/",
+      "date"     : "2018-11-05 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "DEF CON Demo Labs 2018",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/defcon-2018/",
+      "date"     : "2018-08-13 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Black Hat Arsenal USA 2018",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/blackhat-usa-2018/",
+      "date"     : "2018-08-11 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Black Hat Arsenal Asia 2018",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/blackhat-asia-2018/",
+      "date"     : "2018-03-23 00:00:00 +0530"
+    } ,
+  
+    {
+      "title"    : "Archery - Vulnerability Assessment and Management Tool",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/quick-start-guide/",
+      "date"     : "2018-01-11 00:00:00 +0530"
+    } 
+  
+]

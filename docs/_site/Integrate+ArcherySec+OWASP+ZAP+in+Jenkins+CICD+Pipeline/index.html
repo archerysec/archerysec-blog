@@ -570,11 +570,27 @@ python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><spa
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/jenkins_ruuning_zap.png" /></div></center>
 <p><br /></p>
 
-<p>Now open ArcherySec and go to Dynamic Scans &gt; ZAP Scans. Notice that the scan is running and given the status of scan.</p>
+<p>Now open ArcherySec and go to Dynamic Scans &gt; ZAP Scans. Notice that the scan are running and given the running status % of scan.</p>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/blog_archery_running.png" /></div></center>
 
 <p><br /></p>
+
+<p>Jenkins will now run OWASP ZAP using ArcherySec at your desired frequency and will tell you whether the build failed or succeeded. In a bigger setup, ArcherySec will be part of your build process. You can set up notifications and customize Jenkins as per your needs.
+You can use a wide variety of other configurations to make your collection more dynamic.</p>
+
+<h4 id="conclusion">Conclusion</h4>
+
+<p>Following the steps above, you will be able to set up a continuous integration process that includes ArcherySec automated Dynamic OWASP ZAP tests for the application under scan. Each commit will trigger an automated test run. Once the test run has finished, you’ll able to manage vulnerabilities using ArcherySec Tool.</p>
+
+<h4 id="learn-more">Learn More</h4>
+
+<ul>
+  <li><a href="http://www.archerysec.com/">http://www.archerysec.com/</a></li>
+  <li><a href="https://github.com/archerysec/archerysec">https://github.com/archerysec/archerysec</a></li>
+  <li><a href="https://docs.archerysec.com/">https://docs.archerysec.com/</a></li>
+  <li><a href="https://developers.archerysec.com/">https://developers.archerysec.com/</a></li>
+</ul>
 
 
 			</div>

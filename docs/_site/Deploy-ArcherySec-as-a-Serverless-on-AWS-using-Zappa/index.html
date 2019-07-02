@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Deploy ArcherySec as a Serverless on AWS using Zappa | ArcherySec</title>
+
+    
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Audiowide%7CMerriweather:300,300i,400,400i,700,700i"
+          rel="stylesheet">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+</head>
+
+
+
+
+<body class="layout-post">
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/images/logo-128x128.png" type="image/x-icon">
+    <meta name="description" content="ArcherySec Blogs">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <!--   <link rel="stylesheet" href="/assets/tether/tether.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/socicon/css/styles.css"> -->
+    <link rel="stylesheet" href="/assets/dropdown/css/style.css">
+    <link rel="stylesheet" href="/assets/animatecss/animate.min.css">
+    <!-- <link rel="stylesheet" href="/assets/gdpr-plugin/gdpr-styles.css"> -->
+    <!-- <link rel="stylesheet" href="/assets/theme/css/style.css"> -->
+    <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+
+
+</head>
+<body>
+<section class="menu cid-qFMlGsng2m" once="menu" id="menu1-1q">
+
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-logo">
+                    <a href="http://archerysec.info">
+                         <img src="/assets/images/archery-460x118.png" alt="Archery" title="Archery"
+                              style="height: 3.8rem;">
+                    </a>
+                </span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4"
+                                                     href="https://mobirise.com"></a></span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-7" href="https://archerysec.com/index.html">HOME</a>
+                </li>
+                <li class="nav-item"><a class="nav-link link text-white display-7"
+                                        href="https://archerysec.com/index.html#header3-12">OVERVIEW</a></li>
+                <li class="nav-item"><a class="nav-link link text-white display-7" href="https://blog.archerysec.com">BLOG</a></li>
+                <li class="nav-item"><a class="nav-link link text-white display-7" href="https://archerysec.com/index.html#header3-11">SCREENSHOTS</a>
+                </li>
+                <li class="nav-item"><a class="nav-link link text-white display-7"
+                                        href="https://archerysec.com/index.html#tabs3-13">FEATURES</a></li>
+                <li class="nav-item"><a class="nav-link link text-white display-7"
+                                        href="https://github.com/archerysec/archerysec/releases/"
+                                        target="_blank">DOWNLOAD</a></li>
+            </ul>
+        </div>
+    </nav>
+</section>
+
+
+<script src="/assets/web/assets/jquery/jquery.min.js"></script>
+<script src="/assets/popper/popper.min.js"></script>
+<script src="/assets/tether/tether.min.js"></script>
+<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assets/smoothscroll/smooth-scroll.js"></script>
+<script src="/assets/cookies-alert-plugin/cookies-alert-core.js"></script>
+<script src="/assets/cookies-alert-plugin/cookies-alert-script.js"></script>
+<script src="/assets/dropdown/js/script.min.js"></script>
+<script src="/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="/assets/viewportchecker/jquery.viewportchecker.js"></script>
+<script src="/assets/theme/js/script.js"></script>
+
+<input name="animation" type="hidden">
+<input name="cookieData" type="hidden"
+       data-cookie-text="We use cookies to give you the best experience. Read our <a href='privacy.html'>cookie policy</a>.">
+</body>
+</html>
+
+<!-- End Navigation
+================================================== -->
+<div class="site-content">
+    <div class="container">
+        <!-- Site Title
+        ================================================== -->
+        <!-- <div class="mainheading">
+            <h1 class="display-5" align="center" style="color: #d14;">Blog</h1>
+        </div> -->
+        <!-- Content
+        ================================================== -->
+        <div class="row">
+            <div class="col">
+                <!-- Begin Article
+================================================== -->
+<div class="container-fluid">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">  
+        <div class="share sticky-top sticky-top-offset">          
+           <div class="share">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://twitter.com/intent/tweet?text=Deploy ArcherySec as a Serverless on AWS using Zappa&url=http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <i class="fab fa-twitter"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+        <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+        </a>
+        </li>
+        
+        <li class="ml-1 mr-1">
+         <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/&title=Deploy ArcherySec as a Serverless on AWS using Zappa&summary=&source=http://localhost:4000" 
+    rel="nofollow" target="_blank" title="Share On LinkedIn" class="z-2 z-h social li">
+        <i class="fab fa-linkedin"></i>
+    </a>
+        </li>
+        
+    </ul>
+    
+    <div class="sep">
+    </div>				
+    <ul>
+        <li> 
+        <a  class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>  
+       </div>
+		</div>
+		
+
+		<!-- Post -->        
+        
+        
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="">
+
+                <!-- Author Box -->
+                
+				<div class="row post-top-meta">
+					<div class="col-md-2">
+						<img class="author-thumb" src="https://www.gravatar.com/avatar/d456f7972a30e67bbb05b393dcd4e996?s=250&d=mm&r=x" alt="Anand Tiwari">
+					</div>
+					<div class="col-md-10">
+						<a target="_blank" class="link-dark" href="https://archerysec.info">Anand Tiwari</a><a target="_blank" href="https://twitter.com/anandtiwarics" class="btn follow">Follow</a>
+                        <br>
+						<span class="author-description">InfoSecurity Enthusiast, Author of ArcherySec tool.</span>
+					</div>
+				</div>
+                
+
+			</div>
+            <!-- Post Title -->
+                <h3 class="posttitle">Deploy ArcherySec as a Serverless on AWS using Zappa</h1>
+                <br>
+
+			<!-- Post Featured Image -->
+			<!-- <img class="featured-image img-fluid" src="/assets/images/archeryblog/lambda/aws-lambda-api.jpg" alt="Deploy ArcherySec as a Serverless on AWS using Zappa"> -->
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>ArcherySec is handy tool to feed vulnerability data from DevSecOps pipeline. Vulnerability management is a key part of your DevSecOps process. In our last <a href="https://blog.archerysec.com/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/">blog post</a>, we saw how to integrate ArcherySec in our CI/CD pipeline. In this blog post  we’ll see how ArcherySec can be deployed as a serverless.</p>
+
+<p>We often heard about “serverless” in computer world. Serverless is a cloud computing performance model where the cloud provider dynamically controls the allocation and provisioning of servers. A serverless application works in stateless compute containers that are event-prompted, temporary, and completely handled by the cloud provider. The pricing in the serverless is based on the count of executions rather than pre-purchased compute capacity.</p>
+
+<p>Think how if your vulnerability management application is serverless and event-driven. We need ArcherySec API when we are feeding data from our DevSecOps pipeline or when we are analyzing vulnerabilities. Hosting ArcherySec application on an EC2 Instance or in containers like ECS make us pay for the idle time too.</p>
+
+<p>In this article we will guide you to deploy a ArcherySec application as server-less using <a href="https://github.com/Miserlou/Zappa">Zappa</a>. Before start deploying ArcherySec application lets understand how Zappa works.</p>
+
+<h4 id="zappa">Zappa</h4>
+
+<p><a href="https://github.com/Miserlou/Zappa">Zappa</a> is an open source project that helps you in building and deploying server-less, event-driven Python applications. It helps in deploying and building any WSGI compatible applications that are developed in python. It uses AWS Lambda and AWS API Gateway, and Amazon S3.</p>
+
+<p>When we talk about application hosted on server-less, basically it’s not really serverless, there still is a webserver in a cloud that serving your web responses. The difference is the server life spent is measured in milliseconds. The entire life cycle of a server is within a single HTTP request.</p>
+
+<p>In a traditional client server communication the client makes a request to the web server, calls the application HTML, CSS, etc and code sends back a response to the browser. The server should be up and running 24/7 just waiting for requests and responses.</p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/Http.png" /></div></center>
+<center><small>Source: https://www.codeproject.com/KB/aspnet/HttpZipFolder/HttpZipFolder_Fig2.png</small></center>
+
+<p><br /></p>
+
+<p>With AWS Lambda + AWS API Gateway when the HTTP request comes in through the AWS API Gateway, then it creates the instance of the AWS Lambda function which process the request returns through the AWS API Gateway and then the server is wiped out. So you have used a server in a matter of milliseconds and a major advantage of this approach is that you don’t have to worry about keeping your server up and running 24/7 and you only pay aws instance for a millisecond.</p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/architecture.png" /></div></center>
+<center><small>Source: https://medium.com/38th-street-studios/the-move-to-serverless-digital-ocean-heroku-aws-oh-my-ea5224a8d4bb </small></center>
+<p><br /></p>
+
+<h4 id="aws-lambda">AWS Lambda</h4>
+
+<p>AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume, there is no charge when your code is not running.</p>
+
+<p>So AWS Lambda function is perfect solution for us. It scales automatically and we pay only when we consume it. If our code is not running then it’s not chargeable. Also its running with zero administration.</p>
+
+<h4 id="configure-aws-credentials">Configure AWS Credentials</h4>
+
+<p>Before start using AWS, we have to make sure we have a valid AWS account and have the AWS access-key which we are going to use in our environment.</p>
+
+<p>Get the access key from IAM</p>
+<ul>
+  <li>Go to IAM console and navigate to users.</li>
+  <li>Go to Security Credentials</li>
+  <li>Create access key and note down the value of “Access key ID” &amp; “Secret access key”.</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/access_key.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Create a folder called aws at the root level.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+mkdir .aws
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+###~/.aws/credentials
+
+[default]
+aws_access_key_id = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+</code></pre></div></div>
+
+<h4 id="permissions">Permissions</h4>
+
+<p>Make sure you have provided correct permissions to the user. We need following permission to run Zappa.</p>
+
+<ul>
+  <li>AWSLambda</li>
+  <li>AmazonS3</li>
+  <li>AmazonAPIGateway</li>
+  <li>AWSDeepRacerCloudFormationAccessPolicy</li>
+  <li>AmazonEC2</li>
+</ul>
+
+<h4 id="roles">Roles</h4>
+
+<p>We need to create role and provide the appropriate permissions. Zapp configuration file will use and deploy applications on Lambda and API gateway.</p>
+
+<ul>
+  <li>Go to Roles and create new role.</li>
+  <li>Attached the following policies
+    <ul>
+      <li>AWSLambda</li>
+      <li>AmazonAPIGatewayPushToCloudWatchLogs</li>
+      <li>AWSLambdaVPCAccessExecutionRole</li>
+    </ul>
+  </li>
+  <li>Move to Trust Relationship and Edit Trust Relationship.</li>
+  <li>Copy and paste the below code.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": [
+          "events.amazonaws.com",
+          "lambda.amazonaws.com",
+          "apigateway.amazonaws.com"
+        ]
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+
+</code></pre></div></div>
+
+<p>We need to trust the amazonaws events, lambda and apigateway end points.</p>
+
+<ul>
+  <li>Note down Role Name and Role ARN as we need in Zappa configuration file.</li>
+</ul>
+
+<h4 id="deploy-archerysec-application-using-zappa">Deploy ArcherySec Application Using Zappa</h4>
+
+<p>Clone ArcherySec project folder in our local system.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec.git
+$ cd archerysec
+</code></pre></div></div>
+
+<p>Install ArcherySec required library</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ pip install -r requirements.txt
+
+</code></pre></div></div>
+
+<p>Next install zappa</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ pip install zappa
+
+</code></pre></div></div>
+
+<p>After installing Zappa, let’s configure Zappa</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zappa init
+</code></pre></div></div>
+
+<p>which will ask us for the following:</p>
+
+<ul>
+  <li>Name of environment - default ‘dev’</li>
+  <li>S3 bucket for deployments. If the bucket does not exist, zappa will create it for us. Zappa uses this bucket to hold the zappa package temporarily while it is being transferred to AWS lambda, which is then deleted after deployment.</li>
+  <li>Project’s settings provide as <code class="highlighter-rouge">archerysecurity.settings.base</code></li>
+</ul>
+
+<p>Some additional parameter required by Zappa configuration file.</p>
+<ul>
+  <li>Edit the zappa_settings.json file</li>
+  <li>Provide the aws_region: us-east-1</li>
+  <li>Manage_roles: false</li>
+  <li>role_name:</li>
+  <li>role_arn:</li>
+</ul>
+
+<p>Zappa configuration file</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{
+    "dev": {
+	"aws_region": "us-east-1",
+        "django_settings": "archerysecurity.settings.base",
+        "profile_name": "default",
+        "project_name": "archerysec-aws",
+        "runtime": "python2.7",
+        "s3_bucket": "zappa-test",
+	"manage_roles": false,
+	"role_name": "archerysectest",
+	"role_arn": "arn:aws:iam::868167788748:role/archerysectest",
+    }
+}
+
+</code></pre></div></div>
+
+<p>Now let us deploy the app</p>
+
+<p><code class="highlighter-rouge">$ zappa deploy dev</code></p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/after_deploy.png" /></div></center>
+
+<p><br /></p>
+
+<p>Now you need to add your AWS API Gateway host as allowed host in application settings file and disable debugging by marking it as False.</p>
+
+<ul>
+  <li>Edit settings file:  <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
+  <li>DEBUG = False</li>
+  <li>Replace * with your host in Allowed host <code class="highlighter-rouge">ALLOWED_HOSTS = ['your_api_gateway_host']</code></li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/debug.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Add below lines in setting file <code class="highlighter-rouge">archerysecurity/settings/base.py </code></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+FORCE_SCRIPT_NAME = "/dev/"
+
+LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
+
+</code></pre></div></div>
+
+<ul>
+  <li>Update code by running command <code class="highlighter-rouge">zappa update dev</code></li>
+</ul>
+
+<p>Awsome!! we have successfully deployed ArcherySec tool on AWS Lambda function.</p>
+
+<p>Application can be accessible on API Gateway URL: <code class="highlighter-rouge">https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/</code></p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/application_accessible.png" /></div></center>
+
+<p><br /></p>
+
+<p>Noticed that the application is not loading static files. We need to use AWS S3 bucket to upload static files and load statics file using django django-s3-storage.</p>
+
+<h4 id="static-file-on-aws-s3-bucket">Static file on AWS S3 Bucket</h4>
+
+<p>Before setting up django we need to configure S3 bucket.</p>
+
+<p>To serve the static file we need to enable CORS for the S3 bucket, which enables browsers to get resources from different urls.</p>
+
+<ul>
+  <li>Go to S3 bucket and then Permissions.</li>
+  <li>Click on CORS Configuration.</li>
+  <li>Paste the below lines.</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;CORSConfiguration&gt;
+        &lt;CORSRule&gt;
+            &lt;AllowedOrigin&gt;<span class="k">*</span>&lt;/AllowedOrigin&gt;
+            &lt;AllowedMethod&gt;GET&lt;/AllowedMethod&gt;
+            &lt;MaxAgeSeconds&gt;3000&lt;/MaxAgeSeconds&gt;
+            &lt;AllowedHeader&gt;Authorization&lt;/AllowedHeader&gt;
+        &lt;/CORSRule&gt;
+&lt;/CORSConfiguration&gt;
+</code></pre></div></div>
+
+<h4 id="configure-archerysec-for-s3">Configure ArcherySec for S3</h4>
+<ul>
+  <li>Install django-s3-storage</li>
+</ul>
+
+<p><code class="highlighter-rouge">$ pip install django-s3-storage</code></p>
+
+<ul>
+  <li>and also add it in the <code class="highlighter-rouge">requirements.txt</code> file.</li>
+  <li>Now update the <i>settings.py</i> file to add <i>django_s3_storage</i> to <code class="highlighter-rouge">INSTALLED_APPS</code></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+INSTALLED_APPS = (
+          ...,
+          'django_s3_storage',
+     )
+</code></pre></div></div>
+
+<ul>
+  <li>and also add these lines at the bottom</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+S3_BUCKET = "itestzappa-test"
+
+STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
+
+AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
+
+STATIC_URL = "https://%s.s3.amazonaws.com/" % S3_BUCKET
+
+</code></pre></div></div>
+
+<ul>
+  <li>Now load the static files using below command</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+$ python manage.py collectstatic --noinput
+
+</code></pre></div></div>
+
+<p>It’s take a while to upload static files on AWS s3 bucket.</p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/statics_files.png" /></div></center>
+
+<p><br /></p>
+
+<p>Once the static files are uploaded on s3 bucket you can update using Zappa command. `
+zappa update dev
+`</p>
+
+<p>and after updating zappa, let us check by refreshing the page.</p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/archery-login.png" /></div></center>
+
+<p><br /></p>
+
+<h4 id="database-connection">Database Connection</h4>
+
+<p>Django supports both MySQL and PostgreSQL. Hence you can integrated ArcherySec database either of any one databases.</p>
+
+<h4 id="setup-postgresql-on-aws-rds">Setup PostgreSQL on AWS RDS</h4>
+
+<ul>
+  <li>Go to AWS RDS</li>
+  <li>Create new database</li>
+  <li>Select PostgreSQL</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/select_postgresql.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Check on “Only enable options eligible for RDS Free Usage Tier”</li>
+  <li>Provide “DB instance identifier”, “Master username”, “Master password”</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/db_names.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Setup “Network &amp; Security” which should be same of ArcherySec Lambda function</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/network_sec.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Add database details in ArcherySec settings file once database has been created.</li>
+  <li>Edit file <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'archerysecdbname',
+        'USER': 'administrator',
+        'PASSWORD': 'this_is_not_a_good_password',
+        'HOST': 'archerysec-db.cr3erer3sjdlk.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+
+}
+</code></pre></div></div>
+
+<h4 id="zappa-settings">Zappa Settings</h4>
+
+<p>Now we add the VPC configuration to our Zappa settings file so that the lambda functions can connect to the database.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    "dev": {
+        "django_settings": "archerysecurity.settings.base", 
+        "s3_bucket": "archerysectest-code",
+        "aws_region": "us-east-1",
+        "vpc_config" : {
+           "SubnetIds": [ "subnet-f3446aba","subnet-c5b8c79e" ], // use the private subnet
+           "SecurityGroupIds": [ "sg-9a9a1dfc" ]
+
+       }
+
+   }
+}
+</code></pre></div></div>
+
+<h4 id="migrate-database">Migrate database</h4>
+
+<p>Create your migrations and push the updated code. `
+zappa update dev
+`</p>
+
+<p>Invoke the zappa manage command: <code class="highlighter-rouge">zappa manage dev migrate</code></p>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/migrate.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>after updating zappa, let us check by refreshing the page.</li>
+  <li>Create new user using Signup form <code class="highlighter-rouge">https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/</code></li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/signup.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Login into account.</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/after_login.png" /></div></center>
+
+<p><br /></p>
+
+<h4 id="restrict-archerysec-signup-page-from-publicly">Restrict ArcherySec signup page from publicly.</h4>
+
+<p>Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly.</p>
+
+<ul>
+  <li>Edit file <code class="highlighter-rouge">webscanners/web_views.py</code></li>
+  <li>Search def signup function and comment <code class="highlighter-rouge">@public</code> decorator</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/web_views.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Edit file <code class="highlighter-rouge">archeryapi/views.py</code></li>
+  <li>Search def class CreateUsers and comment <code class="highlighter-rouge">@public</code> decorator</li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/createuser_api.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Edit file <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
+  <li>Search <code class="highlighter-rouge">STRONGHOLD_PUBLIC_URLS</code></li>
+  <li>Comment <code class="highlighter-rouge">r'^/api/createuser/$',</code></li>
+</ul>
+
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/comment_api_create_user.png" /></div></center>
+
+<p><br /></p>
+
+<ul>
+  <li>Update code by running command <code class="highlighter-rouge">zappa update dev</code></li>
+</ul>
+
+<p>Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using <code class="highlighter-rouge">zappa tail</code></p>
+
+<h4 id="references">References</h4>
+
+<ul>
+  <li><a href="https://romandc.com/zappa-django-guide/">https://romandc.com/zappa-django-guide/</a></li>
+  <li><a href="https://www.agiliq.com/blog/2019/01/complete-serverless-django/">https://www.agiliq.com/blog/2019/01/complete-serverless-django/</a></li>
+  <li><a href="https://github.com/Miserlou/Zappa">https://github.com/Miserlou/Zappa</a></li>
+  <li><a href="https://www.youtube.com/watch?v=plUrbPN0xc8&amp;t=214s">https://www.youtube.com/watch?v=plUrbPN0xc8&amp;t=214s</a></li>
+</ul>
+
+
+			</div>
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2019-07-01">01 Jul 2019</time></span>           
+                
+                </small>
+            </p>
+            
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+                    
+                    
+                    <li>
+                     <a href="/category/tutorial/">Tutorial</a>
+                    </li>
+                    
+				</ul>
+			</div>
+			<!-- End Categories -->
+            
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="http://localhost:4000/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/"> &laquo; Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline</a>
+            
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+  
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">              
+                <section class="disqus">
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'archerysec'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+                
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<div class="jumbotron fortags">
+    <div class="d-flex h-100">
+        <div class="col-md-4 align-self-center text-center h-100">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block d-none align-self-center">Explore →</h2>
+            </div>
+        </div>
+        <div class="col-md-8 align-self-center text-center">
+            
+            
+            
+            <a href="/categories.html#tutorial">Tutorial (3)</a>
+            
+            <a href="/categories.html#introduction">Introduction (5)</a>
+            
+            <a href="/categories.html#conference">Conference (4)</a>
+            
+            
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2019 ArcherySec
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">
+                <a target="_blank" href="https://archerysec.com">ArcherySec</a> by ArcherySec Maintainer
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.rawgit.com/christian-fei/Simple-Jekyll-Search/master/dest/simple-jekyll-search.min.js"></script>
+
+<script src="/assets/js/jquery.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+<script src="/assets/js/mediumish.js"></script>
+
+<script id="dsq-count-scr" src="//archerysec.disqus.com/count.js"></script>
+<script>
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  json: '/search.json'
+})
+</script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129306935-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-129306935-1');
+</script>
+
+
+
+</body>
+</html>

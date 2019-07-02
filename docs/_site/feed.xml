@@ -5,9 +5,478 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 13 May 2019 11:05:51 +0530</pubDate>
-    <lastBuildDate>Mon, 13 May 2019 11:05:51 +0530</lastBuildDate>
+    <pubDate>Tue, 02 Jul 2019 13:43:31 +0530</pubDate>
+    <lastBuildDate>Tue, 02 Jul 2019 13:43:31 +0530</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Deploy ArcherySec as a Serverless on AWS using Zappa</title>
+        <description>&lt;p&gt;ArcherySec is handy tool to feed vulnerability data from DevSecOps pipeline. Vulnerability management is a key part of your DevSecOps process. In our last &lt;a href=&quot;https://blog.archerysec.com/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/&quot;&gt;blog post&lt;/a&gt;, we saw how to integrate ArcherySec in our CI/CD pipeline. In this blog post  we’ll see how ArcherySec can be deployed as a serverless.&lt;/p&gt;
+
+&lt;p&gt;We often heard about “serverless” in computer world. Serverless is a cloud computing performance model where the cloud provider dynamically controls the allocation and provisioning of servers. A serverless application works in stateless compute containers that are event-prompted, temporary, and completely handled by the cloud provider. The pricing in the serverless is based on the count of executions rather than pre-purchased compute capacity.&lt;/p&gt;
+
+&lt;p&gt;Think how if your vulnerability management application is serverless and event-driven. We need ArcherySec API when we are feeding data from our DevSecOps pipeline or when we are analyzing vulnerabilities. Hosting ArcherySec application on an EC2 Instance or in containers like ECS make us pay for the idle time too.&lt;/p&gt;
+
+&lt;p&gt;In this article we will guide you to deploy a ArcherySec application as server-less using &lt;a href=&quot;https://github.com/Miserlou/Zappa&quot;&gt;Zappa&lt;/a&gt;. Before start deploying ArcherySec application lets understand how Zappa works.&lt;/p&gt;
+
+&lt;h4 id=&quot;zappa&quot;&gt;Zappa&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Miserlou/Zappa&quot;&gt;Zappa&lt;/a&gt; is an open source project that helps you in building and deploying server-less, event-driven Python applications. It helps in deploying and building any WSGI compatible applications that are developed in python. It uses AWS Lambda and AWS API Gateway, and Amazon S3.&lt;/p&gt;
+
+&lt;p&gt;When we talk about application hosted on server-less, basically it’s not really serverless, there still is a webserver in a cloud that serving your web responses. The difference is the server life spent is measured in milliseconds. The entire life cycle of a server is within a single HTTP request.&lt;/p&gt;
+
+&lt;p&gt;In a traditional client server communication the client makes a request to the web server, calls the application HTML, CSS, etc and code sends back a response to the browser. The server should be up and running 24/7 just waiting for requests and responses.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/Http.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+&lt;center&gt;&lt;small&gt;Source: https://www.codeproject.com/KB/aspnet/HttpZipFolder/HttpZipFolder_Fig2.png&lt;/small&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;With AWS Lambda + AWS API Gateway when the HTTP request comes in through the AWS API Gateway, then it creates the instance of the AWS Lambda function which process the request returns through the AWS API Gateway and then the server is wiped out. So you have used a server in a matter of milliseconds and a major advantage of this approach is that you don’t have to worry about keeping your server up and running 24/7 and you only pay aws instance for a millisecond.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/architecture.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+&lt;center&gt;&lt;small&gt;Source: https://medium.com/38th-street-studios/the-move-to-serverless-digital-ocean-heroku-aws-oh-my-ea5224a8d4bb &lt;/small&gt;&lt;/center&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;aws-lambda&quot;&gt;AWS Lambda&lt;/h4&gt;
+
+&lt;p&gt;AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume, there is no charge when your code is not running.&lt;/p&gt;
+
+&lt;p&gt;So AWS Lambda function is perfect solution for us. It scales automatically and we pay only when we consume it. If our code is not running then it’s not chargeable. Also its running with zero administration.&lt;/p&gt;
+
+&lt;h4 id=&quot;configure-aws-credentials&quot;&gt;Configure AWS Credentials&lt;/h4&gt;
+
+&lt;p&gt;Before start using AWS, we have to make sure we have a valid AWS account and have the AWS access-key which we are going to use in our environment.&lt;/p&gt;
+
+&lt;p&gt;Get the access key from IAM&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Go to IAM console and navigate to users.&lt;/li&gt;
+  &lt;li&gt;Go to Security Credentials&lt;/li&gt;
+  &lt;li&gt;Create access key and note down the value of “Access key ID” &amp;amp; “Secret access key”.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/access_key.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create a folder called aws at the root level.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+mkdir .aws
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+###~/.aws/credentials
+
+[default]
+aws_access_key_id = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;permissions&quot;&gt;Permissions&lt;/h4&gt;
+
+&lt;p&gt;Make sure you have provided correct permissions to the user. We need following permission to run Zappa.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;AWSLambda&lt;/li&gt;
+  &lt;li&gt;AmazonS3&lt;/li&gt;
+  &lt;li&gt;AmazonAPIGateway&lt;/li&gt;
+  &lt;li&gt;AWSDeepRacerCloudFormationAccessPolicy&lt;/li&gt;
+  &lt;li&gt;AmazonEC2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;roles&quot;&gt;Roles&lt;/h4&gt;
+
+&lt;p&gt;We need to create role and provide the appropriate permissions. Zapp configuration file will use and deploy applications on Lambda and API gateway.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go to Roles and create new role.&lt;/li&gt;
+  &lt;li&gt;Attached the following policies
+    &lt;ul&gt;
+      &lt;li&gt;AWSLambda&lt;/li&gt;
+      &lt;li&gt;AmazonAPIGatewayPushToCloudWatchLogs&lt;/li&gt;
+      &lt;li&gt;AWSLambdaVPCAccessExecutionRole&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Move to Trust Relationship and Edit Trust Relationship.&lt;/li&gt;
+  &lt;li&gt;Copy and paste the below code.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+{
+  &quot;Version&quot;: &quot;2012-10-17&quot;,
+  &quot;Statement&quot;: [
+    {
+      &quot;Sid&quot;: &quot;&quot;,
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Principal&quot;: {
+        &quot;Service&quot;: [
+          &quot;events.amazonaws.com&quot;,
+          &quot;lambda.amazonaws.com&quot;,
+          &quot;apigateway.amazonaws.com&quot;
+        ]
+      },
+      &quot;Action&quot;: &quot;sts:AssumeRole&quot;
+    }
+  ]
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We need to trust the amazonaws events, lambda and apigateway end points.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Note down Role Name and Role ARN as we need in Zappa configuration file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;deploy-archerysec-application-using-zappa&quot;&gt;Deploy ArcherySec Application Using Zappa&lt;/h4&gt;
+
+&lt;p&gt;Clone ArcherySec project folder in our local system.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/archerysec.git
+$ cd archerysec
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Install ArcherySec required library&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ pip install -r requirements.txt
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next install zappa&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ pip install zappa
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After installing Zappa, let’s configure Zappa&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ zappa init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;which will ask us for the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Name of environment - default ‘dev’&lt;/li&gt;
+  &lt;li&gt;S3 bucket for deployments. If the bucket does not exist, zappa will create it for us. Zappa uses this bucket to hold the zappa package temporarily while it is being transferred to AWS lambda, which is then deleted after deployment.&lt;/li&gt;
+  &lt;li&gt;Project’s settings provide as &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity.settings.base&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some additional parameter required by Zappa configuration file.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Edit the zappa_settings.json file&lt;/li&gt;
+  &lt;li&gt;Provide the aws_region: us-east-1&lt;/li&gt;
+  &lt;li&gt;Manage_roles: false&lt;/li&gt;
+  &lt;li&gt;role_name:&lt;/li&gt;
+  &lt;li&gt;role_arn:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Zappa configuration file&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+{
+    &quot;dev&quot;: {
+	&quot;aws_region&quot;: &quot;us-east-1&quot;,
+        &quot;django_settings&quot;: &quot;archerysecurity.settings.base&quot;,
+        &quot;profile_name&quot;: &quot;default&quot;,
+        &quot;project_name&quot;: &quot;archerysec-aws&quot;,
+        &quot;runtime&quot;: &quot;python2.7&quot;,
+        &quot;s3_bucket&quot;: &quot;zappa-test&quot;,
+	&quot;manage_roles&quot;: false,
+	&quot;role_name&quot;: &quot;archerysectest&quot;,
+	&quot;role_arn&quot;: &quot;arn:aws:iam::868167788748:role/archerysectest&quot;,
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now let us deploy the app&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ zappa deploy dev&lt;/code&gt;&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/after_deploy.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you need to add your AWS API Gateway host as allowed host in application settings file and disable debugging by marking it as False.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit settings file:  &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;DEBUG = False&lt;/li&gt;
+  &lt;li&gt;Replace * with your host in Allowed host &lt;code class=&quot;highlighter-rouge&quot;&gt;ALLOWED_HOSTS = ['your_api_gateway_host']&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/debug.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add below lines in setting file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py &lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+FORCE_SCRIPT_NAME = &quot;/dev/&quot;
+
+LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Update code by running command &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Awsome!! we have successfully deployed ArcherySec tool on AWS Lambda function.&lt;/p&gt;
+
+&lt;p&gt;Application can be accessible on API Gateway URL: &lt;code class=&quot;highlighter-rouge&quot;&gt;https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/&lt;/code&gt;&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/application_accessible.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Noticed that the application is not loading static files. We need to use AWS S3 bucket to upload static files and load statics file using django django-s3-storage.&lt;/p&gt;
+
+&lt;h4 id=&quot;static-file-on-aws-s3-bucket&quot;&gt;Static file on AWS S3 Bucket&lt;/h4&gt;
+
+&lt;p&gt;Before setting up django we need to configure S3 bucket.&lt;/p&gt;
+
+&lt;p&gt;To serve the static file we need to enable CORS for the S3 bucket, which enables browsers to get resources from different urls.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go to S3 bucket and then Permissions.&lt;/li&gt;
+  &lt;li&gt;Click on CORS Configuration.&lt;/li&gt;
+  &lt;li&gt;Paste the below lines.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;CORSConfiguration&amp;gt;
+        &amp;lt;CORSRule&amp;gt;
+            &amp;lt;AllowedOrigin&amp;gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&amp;lt;/AllowedOrigin&amp;gt;
+            &amp;lt;AllowedMethod&amp;gt;GET&amp;lt;/AllowedMethod&amp;gt;
+            &amp;lt;MaxAgeSeconds&amp;gt;3000&amp;lt;/MaxAgeSeconds&amp;gt;
+            &amp;lt;AllowedHeader&amp;gt;Authorization&amp;lt;/AllowedHeader&amp;gt;
+        &amp;lt;/CORSRule&amp;gt;
+&amp;lt;/CORSConfiguration&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;configure-archerysec-for-s3&quot;&gt;Configure ArcherySec for S3&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install django-s3-storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ pip install django-s3-storage&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;and also add it in the &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file.&lt;/li&gt;
+  &lt;li&gt;Now update the &lt;i&gt;settings.py&lt;/i&gt; file to add &lt;i&gt;django_s3_storage&lt;/i&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALLED_APPS&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+INSTALLED_APPS = (
+          ...,
+          'django_s3_storage',
+     )
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;and also add these lines at the bottom&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+S3_BUCKET = &quot;itestzappa-test&quot;
+
+STATICFILES_STORAGE = &quot;django_s3_storage.storage.StaticS3Storage&quot;
+
+AWS_S3_BUCKET_NAME_STATIC = S3_BUCKET
+
+STATIC_URL = &quot;https://%s.s3.amazonaws.com/&quot; % S3_BUCKET
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Now load the static files using below command&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+$ python manage.py collectstatic --noinput
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It’s take a while to upload static files on AWS s3 bucket.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/statics_files.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the static files are uploaded on s3 bucket you can update using Zappa command. `
+zappa update dev
+`&lt;/p&gt;
+
+&lt;p&gt;and after updating zappa, let us check by refreshing the page.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/archery-login.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;database-connection&quot;&gt;Database Connection&lt;/h4&gt;
+
+&lt;p&gt;Django supports both MySQL and PostgreSQL. Hence you can integrated ArcherySec database either of any one databases.&lt;/p&gt;
+
+&lt;h4 id=&quot;setup-postgresql-on-aws-rds&quot;&gt;Setup PostgreSQL on AWS RDS&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Go to AWS RDS&lt;/li&gt;
+  &lt;li&gt;Create new database&lt;/li&gt;
+  &lt;li&gt;Select PostgreSQL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/select_postgresql.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check on “Only enable options eligible for RDS Free Usage Tier”&lt;/li&gt;
+  &lt;li&gt;Provide “DB instance identifier”, “Master username”, “Master password”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/db_names.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Setup “Network &amp;amp; Security” which should be same of ArcherySec Lambda function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/network_sec.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Add database details in ArcherySec settings file once database has been created.&lt;/li&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'archerysecdbname',
+        'USER': 'administrator',
+        'PASSWORD': 'this_is_not_a_good_password',
+        'HOST': 'archerysec-db.cr3erer3sjdlk.us-east-1.rds.amazonaws.com',
+        'PORT': '5432',
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;zappa-settings&quot;&gt;Zappa Settings&lt;/h4&gt;
+
+&lt;p&gt;Now we add the VPC configuration to our Zappa settings file so that the lambda functions can connect to the database.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    &quot;dev&quot;: {
+        &quot;django_settings&quot;: &quot;archerysecurity.settings.base&quot;, 
+        &quot;s3_bucket&quot;: &quot;archerysectest-code&quot;,
+        &quot;aws_region&quot;: &quot;us-east-1&quot;,
+        &quot;vpc_config&quot; : {
+           &quot;SubnetIds&quot;: [ &quot;subnet-f3446aba&quot;,&quot;subnet-c5b8c79e&quot; ], // use the private subnet
+           &quot;SecurityGroupIds&quot;: [ &quot;sg-9a9a1dfc&quot; ]
+
+       }
+
+   }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;migrate-database&quot;&gt;Migrate database&lt;/h4&gt;
+
+&lt;p&gt;Create your migrations and push the updated code. `
+zappa update dev
+`&lt;/p&gt;
+
+&lt;p&gt;Invoke the zappa manage command: &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa manage dev migrate&lt;/code&gt;&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/migrate.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;after updating zappa, let us check by refreshing the page.&lt;/li&gt;
+  &lt;li&gt;Create new user using Signup form &lt;code class=&quot;highlighter-rouge&quot;&gt;https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/signup.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Login into account.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/after_login.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;restrict-archerysec-signup-page-from-publicly&quot;&gt;Restrict ArcherySec signup page from publicly.&lt;/h4&gt;
+
+&lt;p&gt;Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;webscanners/web_views.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search def signup function and comment &lt;code class=&quot;highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/web_views.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archeryapi/views.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search def class CreateUsers and comment &lt;code class=&quot;highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/createuser_api.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search &lt;code class=&quot;highlighter-rouge&quot;&gt;STRONGHOLD_PUBLIC_URLS&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Comment &lt;code class=&quot;highlighter-rouge&quot;&gt;r'^/api/createuser/$',&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/comment_api_create_user.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Update code by running command &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa tail&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;references&quot;&gt;References&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://romandc.com/zappa-django-guide/&quot;&gt;https://romandc.com/zappa-django-guide/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.agiliq.com/blog/2019/01/complete-serverless-django/&quot;&gt;https://www.agiliq.com/blog/2019/01/complete-serverless-django/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/Miserlou/Zappa&quot;&gt;https://github.com/Miserlou/Zappa&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=plUrbPN0xc8&amp;amp;t=214s&quot;&gt;https://www.youtube.com/watch?v=plUrbPN0xc8&amp;amp;t=214s&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Mon, 01 Jul 2019 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/</link>
+        <guid isPermaLink="true">http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/</guid>
+        
+        
+        <category>Tutorial</category>
+        
+      </item>
     
       <item>
         <title>Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline</title>

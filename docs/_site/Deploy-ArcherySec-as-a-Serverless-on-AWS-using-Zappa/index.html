@@ -345,14 +345,7 @@ $ cd archerysec
 <p>Install ArcherySec required library</p>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-$ pip install -r requirements.txt
-
-</code></pre></div></div>
-
-<p>Next install zappa</p>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-$ pip install zappa
+$ pip install -r requirements-zappa.txt
 
 </code></pre></div></div>
 
@@ -513,9 +506,7 @@ $ python manage.py collectstatic --noinput
 
 <p><br /></p>
 
-<p>Once the static files are uploaded on s3 bucket you can update using Zappa command. `
-zappa update dev
-`</p>
+<p>Once the static files are uploaded on s3 bucket you can update using Zappa command. <code class="highlighter-rouge">zappa update dev</code></p>
 
 <p>and after updating zappa, let us check by refreshing the page.</p>
 
@@ -581,7 +572,7 @@ DATABASES = {
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "dev": {
-        "django_settings": "archerysecurity.settings.base", 
+        "django_settings": "archerysecurity.settings.base",
         "s3_bucket": "archerysectest-code",
         "aws_region": "us-east-1",
         "vpc_config" : {
@@ -669,7 +660,6 @@ zappa update dev
   <li><a href="https://github.com/Miserlou/Zappa">https://github.com/Miserlou/Zappa</a></li>
   <li><a href="https://www.youtube.com/watch?v=plUrbPN0xc8&amp;t=214s">https://www.youtube.com/watch?v=plUrbPN0xc8&amp;t=214s</a></li>
 </ul>
-
 
 			</div>
 

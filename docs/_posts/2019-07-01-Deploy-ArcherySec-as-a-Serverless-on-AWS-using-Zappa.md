@@ -13,7 +13,7 @@ ArcherySec is handy tool to feed vulnerability data from DevSecOps pipeline. Vul
 
 We often heard about “serverless” in computer world. Serverless is a cloud computing performance model where the cloud provider dynamically controls the allocation and provisioning of servers. A serverless application works in stateless compute containers that are event-prompted, temporary, and completely handled by the cloud provider. The pricing in the serverless is based on the count of executions rather than pre-purchased compute capacity.
 
-Think how if your vulnerability management application is serverless and event-driven. We need ArcherySec API when we are feeding data from our DevSecOps pipeline or when we are analyzing vulnerabilities. Hosting ArcherySec application on an EC2 Instance or in containers like ECS make us pay for the idle time too. 
+Think how if your vulnerability management application is serverless and event-driven. We need ArcherySec API when we are feeding data from our DevSecOps pipeline or when we are analyzing vulnerabilities. Hosting ArcherySec application on an EC2 Instance or in containers like ECS make us pay for the idle time too.
 
 In this article we will guide you to deploy a ArcherySec application as server-less using [Zappa](https://github.com/Miserlou/Zappa). Before start deploying ArcherySec application lets understand how Zappa works.
 
@@ -21,7 +21,7 @@ In this article we will guide you to deploy a ArcherySec application as server-l
 
 [Zappa](https://github.com/Miserlou/Zappa) is an open source project that helps you in building and deploying server-less, event-driven Python applications. It helps in deploying and building any WSGI compatible applications that are developed in python. It uses AWS Lambda and AWS API Gateway, and Amazon S3.
 
-When we talk about application hosted on server-less, basically it's not really serverless, there still is a webserver in a cloud that serving your web responses. The difference is the server life spent is measured in milliseconds. The entire life cycle of a server is within a single HTTP request. 
+When we talk about application hosted on server-less, basically it's not really serverless, there still is a webserver in a cloud that serving your web responses. The difference is the server life spent is measured in milliseconds. The entire life cycle of a server is within a single HTTP request.
 
 In a traditional client server communication the client makes a request to the web server, calls the application HTML, CSS, etc and code sends back a response to the browser. The server should be up and running 24/7 just waiting for requests and responses.
 
@@ -30,7 +30,7 @@ In a traditional client server communication the client makes a request to the w
 
 <br>
 
-With AWS Lambda + AWS API Gateway when the HTTP request comes in through the AWS API Gateway, then it creates the instance of the AWS Lambda function which process the request returns through the AWS API Gateway and then the server is wiped out. So you have used a server in a matter of milliseconds and a major advantage of this approach is that you don't have to worry about keeping your server up and running 24/7 and you only pay aws instance for a millisecond. 
+With AWS Lambda + AWS API Gateway when the HTTP request comes in through the AWS API Gateway, then it creates the instance of the AWS Lambda function which process the request returns through the AWS API Gateway and then the server is wiped out. So you have used a server in a matter of milliseconds and a major advantage of this approach is that you don't have to worry about keeping your server up and running 24/7 and you only pay aws instance for a millisecond.
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/architecture.png"></div></center>
 <center><small>Source: https://medium.com/38th-street-studios/the-move-to-serverless-digital-ocean-heroku-aws-oh-my-ea5224a8d4bb </small></center>
@@ -90,7 +90,7 @@ We need to create role and provide the appropriate permissions. Zapp configurati
 - Go to Roles and create new role.
 - Attached the following policies
 	- AWSLambda
-	- AmazonAPIGatewayPushToCloudWatchLogs 
+	- AmazonAPIGatewayPushToCloudWatchLogs
 	- AWSLambdaVPCAccessExecutionRole
 - Move to Trust Relationship and Edit Trust Relationship.
 - Copy and paste the below code.
@@ -134,15 +134,7 @@ Install ArcherySec required library
 
 ```
 
-$ pip install -r requirements.txt
-
-```
-
-Next install zappa
-
-```
-
-$ pip install zappa
+$ pip install -r requirements-zappa.txt
 
 ```
 
@@ -162,8 +154,8 @@ Some additional parameter required by Zappa configuration file.
 - Edit the zappa_settings.json file
 - Provide the aws_region: us-east-1
 - Manage_roles: false
-- role_name: 
-- role_arn: 
+- role_name:
+- role_arn:
 
 
 Zappa configuration file
@@ -226,13 +218,13 @@ Application can be accessible on API Gateway URL: `https://yoururl.execute-api.u
 
 <br>
 
-Noticed that the application is not loading static files. We need to use AWS S3 bucket to upload static files and load statics file using django django-s3-storage. 
+Noticed that the application is not loading static files. We need to use AWS S3 bucket to upload static files and load statics file using django django-s3-storage.
 
 #### Static file on AWS S3 Bucket
 
 Before setting up django we need to configure S3 bucket.
 
-To serve the static file we need to enable CORS for the S3 bucket, which enables browsers to get resources from different urls. 
+To serve the static file we need to enable CORS for the S3 bucket, which enables browsers to get resources from different urls.
 
 - Go to S3 bucket and then Permissions.
 - Click on CORS Configuration.
@@ -294,9 +286,7 @@ It’s take a while to upload static files on AWS s3 bucket.
 
 <br>
 
-Once the static files are uploaded on s3 bucket you can update using Zappa command. `
-zappa update dev
-`
+Once the static files are uploaded on s3 bucket you can update using Zappa command. `zappa update dev`
 
 and after updating zappa, let us check by refreshing the page.
 
@@ -309,9 +299,9 @@ and after updating zappa, let us check by refreshing the page.
 
 Django supports both MySQL and PostgreSQL. Hence you can integrated ArcherySec database either of any one databases.
 
-#### Setup PostgreSQL on AWS RDS 
+#### Setup PostgreSQL on AWS RDS
 
-- Go to AWS RDS 
+- Go to AWS RDS
 - Create new database
 - Select PostgreSQL
 
@@ -357,7 +347,7 @@ Now we add the VPC configuration to our Zappa settings file so that the lambda f
 ```
 {
     "dev": {
-        "django_settings": "archerysecurity.settings.base", 
+        "django_settings": "archerysecurity.settings.base",
         "s3_bucket": "archerysectest-code",
         "aws_region": "us-east-1",
         "vpc_config" : {
@@ -383,7 +373,7 @@ Invoke the zappa manage command: `zappa manage dev migrate`
 <br>
 
 
-- after updating zappa, let us check by refreshing the page. 
+- after updating zappa, let us check by refreshing the page.
 - Create new user using Signup form `https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/`
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/signup.png"></div></center>
@@ -398,7 +388,7 @@ Invoke the zappa manage command: `zappa manage dev migrate`
 
 #### Restrict ArcherySec signup page from publicly.
 
-Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly. 
+Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly.
 
 - Edit file `webscanners/web_views.py`
 - Search def signup function and comment `@public` decorator
@@ -433,5 +423,3 @@ Currently ArcherySec signup page accessible publicly and we need to restrict sig
 - [https://www.agiliq.com/blog/2019/01/complete-serverless-django/](https://www.agiliq.com/blog/2019/01/complete-serverless-django/)
 - [https://github.com/Miserlou/Zappa](https://github.com/Miserlou/Zappa)
 - [https://www.youtube.com/watch?v=plUrbPN0xc8&t=214s](https://www.youtube.com/watch?v=plUrbPN0xc8&t=214s)
-
-

@@ -16,7 +16,7 @@ authors:
     display_name: Anand Tiwari
     gravatar: d456f7972a30e67bbb05b393dcd4e996
     email:
-    web: https://archerysec.info
+    web: https://archerysec.com
     twitter: https://twitter.com/anandtiwarics
     description: "InfoSecurity Enthusiast, Author of ArcherySec tool."
 
@@ -27,7 +27,7 @@ permalink: /:title/
 
 
 # Plugins
-plugins: 
+plugins:
   - jekyll-paginate
   - jekyll-archives
   - jekyll-twitter-plugin
@@ -49,7 +49,7 @@ defaults:
     values:
       layout: page
 
-    
+
 # Archives
 jekyll-archives:
   enabled:
@@ -57,11 +57,11 @@ jekyll-archives:
   layout: archive
   permalinks:
     category: /category/:name/
-    
-# Pagination 
+
+# Pagination
 paginate: 6
 paginate_path: /page:num/
-    
+
 # Other
 markdown: kramdown
 highlighter: rouge

@@ -1,19 +1,19 @@
 [
   
     {
+      "title"    : "Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/",
+      "date"     : "2022-01-29 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Deploy ArcherySec as a Serverless on AWS using Zappa",
       "category" : "",
       "tags"     : "",
       "url"      : "/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/",
       "date"     : "2019-07-01 00:00:00 +0530"
-    } ,
-  
-    {
-      "title"    : "Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline",
-      "category" : "",
-      "tags"     : "",
-      "url"      : "/Integrate-ArcherySec-OWASP-ZAP-in-Jenkins-CICD-Pipeline/",
-      "date"     : "2019-05-10 00:00:00 +0530"
     } ,
   
     {

@@ -237,7 +237,7 @@
 <p>Steps to configure Lab Environment.</p>
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/jenkins_blog.git
 $ cd jenkins_blog
-$ run docker-compose up --build
+$ docker-compose up --build
 </code></pre></div></div>
 
 <p>We have written small scripts and Infrastructure as a code that allow you to spin up environment on your system.</p>
@@ -253,7 +253,10 @@ services:
       - <span class="s2">"8080:8080"</span>
       - <span class="s2">"50000:50000"</span>
     volumes:
-      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      <span class="c"># - /usr/bin/docker:/usr/bin/docker</span>
+      - /usr/local/bin/docker:/usr/local/bin/docker
+      - /tmp:/tmp
     expose:
       - <span class="s2">"8080"</span>
       - <span class="s2">"50000"</span>
@@ -281,24 +284,17 @@ services:
     environment:
       - <span class="nv">DB_PASSWORD</span><span class="o">=</span>archerysec
       - <span class="nv">DB_USER</span><span class="o">=</span>archerysec
+      - <span class="nv">NAME</span><span class="o">=</span>user
+      - <span class="nv">EMAIL</span><span class="o">=</span>admin@user.com
+      - <span class="nv">PASSWORD</span><span class="o">=</span>admin@123A
       - <span class="nv">DB_NAME</span><span class="o">=</span>archerysec
       - <span class="nv">DB_HOST</span><span class="o">=</span>db
       - <span class="nv">DJANGO_SETTINGS_MODULE</span><span class="o">=</span>archerysecurity.settings.development
       - <span class="nv">DJANGO_SECRET_KEY</span><span class="o">=</span><span class="k">${</span><span class="nv">DJANGO_SECRET_KEY</span><span class="k">:-</span><span class="s2">"SETME"</span><span class="k">}</span>
       - <span class="nv">DJANGO_DEBUG</span><span class="o">=</span>1
+      - <span class="nv">EMAIL_HOST</span><span class="o">=</span>mailhog
+      - <span class="nv">EMAIL_PORT</span><span class="o">=</span>1025
     container_name: archerysec
-   
-  zaproxy:
-    image: owasp/zap2docker-stable
-    <span class="nb">command</span>: zap.sh <span class="nt">-daemon</span> <span class="nt">-host</span> 0.0.0.0 <span class="nt">-port</span> 8090 <span class="nt">-config</span> api.disablekey<span class="o">=</span><span class="nb">true</span> <span class="nt">-config</span> api.addrs.addr.name<span class="o">=</span>.<span class="k">*</span> <span class="nt">-config</span> api.addrs.addr.regex<span class="o">=</span><span class="nb">true
-    </span>ports:
-      - <span class="s2">"8090:8090"</span>
-    expose:
-    <span class="c"># ZAP is running on 8090, we want it to be accessible by our tools</span>
-      - <span class="s2">"8090"</span>
-    links:
-      - archerysec
-    container_name: zapscanner
 </code></pre></div></div>
 
 <p>Once containers are up and running you could check whether they are accessible or not by accessing the below URL’s.</p>
@@ -307,216 +303,27 @@ services:
 Jenkins: http://your_system_ip_address:8080<br />
 OWASP ZAP: http://your_system_ip_address:8090</p>
 
-<h4 id="connect-zap-with-archerysec">Connect ZAP with ArcherySec</h4>
+<h3 id="setup-cicd-policy-for-zap-scanner">Setup CI/CD Policy for ZAP Scanner</h3>
 
 <ul>
   <li>Open ArcherySec portal.</li>
-  <li>Go to settings page http://your_system_ip_address:8000/webscanners/setting/.</li>
-  <li>Edit ZAP Settings.</li>
-  <li>Provide ZAP API Host &amp; ZAP API Port</li>
+  <li>Go to settings page http://your_system_ip_address:8000</li>
+  <li>Username: <code class="language-plaintext highlighter-rouge">admin@user.com</code></li>
+  <li>Password: <code class="language-plaintext highlighter-rouge">admin@123A</code></li>
+  <li>Click on <code class="language-plaintext highlighter-rouge">Add Project</code></li>
+  <li>Go to <code class="language-plaintext highlighter-rouge">CI/CD</code> module</li>
+  <li>Copy Code and Place into jenkins pipeline</li>
+  <li>Replace the value of <code class="language-plaintext highlighter-rouge">--report_path=$(pwd)/archerysec-scans-report</code> with <code class="language-plaintext highlighter-rouge">--report_path=/tmp/archerysec-scans-report</code></li>
+  <li>Add Policy</li>
 </ul>
 
-<center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/zap_setting_archery.png" /></div></center>
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/archerysec-ci-cd.png" /></div></center>
 
 <p><br /></p>
 
-<p>Next thing we need to install archerysec-cli tool on jenkins server.</p>
+<center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/archerysec-ci-cd-policy.png" /></div></center>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pip <span class="nb">install </span>archerysec-cli
-Or 
-<span class="nv">$ </span>git clone https://github.com/archerysec/archerysec-cli.git
-<span class="nv">$ </span><span class="nb">cd </span>archerysec-cli
-<span class="nv">$ </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
-
-<span class="c"># Install jq tool</span>
-<span class="nb">sudo </span>apt-get <span class="nb">install </span>jq
-
-</code></pre></div></div>
-
-<p>We can create project using CLI commands:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-s</span> http://127.0.0.1:8000 <span class="nt">-u</span> admin <span class="nt">-p</span> admin <span class="nt">--createproject</span> <span class="se">\</span>
- <span class="nt">--project_name</span><span class="o">=</span>test_project <span class="nt">--project_disc</span><span class="o">=</span><span class="s2">"test project"</span> <span class="nt">--project_start</span><span class="o">=</span>2018-01-11 <span class="se">\</span>
-  <span class="nt">--project_end</span><span class="o">=</span>2018-01-11 <span class="nt">--project_owner</span><span class="o">=</span>anand
-</code></pre></div></div>
-<p>Output:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span><span class="s2">"message"</span>: <span class="s2">"Project Created"</span>, <span class="s2">"project_id"</span>: <span class="s2">"8b4303bc-2cd6-4212-8801-231e8b10be4d"</span><span class="o">}</span>
-</code></pre></div></div>
-
-<p>We can launch scan(s) using CLI:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-s</span> http://127.0.0.1:8000 <span class="nt">-u</span> admin <span class="nt">-p</span> admin <span class="se">\</span>
- <span class="nt">--zapscan</span> <span class="nt">--target_url</span><span class="o">=</span>http://demo.testfire.net <span class="se">\</span>
-  <span class="nt">--project_id</span><span class="o">=</span>8b4303bc-2cd6-4212-8801-231e8b10be4d
-</code></pre></div></div>
-<p>Output:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">{</span><span class="s2">"message"</span>: <span class="s2">"Scan Launched"</span>, <span class="s2">"scanid"</span>: <span class="s2">"23a9ea3f-088d-4155-9585-5eb1ae483ef8"</span><span class="o">}</span>
-</code></pre></div></div>
-
-<p>Get the scan status:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-s</span> http://127.0.0.1:8000 <span class="nt">-u</span> admin <span class="nt">-p</span> admin <span class="se">\</span>
- <span class="nt">--zapscanstatus</span> <span class="nt">--scan_id</span><span class="o">=</span>23a9ea3f-088d-4155-9585-5eb1ae483ef8
-</code></pre></div></div>
-<p>Output:</p>
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[{</span><span class="s2">"scan_url"</span>: <span class="s2">"http://demo.testfire.net"</span>, <span class="s2">"medium_vul"</span>: null, <span class="s2">"rescan_id"</span>: null, <span class="s2">"
-date_time"</span>: <span class="s2">"2019-02-27T04:43:40.254359Z"</span>, <span class="s2">"vul_status"</span>: 1, <span class="s2">"low_vul"</span>: null,
- <span class="s2">"rescan"</span>: <span class="s2">"No"</span>, <span class="s2">"vul_num"</span>: <span class="s2">""</span>, <span class="s2">"scan_scanid"</span>: <span class="s2">"23a9ea3f-088d-4155-9585-5eb1ae483ef8"</span>,
-  <span class="s2">"total_dup"</span>: null, <span class="s2">"project_id"</span>: <span class="s2">"8b4303bc-2cd6-4212-8801-231e8b10be4d"</span>, 
-  <span class="s2">"high_vul"</span>: null, <span class="s2">"total_vul"</span>: null<span class="o">}]</span>
-</code></pre></div></div>
-<p>Get the scan results:</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-s</span> http://127.0.0.1:8000 <span class="nt">-u</span> admin <span class="nt">-p</span> admin <span class="nt">--zapscanresult</span> <span class="se">\</span>
-  <span class="nt">--scan_id</span><span class="o">=</span>049b8207-f092-4f6f-b375-92ed541dc662
-</code></pre></div></div>
-
-<p>Let’s automate these steps using bash and python scripts.</p>
-<ul>
-  <li>Install archerysec-cli</li>
-  <li>Create Project and get the Project ID</li>
-  <li>Launch ZAP Scan and retrieve scan ID</li>
-  <li>Check the scan status.</li>
-  <li>Grab the vulnerability statistics.</li>
-</ul>
-
-<p>archerysec_script.py</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">pyArchery</span> <span class="kn">import</span> <span class="n">api</span>
-<span class="kn">from</span> <span class="nn">optparse</span> <span class="kn">import</span> <span class="n">OptionParser</span><span class="p">,</span> <span class="n">OptionGroup</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">time</span>
-
-<span class="n">parser</span> <span class="o">=</span> <span class="n">OptionParser</span><span class="p">()</span>
-
-<span class="n">group</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span>
-                   <span class="s">""</span><span class="p">)</span>
-<span class="n">parser</span><span class="p">.</span><span class="n">add_option_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-<span class="n">group</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="s">"Archery Scan status"</span><span class="p">,</span>
-                   <span class="s">"Upload multiple scanners reports"</span>
-                   <span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scanner"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Input input scanner name i.e zap_scan, arachni_scan"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scan_id"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Input Scan Id"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--username"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Username"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--password"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Password"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--host"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Host"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-r"</span><span class="p">,</span> <span class="s">"--high"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Numbers of issue"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-m"</span><span class="p">,</span> <span class="s">"--medium"</span><span class="p">,</span>
-                <span class="n">help</span><span class="o">=</span><span class="s">"Numbers of issue"</span><span class="p">,</span>
-                <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">archery_host</span><span class="p">():</span>
-   <span class="c1"># Setup archery connection
-</span>   <span class="n">archery</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">ArcheryAPI</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">host</span><span class="p">)</span>
-   <span class="k">return</span> <span class="n">archery</span>
-
-<span class="k">def</span> <span class="nf">archery_auth</span><span class="p">():</span>
-   <span class="c1"># Set Archery url
-</span>   <span class="n">archery</span> <span class="o">=</span> <span class="n">archery_host</span><span class="p">()</span>
-
-   <span class="c1"># Provide Archery Credentials for authentication.
-</span>   <span class="n">authenticate</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">archery_auth</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">username</span><span class="p">,</span> <span class="n">args</span><span class="p">.</span><span class="n">password</span><span class="p">)</span>
-
-   <span class="c1"># Collect Token after authentication
-</span>   <span class="n">token</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">.</span><span class="n">data</span>
-   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">token</span><span class="p">.</span><span class="n">viewitems</span><span class="p">():</span>
-       <span class="n">token</span> <span class="o">=</span> <span class="n">value</span>
-   <span class="k">return</span> <span class="n">token</span>
-
-<span class="c1"># Get the scan result
-</span><span class="k">if</span> <span class="n">args</span><span class="p">.</span><span class="n">scanner</span> <span class="o">==</span> <span class="s">'zap_scan'</span><span class="p">:</span>
-   <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-   <span class="n">archery</span> <span class="o">=</span> <span class="n">archery_host</span><span class="p">()</span>
-   <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
-       <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-       <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
-   <span class="p">)</span>
-   <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
-   <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
-       <span class="n">scan_status</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'vul_status'</span><span class="p">]</span>
-       <span class="k">print</span> <span class="n">scan_status</span>
-       <span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">scan_status</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
-           <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
-               <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-               <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
-           <span class="p">)</span>
-           <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
-           <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-           <span class="k">try</span><span class="p">:</span>
-               <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
-                   <span class="n">scan_status</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'vul_status'</span><span class="p">]</span>
-           <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-               <span class="n">scan_status</span> <span class="o">=</span> <span class="mi">100</span>
-           <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-           <span class="k">print</span> <span class="s">"Scan Status"</span><span class="p">,</span> <span class="n">scan_status</span>
-       <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-      
-       <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
-           <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-           <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
-       <span class="p">)</span>
-       <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
-       <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-       <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
-           <span class="n">total_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'total_vul'</span><span class="p">]</span>
-           <span class="n">high_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'high_vul'</span><span class="p">]</span>
-           <span class="n">medium_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'medium_vul'</span><span class="p">]</span>
-           <span class="n">low_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'low_vul'</span><span class="p">]</span>
-       <span class="k">print</span> <span class="s">"Total Vul"</span><span class="p">,</span> <span class="n">total_vul</span>
-       <span class="k">print</span> <span class="s">"Total High"</span><span class="p">,</span> <span class="n">high_vul</span>
-       <span class="k">print</span> <span class="s">"Total Medium"</span><span class="p">,</span> <span class="n">medium_vul</span>
-       <span class="k">print</span> <span class="s">"Total Low"</span><span class="p">,</span> <span class="n">low_vul</span>
-       <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">high_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">high</span><span class="p">):</span>
-           <span class="n">fail</span> <span class="o">=</span> <span class="s">"FAILURE"</span>
-           <span class="k">print</span> <span class="s">"Coz total high Vulnerability"</span><span class="p">,</span> <span class="n">high_vul</span>
-       <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">medium_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">medium</span><span class="p">):</span>
-           <span class="n">fail</span> <span class="o">=</span> <span class="s">"FAILURE"</span>
-           <span class="k">print</span> <span class="s">"Coz total Medium Vulnerability"</span><span class="p">,</span> <span class="n">medium_vul</span>
-       <span class="k">else</span><span class="p">:</span>
-           <span class="n">fail</span> <span class="o">=</span> <span class="s">"SUCCESS"</span>
-           <span class="k">print</span> <span class="s">"Test Passed"</span>
-
-       <span class="k">print</span> <span class="n">fail</span>
-
-</code></pre></div></div>
-
-<p>zapscan.sh</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#</span>
-pip <span class="nb">install </span>archerysec-cli
-
-<span class="nv">DATE</span><span class="o">=</span><span class="sb">`</span><span class="nb">date</span> +%Y-%m-%d<span class="sb">`</span>
-<span class="nv">TARGET_URL</span><span class="o">=</span>http://demo.testfire.net
-<span class="nv">ARCHERY_USER</span><span class="o">=</span>admin
-<span class="nv">ARCHERY_PASS</span><span class="o">=</span>admin
-
-<span class="nb">export </span><span class="nv">PROJECT_ID</span><span class="o">=</span><span class="sb">`</span>archerysec-cli <span class="nt">-s</span> <span class="k">${</span><span class="nv">ARCHERY_HOST</span><span class="k">}</span> <span class="nt">-u</span> <span class="k">${</span><span class="nv">ARCHERY_USER</span><span class="k">}</span> <span class="nt">-p</span> <span class="k">${</span><span class="nv">ARCHERY_PASS</span><span class="k">}</span> <span class="nt">--createproject</span> <span class="nt">--project_name</span><span class="o">=</span>DevSecOps <span class="nt">--project_disc</span><span class="o">=</span>PROJECT_DISC <span class="nt">--project_start</span><span class="o">=</span><span class="k">${</span><span class="nv">DATE</span><span class="k">}</span>  <span class="nt">--project_end</span><span class="o">=</span><span class="k">${</span><span class="nv">DATE</span><span class="k">}</span> <span class="nt">--project_owner</span><span class="o">=</span>test_project | <span class="nb">tail</span> <span class="nt">-n1</span> | jq <span class="s1">'.project_id'</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/^"//'</span> <span class="nt">-e</span> <span class="s1">'s/"$//'</span><span class="sb">`</span>
-<span class="nb">export </span><span class="nv">SCAN_ID</span><span class="o">=</span><span class="sb">`</span>archerysec-cli <span class="nt">-s</span> <span class="k">${</span><span class="nv">ARCHERY_HOST</span><span class="k">}</span> <span class="nt">-u</span> <span class="k">${</span><span class="nv">ARCHERY_USER</span><span class="k">}</span> <span class="nt">-p</span> <span class="k">${</span><span class="nv">ARCHERY_PASS</span><span class="k">}</span> <span class="nt">--zapscan</span> <span class="nt">--target_url</span><span class="o">=</span><span class="s1">''</span><span class="k">${</span><span class="nv">TARGET_URL</span><span class="k">}</span><span class="s1">''</span> <span class="nt">--project_id</span><span class="o">=</span><span class="s1">''</span><span class="nv">$PROJECT_ID</span><span class="s1">''</span> | <span class="nb">tail</span> <span class="nt">-n1</span> | jq <span class="s1">'.scanid'</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/^"//'</span> <span class="nt">-e</span> <span class="s1">'s/"$//'</span><span class="sb">`</span>
-<span class="nb">echo</span> <span class="s2">"scan id......"</span> <span class="nv">$SCAN_ID</span>
-python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><span class="o">=</span>zap_scan <span class="nt">--scan_id</span><span class="o">=</span><span class="nv">$SCAN_ID</span> <span class="nt">--username</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_USER</span><span class="k">}</span> <span class="nt">--password</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_PASS</span><span class="k">}</span> <span class="nt">--host</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_HOST</span><span class="k">}</span> <span class="nt">--high</span><span class="o">=</span>10 <span class="nt">--medium</span><span class="o">=</span>15
-<span class="nb">export </span><span class="nv">job_status</span><span class="o">=</span><span class="sb">`</span>python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><span class="o">=</span>zap_scan <span class="nt">--scan_id</span><span class="o">=</span><span class="nv">$SCAN_ID</span> <span class="nt">--username</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_USER</span><span class="k">}</span> <span class="nt">--password</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_PASS</span><span class="k">}</span> <span class="nt">--host</span><span class="o">=</span><span class="k">${</span><span class="nv">ARCHERY_HOST</span><span class="k">}</span> <span class="nt">--high</span><span class="o">=</span>10 <span class="nt">--medium</span><span class="o">=</span>15<span class="sb">`</span><span class="o">]</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$job_status</span><span class="s2">"</span> <span class="o">]</span>
-<span class="k">then
-   </span><span class="nb">echo</span> <span class="s2">"Build Sucess"</span>
-<span class="k">else
- </span><span class="nb">echo</span> <span class="s2">"BUILD FAILURE: Other build is unsuccessful or status could not be obtained."</span>
- <span class="nb">exit </span>100
-<span class="k">fi</span>
-</code></pre></div></div>
+<p><br /></p>
 
 <p>Now run all these script on Jenkins CI pipeline.</p>
 
@@ -537,8 +344,9 @@ python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><spa
               <span class="n">agent</span> <span class="n">any</span>
               <span class="n">steps</span> <span class="o">{</span>
                 <span class="n">sh</span> <span class="s1">'''
-                 export ARCHERY_HOST=http://your_system_ip_address:8000
-                     bash /var/jenkins_home/zapscan.sh
+                 pip install archerysec-cli --force  
+                 mkdir /tmp/archerysec-scans-report
+archerysec-cli -h http://192.168.1.6:8000 -t SWmasE5lx2BN1-jztwBMZhWcugCEPmQPVr7yFovZhEUs66Jz2oJAvLGMOZRTQ_9s --cicd_id=143647e0-379f-4094-9f7b-aa09db1f5e8e --project=25a7547a-aef6-4d63-a994-69ea52e79928 --zap-base-line-scan --report_path=/tmp/archerysec-scans-report
                   '''</span>
               <span class="o">}</span>
             <span class="o">}</span>
@@ -547,10 +355,6 @@ python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><spa
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>
-
-<ul>
-  <li>Replace ARCHERY_HOST value with your system IP address.</li>
-</ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/pipeline_content.png" /></div></center>
 
@@ -565,7 +369,7 @@ python /var/jenkins_home/archery_script.py <span class="nt">--scanner</span><spa
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/jenkins_ruuning_zap.png" /></div></center>
 <p><br /></p>
 
-<p>Now open ArcherySec and go to Dynamic Scans &gt; ZAP Scans. Notice that the scan are running and given the running status % of scan.</p>
+<p>Now open ArcherySec and go to Scans &gt; Dynamic Scans. Notice that the scan are running and given the running status % of scan.</p>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/blog_archery_running.png" /></div></center>
 
@@ -577,6 +381,10 @@ You can use a wide variety of other configurations to make your collection more 
 <h4 id="conclusion">Conclusion</h4>
 
 <p>Following the steps above, you will be able to set up a continuous integration process that includes ArcherySec automated Dynamic OWASP ZAP tests for the application under scan. Each commit will trigger an automated test run. Once the test run has finished, you’ll able to manage vulnerabilities using ArcherySec Tool.</p>
+
+<h4 id="get-in-touch">Get in Touch</h4>
+
+<p>Send us email at <a href="info@archerysec.com">info@archerysec.com</a></p>
 
 <h4 id="learn-more">Learn More</h4>
 
@@ -593,7 +401,7 @@ You can use a wide variety of other configurations to make your collection more 
             <!-- Post Date -->
             <p>
             <small>
-                <span class="post-date"><time class="post-date" datetime="2019-05-10">10 May 2019</time></span>           
+                <span class="post-date"><time class="post-date" datetime="2022-01-29">29 Jan 2022</time></span>           
                 
                 </small>
             </p>
@@ -614,10 +422,8 @@ You can use a wide variety of other configurations to make your collection more 
             <!-- Prev/Next -->
             <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
             
-            <a class="prev d-block col-md-6" href="http://localhost:4000/HITB-Armory-Tools-Showcase/"> &laquo; HITB Armory – Tools Showcase 2018</a>
+            <a class="prev d-block col-md-6" href="http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/"> &laquo; Deploy ArcherySec as a Serverless on AWS using Zappa</a>
             
-            
-            <a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/Deploy-ArcherySec-as-a-Serverless-on-AWS-using-Zappa/">Deploy ArcherySec as a Serverless on AWS using Zappa &raquo; </a>
             
             <div class="clearfix"></div>
             </div>

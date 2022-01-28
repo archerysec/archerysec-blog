@@ -5,9 +5,9 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 14 Dec 2019 20:42:58 +0530</pubDate>
-    <lastBuildDate>Sat, 14 Dec 2019 20:42:58 +0530</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
+    <pubDate>Fri, 28 Jan 2022 15:44:57 +0530</pubDate>
+    <lastBuildDate>Fri, 28 Jan 2022 15:44:57 +0530</lastBuildDate>
+    <generator>Jekyll v4.2.1</generator>
     
       <item>
         <title>Deploy ArcherySec as a Serverless on AWS using Zappa</title>
@@ -63,11 +63,11 @@
   &lt;li&gt;Create a folder called aws at the root level.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 mkdir .aws
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 ###~/.aws/credentials
 
 [default]
@@ -105,7 +105,7 @@ aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
   &lt;li&gt;Copy and paste the below code.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 {
   &quot;Version&quot;: &quot;2012-10-17&quot;,
   &quot;Statement&quot;: [
@@ -136,20 +136,20 @@ aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 &lt;p&gt;Clone ArcherySec project folder in our local system.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/archerysec.git
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/archerysec.git
 $ cd archerysec
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;Install ArcherySec required library&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 $ pip install -r requirements-zappa.txt
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After installing Zappa, let’s configure Zappa&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ zappa init
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ zappa init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;which will ask us for the following:&lt;/p&gt;
@@ -157,7 +157,7 @@ $ pip install -r requirements-zappa.txt
 &lt;ul&gt;
   &lt;li&gt;Name of environment - default ‘dev’&lt;/li&gt;
   &lt;li&gt;S3 bucket for deployments. If the bucket does not exist, zappa will create it for us. Zappa uses this bucket to hold the zappa package temporarily while it is being transferred to AWS lambda, which is then deleted after deployment.&lt;/li&gt;
-  &lt;li&gt;Project’s settings provide as &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity.settings.base&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Project’s settings provide as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archerysecurity.settings.base&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Some additional parameter required by Zappa configuration file.&lt;/p&gt;
@@ -171,7 +171,7 @@ $ pip install -r requirements-zappa.txt
 
 &lt;p&gt;Zappa configuration file&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 {
     &quot;dev&quot;: {
 	&quot;aws_region&quot;: &quot;us-east-1&quot;,
@@ -190,7 +190,7 @@ $ pip install -r requirements-zappa.txt
 
 &lt;p&gt;Now let us deploy the app&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ zappa deploy dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ zappa deploy dev&lt;/code&gt;&lt;/p&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/after_deploy.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
 
@@ -199,9 +199,9 @@ $ pip install -r requirements-zappa.txt
 &lt;p&gt;Now you need to add your AWS API Gateway host as allowed host in application settings file and disable debugging by marking it as False.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Edit settings file:  &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Edit settings file:  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;DEBUG = False&lt;/li&gt;
-  &lt;li&gt;Replace * with your host in Allowed host &lt;code class=&quot;highlighter-rouge&quot;&gt;ALLOWED_HOSTS = ['your_api_gateway_host']&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Replace * with your host in Allowed host &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ALLOWED_HOSTS = [&apos;your_api_gateway_host&apos;]&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/debug.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
@@ -209,23 +209,23 @@ $ pip install -r requirements-zappa.txt
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Add below lines in setting file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py &lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Add below lines in setting file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archerysecurity/settings/base.py &lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 FORCE_SCRIPT_NAME = &quot;/dev/&quot;
 
-LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
+LOGIN_URL = FORCE_SCRIPT_NAME + &apos;login/&apos;
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Update code by running command &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Update code by running command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Awsome!! we have successfully deployed ArcherySec tool on AWS Lambda function.&lt;/p&gt;
 
-&lt;p&gt;Application can be accessible on API Gateway URL: &lt;code class=&quot;highlighter-rouge&quot;&gt;https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Application can be accessible on API Gateway URL: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/&lt;/code&gt;&lt;/p&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/application_accessible.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
 
@@ -260,17 +260,17 @@ LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
   &lt;li&gt;Install django-s3-storage&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ pip install django-s3-storage&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ pip install django-s3-storage&lt;/code&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;and also add it in the &lt;code class=&quot;highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file.&lt;/li&gt;
-  &lt;li&gt;Now update the &lt;i&gt;settings.py&lt;/i&gt; file to add &lt;i&gt;django_s3_storage&lt;/i&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;INSTALLED_APPS&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;and also add it in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requirements.txt&lt;/code&gt; file.&lt;/li&gt;
+  &lt;li&gt;Now update the &lt;i&gt;settings.py&lt;/i&gt; file to add &lt;i&gt;django_s3_storage&lt;/i&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INSTALLED_APPS&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 INSTALLED_APPS = (
           ...,
-          'django_s3_storage',
+          &apos;django_s3_storage&apos;,
      )
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
@@ -278,7 +278,7 @@ INSTALLED_APPS = (
   &lt;li&gt;and also add these lines at the bottom&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 S3_BUCKET = &quot;itestzappa-test&quot;
 
 STATICFILES_STORAGE = &quot;django_s3_storage.storage.StaticS3Storage&quot;
@@ -293,7 +293,7 @@ STATIC_URL = &quot;https://%s.s3.amazonaws.com/&quot; % S3_BUCKET
   &lt;li&gt;Now load the static files using below command&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 $ python manage.py collectstatic --noinput
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -304,7 +304,7 @@ $ python manage.py collectstatic --noinput
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;p&gt;Once the static files are uploaded on s3 bucket you can update using Zappa command. &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the static files are uploaded on s3 bucket you can update using Zappa command. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;and after updating zappa, let us check by refreshing the page.&lt;/p&gt;
 
@@ -347,18 +347,18 @@ $ python manage.py collectstatic --noinput
 
 &lt;ul&gt;
   &lt;li&gt;Add database details in ArcherySec settings file once database has been created.&lt;/li&gt;
-  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'archerysecdbname',
-        'USER': 'administrator',
-        'PASSWORD': 'this_is_not_a_good_password',
-        'HOST': 'archerysec-db.cr3erer3sjdlk.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+    &apos;default&apos;: {
+        &apos;ENGINE&apos;: &apos;django.db.backends.postgresql_psycopg2&apos;,
+        &apos;NAME&apos;: &apos;archerysecdbname&apos;,
+        &apos;USER&apos;: &apos;administrator&apos;,
+        &apos;PASSWORD&apos;: &apos;this_is_not_a_good_password&apos;,
+        &apos;HOST&apos;: &apos;archerysec-db.cr3erer3sjdlk.us-east-1.rds.amazonaws.com&apos;,
+        &apos;PORT&apos;: &apos;5432&apos;,
     }
 
 }
@@ -368,7 +368,7 @@ DATABASES = {
 
 &lt;p&gt;Now we add the VPC configuration to our Zappa settings file so that the lambda functions can connect to the database.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
     &quot;dev&quot;: {
         &quot;django_settings&quot;: &quot;archerysecurity.settings.base&quot;,
         &quot;s3_bucket&quot;: &quot;archerysectest-code&quot;,
@@ -389,7 +389,7 @@ DATABASES = {
 zappa update dev
 `&lt;/p&gt;
 
-&lt;p&gt;Invoke the zappa manage command: &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa manage dev migrate&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Invoke the zappa manage command: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zappa manage dev migrate&lt;/code&gt;&lt;/p&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/migrate.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
 
@@ -397,7 +397,7 @@ zappa update dev
 
 &lt;ul&gt;
   &lt;li&gt;after updating zappa, let us check by refreshing the page.&lt;/li&gt;
-  &lt;li&gt;Create new user using Signup form &lt;code class=&quot;highlighter-rouge&quot;&gt;https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Create new user using Signup form &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/signup.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
@@ -417,8 +417,8 @@ zappa update dev
 &lt;p&gt;Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;webscanners/web_views.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Search def signup function and comment &lt;code class=&quot;highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;webscanners/web_views.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search def signup function and comment &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/web_views.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
@@ -426,8 +426,8 @@ zappa update dev
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archeryapi/views.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Search def class CreateUsers and comment &lt;code class=&quot;highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archeryapi/views.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search def class CreateUsers and comment &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@public&lt;/code&gt; decorator&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/createuser_api.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
@@ -435,9 +435,9 @@ zappa update dev
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Edit file &lt;code class=&quot;highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Search &lt;code class=&quot;highlighter-rouge&quot;&gt;STRONGHOLD_PUBLIC_URLS&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Comment &lt;code class=&quot;highlighter-rouge&quot;&gt;r'^/api/createuser/$',&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Edit file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;archerysecurity/settings/base.py&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Search &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;STRONGHOLD_PUBLIC_URLS&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Comment &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;r&apos;^/api/createuser/$&apos;,&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/archeryblog/lambda/comment_api_create_user.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
@@ -445,10 +445,10 @@ zappa update dev
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Update code by running command &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Update code by running command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zappa update dev&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using &lt;code class=&quot;highlighter-rouge&quot;&gt;zappa tail&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zappa tail&lt;/code&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;references&quot;&gt;References&lt;/h4&gt;
 
@@ -492,7 +492,7 @@ zappa update dev
 &lt;/ul&gt;
 
 &lt;p&gt;Steps to configure Lab Environment.&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/jenkins_blog.git
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/jenkins_blog.git
 $ cd jenkins_blog
 $ run docker-compose up --build
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -501,7 +501,7 @@ $ run docker-compose up --build
 
 &lt;p&gt;docker-compose.yml&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &lt;span class=&quot;s1&quot;&gt;'3.6'&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;version: &lt;span class=&quot;s1&quot;&gt;&apos;3.6&apos;&lt;/span&gt;
 
 services:
   jenkins:
@@ -648,36 +648,36 @@ date_time&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;2019-02-27T
 
 &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionGroup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option_group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option_group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OptionGroup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Archery Scan status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                    &lt;span class=&quot;s&quot;&gt;&quot;Upload multiple scanners reports&quot;&lt;/span&gt;
                    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--scanner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--scanner&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input input scanner name i.e zap_scan, arachni_scan&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--scan_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--scan_id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input Scan Id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input ArcherySec Username&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input ArcherySec Password&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--host&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;--host&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Input ArcherySec Host&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;--high&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-r&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;--high&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Numbers of issue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;--medium&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;add_option&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-m&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;--medium&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;help&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Numbers of issue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;n&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;store&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;archery_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
    &lt;span class=&quot;c1&quot;&gt;# Setup archery connection
-&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArcheryAPI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;api&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ArcheryAPI&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;
 
 &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
@@ -685,62 +685,62 @@ date_time&quot;&lt;/span&gt;: &lt;span class=&quot;s2&quot;&gt;&quot;2019-02-27T
 &lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
    &lt;span class=&quot;c1&quot;&gt;# Provide Archery Credentials for authentication.
-&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;authenticate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;authenticate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
    &lt;span class=&quot;c1&quot;&gt;# Collect Token after authentication
-&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authenticate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewitems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;authenticate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data&lt;/span&gt;
+   &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;viewitems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
        &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;
 
 &lt;span class=&quot;c1&quot;&gt;# Get the scan result
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scanner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'zap_scan'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scanner&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;zap_scan&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
    &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
        &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+   &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'vul_status'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;vul_status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
                &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
-               &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+               &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
            &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
            &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                   &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'vul_status'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                   &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;vul_status&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
            &lt;span class=&quot;k&quot;&gt;except&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
                &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Scan Status&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;scan_status&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sleep&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
       
-       &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;archery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zap_scan_status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
            &lt;span class=&quot;n&quot;&gt;auth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;archery_auth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scan_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-       &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;web_scan_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;loads&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j_result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;total_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'total_vul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'high_vul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'medium_vul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-           &lt;span class=&quot;n&quot;&gt;low_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'low_vul'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;total_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;total_vul&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;high_vul&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;medium_vul&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+           &lt;span class=&quot;n&quot;&gt;low_vul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&apos;low_vul&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total Vul&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;total_vul&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total High&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total Medium&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Total Low&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low_vul&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
            &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;FAILURE&quot;&lt;/span&gt;
            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Coz total high Vulnerability&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;high_vul&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+       &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;medium&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
            &lt;span class=&quot;n&quot;&gt;fail&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;FAILURE&quot;&lt;/span&gt;
            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Coz total Medium Vulnerability&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;medium_vul&lt;/span&gt;
        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -761,8 +761,8 @@ pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;archerysec-cli
 &lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;admin
 &lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;admin
 
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--createproject&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;DevSecOps &lt;span class=&quot;nt&quot;&gt;--project_disc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;PROJECT_DISC &lt;span class=&quot;nt&quot;&gt;--project_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;--project_end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_owner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;test_project | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n1&lt;/span&gt; | jq &lt;span class=&quot;s1&quot;&gt;'.project_id'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/^&quot;//'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/&quot;$//'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SCAN_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--zapscan&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--target_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TARGET_URL&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PROJECT_ID&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n1&lt;/span&gt; | jq &lt;span class=&quot;s1&quot;&gt;'.scanid'&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/^&quot;//'&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/&quot;$//'&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PROJECT_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--createproject&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;DevSecOps &lt;span class=&quot;nt&quot;&gt;--project_disc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;PROJECT_DISC &lt;span class=&quot;nt&quot;&gt;--project_start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;nt&quot;&gt;--project_end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DATE&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_owner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;test_project | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n1&lt;/span&gt; | jq &lt;span class=&quot;s1&quot;&gt;&apos;.project_id&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/^&quot;//&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/&quot;$//&apos;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;SCAN_ID&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--zapscan&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--target_url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TARGET_URL&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PROJECT_ID&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n1&lt;/span&gt; | jq &lt;span class=&quot;s1&quot;&gt;&apos;.scanid&apos;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/^&quot;//&apos;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;s/&quot;$//&apos;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;scan id......&quot;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SCAN_ID&lt;/span&gt;
 python /var/jenkins_home/archery_script.py &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zap_scan &lt;span class=&quot;nt&quot;&gt;--scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCAN_ID&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10 &lt;span class=&quot;nt&quot;&gt;--medium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;15
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;job_status&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;python /var/jenkins_home/archery_script.py &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zap_scan &lt;span class=&quot;nt&quot;&gt;--scan_id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$SCAN_ID&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--username&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_USER&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_PASS&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ARCHERY_HOST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;10 &lt;span class=&quot;nt&quot;&gt;--medium&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;15&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
@@ -788,15 +788,15 @@ python /var/jenkins_home/archery_script.py &lt;span class=&quot;nt&quot;&gt;--sc
 &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;agent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt;
   &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'DAST'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;DAST&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
           &lt;span class=&quot;n&quot;&gt;parallel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'OWASP ZAP'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&apos;OWASP ZAP&apos;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
               &lt;span class=&quot;n&quot;&gt;agent&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;any&lt;/span&gt;
               &lt;span class=&quot;n&quot;&gt;steps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'''
+                &lt;span class=&quot;n&quot;&gt;sh&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&apos;&apos;&apos;
                  export ARCHERY_HOST=http://your_system_ip_address:8000
                      bash /var/jenkins_home/zapscan.sh
-                  '''&lt;/span&gt;
+                  &apos;&apos;&apos;&lt;/span&gt;
               &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
             &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
           &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
@@ -900,11 +900,11 @@ We’re happy to announce the first release of archerysec-cli (Command Line Inte
 
 &lt;p&gt;To install the latest release from PyPI, you can run the following command:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install archerysec-cli
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip install archerysec-cli
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;p&gt;To install the latest development version of Archerysec CLI, you can run the following:&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/archerysec-cli.git
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git clone https://github.com/archerysec/archerysec-cli.git
 $ cd archerysec-cli
 $ pip install -r requirements.txt
 
@@ -912,109 +912,186 @@ $ pip install -r requirements.txt
 &lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
 
 &lt;p&gt;To use Archery CLI, you need to set the port Archery runs on (defaults to 8000) and the path to the folder in which Archery is installed. 
-You can Use Archery installation instruction from &lt;a href=&quot;https://docs.archerysec.com/getting-started/Docker-install/&quot;&gt;Archery DOC&lt;/a&gt;&lt;/p&gt;
+You can Use Archery installation instruction from &lt;a href=&quot;https://docs.archerysec.com/#quick-start&quot;&gt;Archery DOC&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Archery CLI can then be used with the following commands:&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(env) Anand:archerysec-cli anand$ archerysec-cli
 
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ~/archerysec $ archerysec-cli --help
+                   
+                   _                      _____
+     /\            | |                    / ____|
+    /  \   _ __ ___| |__   ___ _ __ _   _| (___   ___  ___
+   / /\ \ | &apos;__/ __| &apos;_ \ / _ \ &apos;__| | | |\___ \ / _ \/ __|
+  / ____ \| | | (__| | | |  __/ |  | |_| |____) |  __/ (__
+ /_/    \_\_|  \___|_| |_|\___|_|   \__, |_____/ \___|\___|
+                                     __/ |
+                                    |___/
 
-                   _
-    /\            | |
-   /  \   _ __ ___| |__   ___ _ __ _   _
-  / /\ \ | '__/ __| '_ \ / _ \ '__| | | |
- / ____ \| | | (__| | | |  __/ |  | |_| |
-/_/    \_\_|  \___|_| |_|\___|_|   \__, |
-                                    __/ |
-                                   |___/
- Copyright (C) 2018 ArcherySec
- Open Source Vulnerability Assessment and Management.
+ Copyright (C) 2021 ArcherySec CLI v2.0.1
 
-
-Usage: archerysec-cli [options]
+Usage: cli.py [OPTIONS]
 
 Options:
-  -h, --help            show this help message and exit
+  -h, --host TEXT        Provide ArcherySec End Point Address.
+  -t, --token TEXT       Provide Auth token from ArcherySec.
+  -p, --path TEXT        Report File input
+  --file-type TEXT       File type
+  --target TEXT          target name or url
+  -s, --scanner TEXT     Select scanners ( zap_scan, burp_scan, arachni,
+                         acunetix, netsparker, webinspect,
+                         banditscan,dependencycheck,findbugs, checkmarx,
+                         clair, trivy, gitlabsca, gitlabsast,
+                         gitlabcontainerscan, npmaudit, nodejsscan,
+                         semgrepscan, tfsec, whitesource, inspec, dockle,
+                         nessus, openvas, nikto, twistlock, brakeman, )
 
-  Archery Authentication:
-    Authenticate into Archery REST API
-
-    -s SERVER, --server=SERVER
-                        Archery API server host address
-    -u USERNAME, --username=USERNAME
-                        Archery authentication username
-    -p PASSWORD, --password=PASSWORD
-                        Archery authentication password
-    --target_url=TARGET_URL
-                        Target URL's
-    --scan_id=SCAN_ID   Target URL's
-    --target_ip=TARGET_IP
-                        Target IP's
-    --project_id=PROJECT_ID
-                        Project ID
-
-  Get the Archery REST API token:
-    -t, --token         Print archery REST API Auth token
-
-  Archery Projects:
-    Perform action on Projects modules
-
-    --projectlist       Print project list
-    --createproject     Create new project with project name
-    --project_name=PROJECT_NAME
-                        Project Name
-    --project_disc=PROJECT_DISC
-                        Project Description
-    --project_start=PROJECT_START
-                        Project start date Ex. 2018-01-11
-    --project_end=PROJECT_END
-                        Project End date Ex. 2018-01-11
-    --project_owner=PROJECT_OWNER
-                        Project Owner name
-
-  ZAP Scans:
-    ZAP Scans module to perform ZAP Scans
-
-    --zapscanlist       List all ZAP Scans
-    --zapscan           Launch ZAP Scan
-    --zapscanresult     Get ZAP Scan result (Ex. python archery_cli.py -s
-                        http://127.0.0.1:8000 -u admin -p admin@123A
-                        --zapscanresult --scan_id=4ea6852b-
-                        bbf2-4171-9e98-4d798731e87a)
-
-  OpenVAS Scanner:
-    OpenVAS Scans module to perform OpenVAS Scan
-
-    --openvaslist       List all OpenVAS Scans
-    --openvasscan       Launch OpenVAS Scans
-    --openvas_result    Get OpenVAS Scan result (Ex. python archery_cli.py -s
-                        http://127.0.0.1:8000 -u admin -p admin@123A
-                        --openvas_result --scan_id=4ea6852b-
-                        bbf2-4171-9e98-4d798731e87a)
-
-  Upload Scanner Reports:
-    Upload multiple scanners reports
-
-    --upload            Upload scans report
-    --file=FILE         Input JSON or XML file
-    --TARGET=TARGET     Scan URL or IP
-    --scanner=SCANNER   Select scanners [ zap_scan, burp_scan, arachni,
-                        netsparker, webinspect, banditscan]
-
-Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123A -t
+  -th, --threshold TEXT  threshold type (ex. fail, pass)
+  --project TEXT         Project ID
+  --cicd_id TEXT         CICD Policies ID
+  --upload               Upload Report
+  --project-create       Create New Project
+  --bandit               Run Bandit Scan
+  --dependency-check     Run dependency-check Scan
+  --project-name TEXT    Create New Project
+  --project-disc TEXT    Create New Project
+  --code_path TEXT       Path of the source code
+  --report_path TEXT     Path of the Report
+  --help                 Show this message and exit.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Create Project:&lt;/p&gt;
+&lt;h3 id=&quot;create-project&quot;&gt;Create Project:&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \
-    --createproject --project_name=test_project --project_disc=&quot;test project&quot; \
-    --project_start=2018-01-11 --project_end=2018-01-11 --project_owner=anand
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;--createproject&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test_project&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--project_disc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;test project&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Launch ZAP Scan:&lt;/p&gt;
+&lt;h3 id=&quot;upload-zap-scan&quot;&gt;Upload ZAP Scan:&lt;/h3&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \ 
-    --zapscan --target_url=http://demo.testfire.net \
-    --project_id=aa6730d4-d3c8-40ab-9ac1-27592afbdcb3
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/OWASP-ZAP-v2.7.0.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;zap_scan &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-burp-scan&quot;&gt;Upload Burp Scan:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/Burp_Report.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;burp_scan &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-arachni-scan&quot;&gt;Upload arachni Scan:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli  &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/Arachni_v1.3.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;arachni &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-acunetix-scan&quot;&gt;Upload acunetix Scan:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/Acunetix_report_sample.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;acunetix &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-netsparker-scan&quot;&gt;Upload netsparker Scan:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/Netsparker_report.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;netsparker &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-webinspect-scan&quot;&gt;Upload webinspect scan:&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/webinspect.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;webinspect &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-banditscan-scan&quot;&gt;Upload banditscan scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/banditscan.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;banditscan &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-dependencycheck-scan&quot;&gt;Upload dependencycheck scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/dependencycheck.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;dependencycheck &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-findbugs-scan&quot;&gt;Upload findbugs scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/findbugs.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;findbugs &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-checkmarx-scan&quot;&gt;Upload checkmarx scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/checkmarx.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;checkmarx &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-clair-scan&quot;&gt;Upload clair scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/clair.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;clair &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-trivy-scan&quot;&gt;Upload trivy scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/trivy.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;trivy &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-git-lab-sca-scan&quot;&gt;Upload Git Lab SCA scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/gitlabsca.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gitlabsca &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-git-lab-sast-scan&quot;&gt;Upload Git Lab SAST scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/gitlabsast.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gitlabsast &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-git-lab-container-scan&quot;&gt;Upload Git Lab Container scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/gitlabcontainerscan.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;gitlabcontainerscan &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-npmaudit-scan&quot;&gt;Upload npmaudit scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/npmaudit.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;npmaudit &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-nodejsscan-scan&quot;&gt;Upload nodejsscan scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/nodejsscan.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nodejsscan &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-netsparker-scan-1&quot;&gt;Upload netsparker scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/semgrepscan.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;netsparker &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-tfsec-scan&quot;&gt;Upload tfsec scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/tfsec.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;tfsec &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-whitesource-scan&quot;&gt;Upload whitesource scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/whitesource.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;whitesource &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-inspec-scan&quot;&gt;Upload inspec scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/inspec.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;inspec &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-dockle-scan&quot;&gt;Upload dockle scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/dockle.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;dockle &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-nessus-scan&quot;&gt;Upload nessus scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/nessus.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nessus &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-openvas-scan&quot;&gt;Upload openvas scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/openvas.xml &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;XML &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;openvas &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-twistlock-scan&quot;&gt;Upload twistlock scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/twistlock.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;twistlock &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;upload-brakeman-scan&quot;&gt;Upload brakeman scan&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;archerysec-cli &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt; http://127.0.0.1:8000 &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; /report/sample/brakeman.json &lt;span class=&quot;nt&quot;&gt;--file-type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;JSON &lt;span class=&quot;nt&quot;&gt;--target&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ASFLKSF &lt;span class=&quot;nt&quot;&gt;--scanner&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;brakeman &lt;span class=&quot;nt&quot;&gt;--project&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;eaf6f89e-56ee-4ef7-8257-07b7136c9e31 &lt;span class=&quot;nt&quot;&gt;--upload&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;learn-more&quot;&gt;Learn More&lt;/h2&gt;

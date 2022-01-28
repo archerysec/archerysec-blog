@@ -235,7 +235,7 @@
 </ul>
 
 <p>Steps to configure Lab Environment.</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/jenkins_blog.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/jenkins_blog.git
 $ cd jenkins_blog
 $ run docker-compose up --build
 </code></pre></div></div>
@@ -391,36 +391,36 @@ date_time"</span>: <span class="s2">"2019-02-27T04:43:40.254359Z"</span>, <span 
 
 <span class="n">group</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span>
                    <span class="s">""</span><span class="p">)</span>
-<span class="n">parser</span><span class="o">.</span><span class="n">add_option_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+<span class="n">parser</span><span class="p">.</span><span class="n">add_option_group</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 <span class="n">group</span> <span class="o">=</span> <span class="n">OptionGroup</span><span class="p">(</span><span class="n">parser</span><span class="p">,</span> <span class="s">"Archery Scan status"</span><span class="p">,</span>
                    <span class="s">"Upload multiple scanners reports"</span>
                    <span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scanner"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scanner"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Input input scanner name i.e zap_scan, arachni_scan"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scan_id"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--scan_id"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Input Scan Id"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--username"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--username"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Username"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--password"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--password"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Password"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--host"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"--host"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Input ArcherySec Host"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-r"</span><span class="p">,</span> <span class="s">"--high"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-r"</span><span class="p">,</span> <span class="s">"--high"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Numbers of issue"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="n">group</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-m"</span><span class="p">,</span> <span class="s">"--medium"</span><span class="p">,</span>
+<span class="n">group</span><span class="p">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">"-m"</span><span class="p">,</span> <span class="s">"--medium"</span><span class="p">,</span>
                 <span class="n">help</span><span class="o">=</span><span class="s">"Numbers of issue"</span><span class="p">,</span>
                 <span class="n">action</span><span class="o">=</span><span class="s">"store"</span><span class="p">)</span>
-<span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+<span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">parser</span><span class="p">.</span><span class="n">parse_args</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">archery_host</span><span class="p">():</span>
    <span class="c1"># Setup archery connection
-</span>   <span class="n">archery</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">ArcheryAPI</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">host</span><span class="p">)</span>
+</span>   <span class="n">archery</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="n">ArcheryAPI</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">host</span><span class="p">)</span>
    <span class="k">return</span> <span class="n">archery</span>
 
 <span class="k">def</span> <span class="nf">archery_auth</span><span class="p">():</span>
@@ -428,49 +428,49 @@ date_time"</span>: <span class="s2">"2019-02-27T04:43:40.254359Z"</span>, <span 
 </span>   <span class="n">archery</span> <span class="o">=</span> <span class="n">archery_host</span><span class="p">()</span>
 
    <span class="c1"># Provide Archery Credentials for authentication.
-</span>   <span class="n">authenticate</span> <span class="o">=</span> <span class="n">archery</span><span class="o">.</span><span class="n">archery_auth</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">password</span><span class="p">)</span>
+</span>   <span class="n">authenticate</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">archery_auth</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">username</span><span class="p">,</span> <span class="n">args</span><span class="p">.</span><span class="n">password</span><span class="p">)</span>
 
    <span class="c1"># Collect Token after authentication
-</span>   <span class="n">token</span> <span class="o">=</span> <span class="n">authenticate</span><span class="o">.</span><span class="n">data</span>
-   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">token</span><span class="o">.</span><span class="n">viewitems</span><span class="p">():</span>
+</span>   <span class="n">token</span> <span class="o">=</span> <span class="n">authenticate</span><span class="p">.</span><span class="n">data</span>
+   <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">token</span><span class="p">.</span><span class="n">viewitems</span><span class="p">():</span>
        <span class="n">token</span> <span class="o">=</span> <span class="n">value</span>
    <span class="k">return</span> <span class="n">token</span>
 
 <span class="c1"># Get the scan result
-</span><span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">scanner</span> <span class="o">==</span> <span class="s">'zap_scan'</span><span class="p">:</span>
-   <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span><span class="k">if</span> <span class="n">args</span><span class="p">.</span><span class="n">scanner</span> <span class="o">==</span> <span class="s">'zap_scan'</span><span class="p">:</span>
+   <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
    <span class="n">archery</span> <span class="o">=</span> <span class="n">archery_host</span><span class="p">()</span>
-   <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="o">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
+   <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
        <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-       <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">scan_id</span><span class="p">,</span>
+       <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
    <span class="p">)</span>
-   <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="o">.</span><span class="n">data_json</span><span class="p">()</span>
-   <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+   <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
+   <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
        <span class="n">scan_status</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'vul_status'</span><span class="p">]</span>
        <span class="k">print</span> <span class="n">scan_status</span>
        <span class="k">while</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">scan_status</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">):</span>
-           <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="o">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
+           <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
                <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-               <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">scan_id</span><span class="p">,</span>
+               <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
            <span class="p">)</span>
-           <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="o">.</span><span class="n">data_json</span><span class="p">()</span>
-           <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+           <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
+           <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
            <span class="k">try</span><span class="p">:</span>
                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
                    <span class="n">scan_status</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'vul_status'</span><span class="p">]</span>
            <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
                <span class="n">scan_status</span> <span class="o">=</span> <span class="mi">100</span>
-           <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+           <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
            <span class="k">print</span> <span class="s">"Scan Status"</span><span class="p">,</span> <span class="n">scan_status</span>
-       <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+       <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
       
-       <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="o">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
+       <span class="n">web_scan_result</span> <span class="o">=</span> <span class="n">archery</span><span class="p">.</span><span class="n">zap_scan_status</span><span class="p">(</span>
            <span class="n">auth</span><span class="o">=</span><span class="n">archery_auth</span><span class="p">(),</span>
-           <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">scan_id</span><span class="p">,</span>
+           <span class="n">scan_id</span><span class="o">=</span><span class="n">args</span><span class="p">.</span><span class="n">scan_id</span><span class="p">,</span>
        <span class="p">)</span>
-       <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="o">.</span><span class="n">data_json</span><span class="p">()</span>
-       <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+       <span class="n">results</span> <span class="o">=</span> <span class="n">web_scan_result</span><span class="p">.</span><span class="n">data_json</span><span class="p">()</span>
+       <span class="n">j_result</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">j_result</span><span class="p">:</span>
            <span class="n">total_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'total_vul'</span><span class="p">]</span>
            <span class="n">high_vul</span> <span class="o">=</span> <span class="n">j</span><span class="p">[</span><span class="s">'high_vul'</span><span class="p">]</span>
@@ -480,10 +480,10 @@ date_time"</span>: <span class="s2">"2019-02-27T04:43:40.254359Z"</span>, <span 
        <span class="k">print</span> <span class="s">"Total High"</span><span class="p">,</span> <span class="n">high_vul</span>
        <span class="k">print</span> <span class="s">"Total Medium"</span><span class="p">,</span> <span class="n">medium_vul</span>
        <span class="k">print</span> <span class="s">"Total Low"</span><span class="p">,</span> <span class="n">low_vul</span>
-       <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">high_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">high</span><span class="p">):</span>
+       <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">high_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">high</span><span class="p">):</span>
            <span class="n">fail</span> <span class="o">=</span> <span class="s">"FAILURE"</span>
            <span class="k">print</span> <span class="s">"Coz total high Vulnerability"</span><span class="p">,</span> <span class="n">high_vul</span>
-       <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">medium_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">medium</span><span class="p">):</span>
+       <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">medium_vul</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="nb">int</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">medium</span><span class="p">):</span>
            <span class="n">fail</span> <span class="o">=</span> <span class="s">"FAILURE"</span>
            <span class="k">print</span> <span class="s">"Coz total Medium Vulnerability"</span><span class="p">,</span> <span class="n">medium_vul</span>
        <span class="k">else</span><span class="p">:</span>
@@ -698,7 +698,7 @@ You can use a wide variety of other configurations to make your collection more 
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 text-center text-lg-left">
-                Copyright © 2019 ArcherySec
+                Copyright © 2022 ArcherySec
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">
                 <a target="_blank" href="https://archerysec.com">ArcherySec</a> by ArcherySec Maintainer

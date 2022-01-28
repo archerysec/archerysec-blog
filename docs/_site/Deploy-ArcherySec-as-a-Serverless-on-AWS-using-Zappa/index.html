@@ -265,11 +265,11 @@
   <li>Create a folder called aws at the root level.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 mkdir .aws
 </code></pre></div></div>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 ###~/.aws/credentials
 
 [default]
@@ -307,7 +307,7 @@ aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
   <li>Copy and paste the below code.</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -338,20 +338,20 @@ aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 <p>Clone ArcherySec project folder in our local system.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec.git
 $ cd archerysec
 </code></pre></div></div>
 
 <p>Install ArcherySec required library</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 $ pip install -r requirements-zappa.txt
 
 </code></pre></div></div>
 
 <p>After installing Zappa, let’s configure Zappa</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zappa init
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ zappa init
 </code></pre></div></div>
 
 <p>which will ask us for the following:</p>
@@ -359,7 +359,7 @@ $ pip install -r requirements-zappa.txt
 <ul>
   <li>Name of environment - default ‘dev’</li>
   <li>S3 bucket for deployments. If the bucket does not exist, zappa will create it for us. Zappa uses this bucket to hold the zappa package temporarily while it is being transferred to AWS lambda, which is then deleted after deployment.</li>
-  <li>Project’s settings provide as <code class="highlighter-rouge">archerysecurity.settings.base</code></li>
+  <li>Project’s settings provide as <code class="language-plaintext highlighter-rouge">archerysecurity.settings.base</code></li>
 </ul>
 
 <p>Some additional parameter required by Zappa configuration file.</p>
@@ -373,7 +373,7 @@ $ pip install -r requirements-zappa.txt
 
 <p>Zappa configuration file</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 {
     "dev": {
 	"aws_region": "us-east-1",
@@ -392,7 +392,7 @@ $ pip install -r requirements-zappa.txt
 
 <p>Now let us deploy the app</p>
 
-<p><code class="highlighter-rouge">$ zappa deploy dev</code></p>
+<p><code class="language-plaintext highlighter-rouge">$ zappa deploy dev</code></p>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/after_deploy.png" /></div></center>
 
@@ -401,9 +401,9 @@ $ pip install -r requirements-zappa.txt
 <p>Now you need to add your AWS API Gateway host as allowed host in application settings file and disable debugging by marking it as False.</p>
 
 <ul>
-  <li>Edit settings file:  <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
+  <li>Edit settings file:  <code class="language-plaintext highlighter-rouge">archerysecurity/settings/base.py</code></li>
   <li>DEBUG = False</li>
-  <li>Replace * with your host in Allowed host <code class="highlighter-rouge">ALLOWED_HOSTS = ['your_api_gateway_host']</code></li>
+  <li>Replace * with your host in Allowed host <code class="language-plaintext highlighter-rouge">ALLOWED_HOSTS = ['your_api_gateway_host']</code></li>
 </ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/debug.png" /></div></center>
@@ -411,10 +411,10 @@ $ pip install -r requirements-zappa.txt
 <p><br /></p>
 
 <ul>
-  <li>Add below lines in setting file <code class="highlighter-rouge">archerysecurity/settings/base.py </code></li>
+  <li>Add below lines in setting file <code class="language-plaintext highlighter-rouge">archerysecurity/settings/base.py </code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 FORCE_SCRIPT_NAME = "/dev/"
 
 LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
@@ -422,12 +422,12 @@ LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
 </code></pre></div></div>
 
 <ul>
-  <li>Update code by running command <code class="highlighter-rouge">zappa update dev</code></li>
+  <li>Update code by running command <code class="language-plaintext highlighter-rouge">zappa update dev</code></li>
 </ul>
 
 <p>Awsome!! we have successfully deployed ArcherySec tool on AWS Lambda function.</p>
 
-<p>Application can be accessible on API Gateway URL: <code class="highlighter-rouge">https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/</code></p>
+<p>Application can be accessible on API Gateway URL: <code class="language-plaintext highlighter-rouge">https://yoururl.execute-api.us-east-1.amazonaws.com/dev/login/?next=/dev/</code></p>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/application_accessible.png" /></div></center>
 
@@ -462,14 +462,14 @@ LOGIN_URL = FORCE_SCRIPT_NAME + 'login/'
   <li>Install django-s3-storage</li>
 </ul>
 
-<p><code class="highlighter-rouge">$ pip install django-s3-storage</code></p>
+<p><code class="language-plaintext highlighter-rouge">$ pip install django-s3-storage</code></p>
 
 <ul>
-  <li>and also add it in the <code class="highlighter-rouge">requirements.txt</code> file.</li>
-  <li>Now update the <i>settings.py</i> file to add <i>django_s3_storage</i> to <code class="highlighter-rouge">INSTALLED_APPS</code></li>
+  <li>and also add it in the <code class="language-plaintext highlighter-rouge">requirements.txt</code> file.</li>
+  <li>Now update the <i>settings.py</i> file to add <i>django_s3_storage</i> to <code class="language-plaintext highlighter-rouge">INSTALLED_APPS</code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 INSTALLED_APPS = (
           ...,
           'django_s3_storage',
@@ -480,7 +480,7 @@ INSTALLED_APPS = (
   <li>and also add these lines at the bottom</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 S3_BUCKET = "itestzappa-test"
 
 STATICFILES_STORAGE = "django_s3_storage.storage.StaticS3Storage"
@@ -495,7 +495,7 @@ STATIC_URL = "https://%s.s3.amazonaws.com/" % S3_BUCKET
   <li>Now load the static files using below command</li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 $ python manage.py collectstatic --noinput
 
 </code></pre></div></div>
@@ -506,7 +506,7 @@ $ python manage.py collectstatic --noinput
 
 <p><br /></p>
 
-<p>Once the static files are uploaded on s3 bucket you can update using Zappa command. <code class="highlighter-rouge">zappa update dev</code></p>
+<p>Once the static files are uploaded on s3 bucket you can update using Zappa command. <code class="language-plaintext highlighter-rouge">zappa update dev</code></p>
 
 <p>and after updating zappa, let us check by refreshing the page.</p>
 
@@ -549,10 +549,10 @@ $ python manage.py collectstatic --noinput
 
 <ul>
   <li>Add database details in ArcherySec settings file once database has been created.</li>
-  <li>Edit file <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
+  <li>Edit file <code class="language-plaintext highlighter-rouge">archerysecurity/settings/base.py</code></li>
 </ul>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -570,7 +570,7 @@ DATABASES = {
 
 <p>Now we add the VPC configuration to our Zappa settings file so that the lambda functions can connect to the database.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
     "dev": {
         "django_settings": "archerysecurity.settings.base",
         "s3_bucket": "archerysectest-code",
@@ -591,7 +591,7 @@ DATABASES = {
 zappa update dev
 `</p>
 
-<p>Invoke the zappa manage command: <code class="highlighter-rouge">zappa manage dev migrate</code></p>
+<p>Invoke the zappa manage command: <code class="language-plaintext highlighter-rouge">zappa manage dev migrate</code></p>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/migrate.png" /></div></center>
 
@@ -599,7 +599,7 @@ zappa update dev
 
 <ul>
   <li>after updating zappa, let us check by refreshing the page.</li>
-  <li>Create new user using Signup form <code class="highlighter-rouge">https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/</code></li>
+  <li>Create new user using Signup form <code class="language-plaintext highlighter-rouge">https://your_apigateway_end.execute-api.us-east-1.amazonaws.com/dev/webscanners/signup/</code></li>
 </ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/signup.png" /></div></center>
@@ -619,8 +619,8 @@ zappa update dev
 <p>Currently ArcherySec signup page accessible publicly and we need to restrict signup page from publicly.</p>
 
 <ul>
-  <li>Edit file <code class="highlighter-rouge">webscanners/web_views.py</code></li>
-  <li>Search def signup function and comment <code class="highlighter-rouge">@public</code> decorator</li>
+  <li>Edit file <code class="language-plaintext highlighter-rouge">webscanners/web_views.py</code></li>
+  <li>Search def signup function and comment <code class="language-plaintext highlighter-rouge">@public</code> decorator</li>
 </ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/web_views.png" /></div></center>
@@ -628,8 +628,8 @@ zappa update dev
 <p><br /></p>
 
 <ul>
-  <li>Edit file <code class="highlighter-rouge">archeryapi/views.py</code></li>
-  <li>Search def class CreateUsers and comment <code class="highlighter-rouge">@public</code> decorator</li>
+  <li>Edit file <code class="language-plaintext highlighter-rouge">archeryapi/views.py</code></li>
+  <li>Search def class CreateUsers and comment <code class="language-plaintext highlighter-rouge">@public</code> decorator</li>
 </ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/createuser_api.png" /></div></center>
@@ -637,9 +637,9 @@ zappa update dev
 <p><br /></p>
 
 <ul>
-  <li>Edit file <code class="highlighter-rouge">archerysecurity/settings/base.py</code></li>
-  <li>Search <code class="highlighter-rouge">STRONGHOLD_PUBLIC_URLS</code></li>
-  <li>Comment <code class="highlighter-rouge">r'^/api/createuser/$',</code></li>
+  <li>Edit file <code class="language-plaintext highlighter-rouge">archerysecurity/settings/base.py</code></li>
+  <li>Search <code class="language-plaintext highlighter-rouge">STRONGHOLD_PUBLIC_URLS</code></li>
+  <li>Comment <code class="language-plaintext highlighter-rouge">r'^/api/createuser/$',</code></li>
 </ul>
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/archeryblog/lambda/comment_api_create_user.png" /></div></center>
@@ -647,10 +647,10 @@ zappa update dev
 <p><br /></p>
 
 <ul>
-  <li>Update code by running command <code class="highlighter-rouge">zappa update dev</code></li>
+  <li>Update code by running command <code class="language-plaintext highlighter-rouge">zappa update dev</code></li>
 </ul>
 
-<p>Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using <code class="highlighter-rouge">zappa tail</code></p>
+<p>Congratulations!! Now ArcherySec has been deployed as serverless, you can check lambda logs using <code class="language-plaintext highlighter-rouge">zappa tail</code></p>
 
 <h4 id="references">References</h4>
 
@@ -769,7 +769,7 @@ zappa update dev
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 text-center text-lg-left">
-                Copyright © 2019 ArcherySec
+                Copyright © 2022 ArcherySec
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">
                 <a target="_blank" href="https://archerysec.com">ArcherySec</a> by ArcherySec Maintainer

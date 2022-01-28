@@ -17,3 +17,4 @@ group :jekyll_plugins do
     gem 'jekyll-paginate'
     gem 'jekyll-twitter-plugin'
 end
+gem "webrick", "~> 1.7"

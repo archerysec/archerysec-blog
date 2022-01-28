@@ -220,11 +220,11 @@ We’re happy to announce the first release of archerysec-cli (Command Line Inte
 
 <p>To install the latest release from PyPI, you can run the following command:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install archerysec-cli
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install archerysec-cli
 </code></pre></div></div>
 <p>To install the latest development version of Archerysec CLI, you can run the following:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec-cli.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ git clone https://github.com/archerysec/archerysec-cli.git
 $ cd archerysec-cli
 $ pip install -r requirements.txt
 
@@ -232,109 +232,186 @@ $ pip install -r requirements.txt
 <h2 id="usage">Usage</h2>
 
 <p>To use Archery CLI, you need to set the port Archery runs on (defaults to 8000) and the path to the folder in which Archery is installed. 
-You can Use Archery installation instruction from <a href="https://docs.archerysec.com/getting-started/Docker-install/">Archery DOC</a></p>
+You can Use Archery installation instruction from <a href="https://docs.archerysec.com/#quick-start">Archery DOC</a></p>
 
 <p>Archery CLI can then be used with the following commands:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(env) Anand:archerysec-cli anand$ archerysec-cli
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ~/archerysec $ archerysec-cli --help
+                   
+                   _                      _____
+     /\            | |                    / ____|
+    /  \   _ __ ___| |__   ___ _ __ _   _| (___   ___  ___
+   / /\ \ | '__/ __| '_ \ / _ \ '__| | | |\___ \ / _ \/ __|
+  / ____ \| | | (__| | | |  __/ |  | |_| |____) |  __/ (__
+ /_/    \_\_|  \___|_| |_|\___|_|   \__, |_____/ \___|\___|
+                                     __/ |
+                                    |___/
 
-                   _
-    /\            | |
-   /  \   _ __ ___| |__   ___ _ __ _   _
-  / /\ \ | '__/ __| '_ \ / _ \ '__| | | |
- / ____ \| | | (__| | | |  __/ |  | |_| |
-/_/    \_\_|  \___|_| |_|\___|_|   \__, |
-                                    __/ |
-                                   |___/
- Copyright (C) 2018 ArcherySec
- Open Source Vulnerability Assessment and Management.
+ Copyright (C) 2021 ArcherySec CLI v2.0.1
 
-
-Usage: archerysec-cli [options]
+Usage: cli.py [OPTIONS]
 
 Options:
-  -h, --help            show this help message and exit
+  -h, --host TEXT        Provide ArcherySec End Point Address.
+  -t, --token TEXT       Provide Auth token from ArcherySec.
+  -p, --path TEXT        Report File input
+  --file-type TEXT       File type
+  --target TEXT          target name or url
+  -s, --scanner TEXT     Select scanners ( zap_scan, burp_scan, arachni,
+                         acunetix, netsparker, webinspect,
+                         banditscan,dependencycheck,findbugs, checkmarx,
+                         clair, trivy, gitlabsca, gitlabsast,
+                         gitlabcontainerscan, npmaudit, nodejsscan,
+                         semgrepscan, tfsec, whitesource, inspec, dockle,
+                         nessus, openvas, nikto, twistlock, brakeman, )
 
-  Archery Authentication:
-    Authenticate into Archery REST API
-
-    -s SERVER, --server=SERVER
-                        Archery API server host address
-    -u USERNAME, --username=USERNAME
-                        Archery authentication username
-    -p PASSWORD, --password=PASSWORD
-                        Archery authentication password
-    --target_url=TARGET_URL
-                        Target URL's
-    --scan_id=SCAN_ID   Target URL's
-    --target_ip=TARGET_IP
-                        Target IP's
-    --project_id=PROJECT_ID
-                        Project ID
-
-  Get the Archery REST API token:
-    -t, --token         Print archery REST API Auth token
-
-  Archery Projects:
-    Perform action on Projects modules
-
-    --projectlist       Print project list
-    --createproject     Create new project with project name
-    --project_name=PROJECT_NAME
-                        Project Name
-    --project_disc=PROJECT_DISC
-                        Project Description
-    --project_start=PROJECT_START
-                        Project start date Ex. 2018-01-11
-    --project_end=PROJECT_END
-                        Project End date Ex. 2018-01-11
-    --project_owner=PROJECT_OWNER
-                        Project Owner name
-
-  ZAP Scans:
-    ZAP Scans module to perform ZAP Scans
-
-    --zapscanlist       List all ZAP Scans
-    --zapscan           Launch ZAP Scan
-    --zapscanresult     Get ZAP Scan result (Ex. python archery_cli.py -s
-                        http://127.0.0.1:8000 -u admin -p admin@123A
-                        --zapscanresult --scan_id=4ea6852b-
-                        bbf2-4171-9e98-4d798731e87a)
-
-  OpenVAS Scanner:
-    OpenVAS Scans module to perform OpenVAS Scan
-
-    --openvaslist       List all OpenVAS Scans
-    --openvasscan       Launch OpenVAS Scans
-    --openvas_result    Get OpenVAS Scan result (Ex. python archery_cli.py -s
-                        http://127.0.0.1:8000 -u admin -p admin@123A
-                        --openvas_result --scan_id=4ea6852b-
-                        bbf2-4171-9e98-4d798731e87a)
-
-  Upload Scanner Reports:
-    Upload multiple scanners reports
-
-    --upload            Upload scans report
-    --file=FILE         Input JSON or XML file
-    --TARGET=TARGET     Scan URL or IP
-    --scanner=SCANNER   Select scanners [ zap_scan, burp_scan, arachni,
-                        netsparker, webinspect, banditscan]
-
-Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123A -t
+  -th, --threshold TEXT  threshold type (ex. fail, pass)
+  --project TEXT         Project ID
+  --cicd_id TEXT         CICD Policies ID
+  --upload               Upload Report
+  --project-create       Create New Project
+  --bandit               Run Bandit Scan
+  --dependency-check     Run dependency-check Scan
+  --project-name TEXT    Create New Project
+  --project-disc TEXT    Create New Project
+  --code_path TEXT       Path of the source code
+  --report_path TEXT     Path of the Report
+  --help                 Show this message and exit.
 </code></pre></div></div>
 
-<p>Create Project:</p>
+<h3 id="create-project">Create Project:</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \
-    --createproject --project_name=test_project --project_disc="test project" \
-    --project_start=2018-01-11 --project_end=2018-01-11 --project_owner=anand
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">--createproject</span> <span class="nt">--project_name</span><span class="o">=</span><span class="s2">"test_project"</span> <span class="nt">--project_disc</span><span class="o">=</span><span class="s2">"test project"</span>
 </code></pre></div></div>
 
-<p>Launch ZAP Scan:</p>
+<h3 id="upload-zap-scan">Upload ZAP Scan:</h3>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$archerysec-cli -s http://127.0.0.1:8000 -u admin -p admin@123 \ 
-    --zapscan --target_url=http://demo.testfire.net \
-    --project_id=aa6730d4-d3c8-40ab-9ac1-27592afbdcb3
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/OWASP-ZAP-v2.7.0.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>zap_scan <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-burp-scan">Upload Burp Scan:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/Burp_Report.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>burp_scan <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-arachni-scan">Upload arachni Scan:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli  <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/Arachni_v1.3.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>arachni <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-acunetix-scan">Upload acunetix Scan:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/Acunetix_report_sample.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>acunetix <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-netsparker-scan">Upload netsparker Scan:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/Netsparker_report.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>netsparker <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-webinspect-scan">Upload webinspect scan:</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/webinspect.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>webinspect <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-banditscan-scan">Upload banditscan scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/banditscan.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>banditscan <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-dependencycheck-scan">Upload dependencycheck scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/dependencycheck.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>dependencycheck <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-findbugs-scan">Upload findbugs scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/findbugs.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>findbugs <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-checkmarx-scan">Upload checkmarx scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/checkmarx.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>checkmarx <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-clair-scan">Upload clair scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/clair.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>clair <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-trivy-scan">Upload trivy scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/trivy.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>trivy <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-git-lab-sca-scan">Upload Git Lab SCA scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/gitlabsca.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>gitlabsca <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-git-lab-sast-scan">Upload Git Lab SAST scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/gitlabsast.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>gitlabsast <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-git-lab-container-scan">Upload Git Lab Container scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/gitlabcontainerscan.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>gitlabcontainerscan <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-npmaudit-scan">Upload npmaudit scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/npmaudit.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>npmaudit <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-nodejsscan-scan">Upload nodejsscan scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/nodejsscan.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>nodejsscan <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-netsparker-scan-1">Upload netsparker scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/semgrepscan.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>netsparker <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-tfsec-scan">Upload tfsec scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/tfsec.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>tfsec <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-whitesource-scan">Upload whitesource scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/whitesource.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>whitesource <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-inspec-scan">Upload inspec scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/inspec.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>inspec <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-dockle-scan">Upload dockle scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/dockle.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>dockle <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-nessus-scan">Upload nessus scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/nessus.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>nessus <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-openvas-scan">Upload openvas scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/openvas.xml <span class="nt">--file-type</span><span class="o">=</span>XML <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>openvas <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-twistlock-scan">Upload twistlock scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/twistlock.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>twistlock <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
+</code></pre></div></div>
+
+<h3 id="upload-brakeman-scan">Upload brakeman scan</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>archerysec-cli <span class="nt">-h</span> http://127.0.0.1:8000 <span class="nt">-t</span> VpVSD99bX25yW27f-yv8q562U9ObZfbWnBLVkjfRjQ-FR52p4GlhjpYuCJwY56_x <span class="nt">-p</span> /report/sample/brakeman.json <span class="nt">--file-type</span><span class="o">=</span>JSON <span class="nt">--target</span><span class="o">=</span>ASFLKSF <span class="nt">--scanner</span><span class="o">=</span>brakeman <span class="nt">--project</span><span class="o">=</span>eaf6f89e-56ee-4ef7-8257-07b7136c9e31 <span class="nt">--upload</span>
 </code></pre></div></div>
 
 <h2 id="learn-more">Learn More</h2>
@@ -455,7 +532,7 @@ Example to get auth token: archerysec-cli -s http://127.0.0.1:8000 -u admin -p a
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-sm-6 text-center text-lg-left">
-                Copyright © 2019 ArcherySec
+                Copyright © 2022 ArcherySec
             </div>
             <div class="col-md-6 col-sm-6 text-center text-lg-right">
                 <a target="_blank" href="https://archerysec.com">ArcherySec</a> by ArcherySec Maintainer

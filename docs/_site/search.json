@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "Top 5 New Features in ArcherySec 2.0 Release",
+      "category" : "",
+      "tags"     : "",
+      "url"      : "/archerysec-2-0-release/",
+      "date"     : "2022-02-12 00:00:00 +0530"
+    } ,
+  
+    {
       "title"    : "Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline",
       "category" : "",
       "tags"     : "",

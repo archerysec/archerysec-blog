@@ -5,9 +5,80 @@
     <description>OPEN SOURCE VULNERABILITY ASSESSMENT AND MANAGEMENT TOOL</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 29 Jan 2022 01:01:45 +0530</pubDate>
-    <lastBuildDate>Sat, 29 Jan 2022 01:01:45 +0530</lastBuildDate>
+    <pubDate>Sat, 12 Feb 2022 01:01:47 +0530</pubDate>
+    <lastBuildDate>Sat, 12 Feb 2022 01:01:47 +0530</lastBuildDate>
     <generator>Jekyll v4.2.1</generator>
+    
+      <item>
+        <title>Top 5 New Features in ArcherySec 2.0 Release</title>
+        <description>&lt;p&gt;We have been working on our open-source project for a while and we have made tremendous growth by helping the community by solving through the ArcherySec Open-source project. Recently we have released a new version of ArcherySec and I’m going to highlight the top 5 new changes we made.&lt;/p&gt;
+
+&lt;h4 id=&quot;policy-based-cicd-integration&quot;&gt;Policy-Based CI/CD integration&lt;/h4&gt;
+
+&lt;p&gt;ArcherySec now has a powerful policy-based CI/CD integration of security scanners and orchestrates in your CI/CD pipeline that helps you run the security tools seamlessly. We have optimized security tools and are helping you to inject them into your pipeline stages. We have policy-based running scanners that help you create pipeline policy and stop your build based on your rule setup in ArcherySec. &lt;a href=&quot;https://docs.archerysec.com/docs/cicd_scans&quot;&gt;Know more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/cicd2.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/cicd.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;new-dashboard-show-vulnerability-trend&quot;&gt;New Dashboard Show Vulnerability Trend&lt;/h4&gt;
+
+&lt;p&gt;The ability to see the vulnerability trending every month on the dashboard gives you visibility in your vulnerability management. &lt;a href=&quot;https://docs.archerysec.com/docs/dashboard&quot;&gt;Know more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/DASH.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;multi-user-role-based-accounts-admin-analyst--viewer&quot;&gt;Multi-user Role-Based Accounts Admin, Analyst &amp;amp; Viewer&lt;/h4&gt;
+
+&lt;p&gt;We have announced a role-based authorization feature in ArcherySec 2.0 and roles can be defined for local ArcherySec users in order to control the information they see and the actions they can perform. &lt;a href=&quot;https://docs.archerysec.com/docs/users&quot;&gt;Know more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/USERS.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;test-scanners-connection&quot;&gt;Test Scanners Connection&lt;/h4&gt;
+
+&lt;p&gt;ArcherySec 2.0 provides you to test remote scanners connection through our connector module. Now users can onboard a security scanner and test the connection between ArcherySec and the scanner. &lt;a href=&quot;https://docs.archerysec.com/docs/connectors-basic&quot;&gt;Know more&lt;/a&gt;.&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/connectors.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;api-key-based-authentication&quot;&gt;API-Key based Authentication&lt;/h4&gt;
+
+&lt;p&gt;ArcherySec has now access key-based authentication that allows you to connect with ArcherySec API and CLI. &lt;a href=&quot;https://docs.archerysec.com/&quot;&gt;To know more&lt;/a&gt;&lt;/p&gt;
+
+&lt;center&gt;&lt;div class=&quot;img-border&quot; style=&quot;width: 70%;&quot;&gt;&lt;img src=&quot;/assets/images/release2/ACCESS-KEY.png&quot; /&gt;&lt;/div&gt;&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;get-in-touch&quot;&gt;Get in Touch&lt;/h4&gt;
+
+&lt;p&gt;Send us email at &lt;a href=&quot;info@archerysec.com&quot;&gt;info@archerysec.com&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;learn-more&quot;&gt;Learn More&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.archerysec.com/&quot;&gt;http://www.archerysec.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/archerysec/archerysec&quot;&gt;https://github.com/archerysec/archerysec&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.archerysec.com/&quot;&gt;https://docs.archerysec.com/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.archerysec.com/&quot;&gt;https://developers.archerysec.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Sat, 12 Feb 2022 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/archerysec-2-0-release/</link>
+        <guid isPermaLink="true">http://localhost:4000/archerysec-2-0-release/</guid>
+        
+        
+        <category>Release</category>
+        
+      </item>
     
       <item>
         <title>Integrate ArcherySec + OWASP ZAP in Jenkins CI/CD Pipeline</title>

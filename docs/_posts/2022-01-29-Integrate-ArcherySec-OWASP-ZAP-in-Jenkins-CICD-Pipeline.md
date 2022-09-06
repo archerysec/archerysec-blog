@@ -109,7 +109,7 @@ OWASP ZAP: http://your_system_ip_address:8090
 - Click on `Add Project`
 - Go to `CI/CD` module
 - Copy Code and Place into jenkins pipeline 
-- Replace the value of `--report_path=$(pwd)/archerysec-scans-report` with `--report_path=/tmp/archerysec-scans-report`
+- Replace the value of `--report_path=$(pwd)/archerysec-scans-report/` with `--report_path=/tmp/archerysec-scans-report/`
 - Add Policy
 
 <center><div class="img-border" style="width: 70%;"><img src="/assets/images/jenkins/archerysec-ci-cd.png"></div></center>
@@ -140,7 +140,7 @@ pipeline {
                 sh '''
                  pip install archerysec-cli --force  
                  mkdir /tmp/archerysec-scans-report
-archerysec-cli -h http://192.168.1.6:8000 -t SWmasE5lx2BN1-jztwBMZhWcugCEPmQPVr7yFovZhEUs66Jz2oJAvLGMOZRTQ_9s --cicd_id=143647e0-379f-4094-9f7b-aa09db1f5e8e --project=25a7547a-aef6-4d63-a994-69ea52e79928 --zap-base-line-scan --report_path=/tmp/archerysec-scans-report
+archerysec-cli -h http://192.168.1.6:8000 -t SWmasE5lx2BN1-jztwBMZhWcugCEPmQPVr7yFovZhEUs66Jz2oJAvLGMOZRTQ_9s --cicd_id=143647e0-379f-4094-9f7b-aa09db1f5e8e --project=25a7547a-aef6-4d63-a994-69ea52e79928 --zap-base-line-scan --report_path=/tmp/archerysec-scans-report/
                   '''
               }
             }
